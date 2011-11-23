@@ -3,7 +3,7 @@ Mixxxx.es
 
 About
 -----
-Mixxxx.es streams music from youtube via reddit and user submissions. It was hacked together messily in about 2 hours. The main intended audience for this is a few friends.
+Mixxxx.es streams music from youtube via reddit and user submissions. It was initially hacked together messily in about 2 hours. The main intended audience for this is a few friends.
 
 By default it streams reddit.com/r/futuregarage and uses a simple database backend to authorise user logins in order to store user submissions. Admins can add boards and add/delete tunes from each board.
 
