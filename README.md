@@ -10,6 +10,9 @@ By default it streams reddit.com/r/futuregarage and uses a simple database backe
 To-dos
 ------
 
+- Limit & cache requests. (reddit asks for no more than 0.5req/sec).
+- Pagination for boards.
+- Find an alternative/better way to extract the youtube video URL rather than using the DOM parser.
 - Add URL support for each board (e.g. mixxxx.es/#future-g).
 - Add ability for guests to submit/add songs into the backend (but not modify/delete songs or boards).
 - Potentially add support for comments.
