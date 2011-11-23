@@ -8,7 +8,7 @@ error_reporting(0);
 		$filename = 'reddit.data';
 
 		if(file_exists($filename)) {
-			if(filemtime($filename)>strtotime('-1 hour')) {
+			if(filemtime($filename)>strtotime('-5 minutes')) {
 				$json = unserialize(file_get_contents($filename));
 			} else {
 				$json = get_data('http://www.reddit.com/r/futuregarage/.json');
