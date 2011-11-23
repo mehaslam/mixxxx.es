@@ -2,10 +2,9 @@
 error_reporting(E_ERROR | E_PARSE);
 session_start();
 
-	require('classes/db.php');
+	require_once('classes/db.php');
 	require('classes/video.php');
 	require('classes/boards.php');
-	require('classes/simple_html_dom.php');
 
 
 //PROCESS LOGINS

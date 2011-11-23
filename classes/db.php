@@ -1,5 +1,4 @@
 <?php 
-
 if ($_SERVER['HTTP_HOST'] == 'labs' || $_SERVER['HTTP_HOST'] == 'localhost' || $_SERVER['HTTP_HOST'] == 'mixxxxes') {
 		$host = "localhost";
 		$dbuser = "root";

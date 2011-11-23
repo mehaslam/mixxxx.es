@@ -1,8 +1,6 @@
 <?php
 session_start();
 error_reporting(E_ERROR | E_PARSE);
-//require(__DIR__.'/../video.php');
-//require(__DIR__.'/../simple_html_dom.php');
 require('classes/video.php');
 require('classes/boards.php');
 ?>
