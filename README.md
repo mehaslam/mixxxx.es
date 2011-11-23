@@ -7,6 +7,23 @@ Mixxxx.es streams music from youtube via reddit and user submissions. It was hac
 
 By default it streams reddit.com/r/futuregarage and uses a simple database backend to authorise user logins in order to store user submissions. Admins can add boards and add/delete tunes from each board.
 
+Changelog
+------
+
+### 23/11/2011
+  - Fixed the r/futuregarge stream.
+  - Reddit API requests now cached on server and refreshed after 5 minutes.
+  - No longer using DOM parser.
+  - Accessing youtube URL directly rather than the embed HTML from reddit API.
+  - Removed require instances for the DOM parser.
+  - db.php should now only be required once (was multiple).
+  - Cleaned up reddit.php code, reduced also.
+  - Added couple things to to-dos.
+  - Reddit youtube urls now stripped out if blank after parsing.
+
+### 22/11/2011
+  - Added numerous things to the to-do list below.
+
 To-dos
 ------
 
@@ -21,6 +38,7 @@ To-dos
 -- General organisation and code improvement.
 - Add HTML5 BP.
 - Remove crappy comments, messy debugging.
+- Support youtu.be links on reddit.
 
 Licensing
 ---------
