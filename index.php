@@ -72,16 +72,27 @@ if ($_SESSION['bro'] == 'truetrue' && $_POST['board_name']) {
 <!-- twitter.com/samuelgbrown yo. -->
 <html>
 <head>
-<title>mixxxx.es</title>
-<link href='http://fonts.googleapis.com/css?family=Contrail+One' rel='stylesheet' type='text/css'>
-<script type="text/javascript" charset="utf-8" src="http://ajax.googleapis.com/ajax/libs/jquery/1.5.1/jquery.js"></script>
+	<title>mixxxx.es</title>
+	<meta charset="utf-8">
+  	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  	<meta name="description" content="">
+  	<meta name="author" content="">
+  	<meta name="viewport" content="width=device-width,initial-scale=1">
+  	
+  	<link rel="stylesheet" href="assets/css/style.css" />
+	
+	<script src="js/libs/modernizr-2.0.6.min.js"></script>
+	<link href='http://fonts.googleapis.com/css?family=Contrail+One' rel='stylesheet' type='text/css'>
+	<script type="text/javascript" charset="utf-8" src="http://ajax.googleapis.com/ajax/libs/jquery/1.5.1/jquery.js"></script>
+	
 </head>
 <body>
 
 <div class="left">
 			<h1 id="logo"><a href="">mixxxx.es</a></h1>
-
-			<div class="admins">
+	
+			<div class="admins" <?php if (isset($_SESSION['bro']) && $_SESSION['bro'] == 'truetrue') { echo "id='authed'";} ?>>
+			
 					<?php if (!isset($_SESSION['bro']) || $_SESSION['bro'] != 'truetrue') { ?>
 
 					<form id="login_form" method="POST" action="">
@@ -134,54 +145,6 @@ if ($_SESSION['bro'] == 'truetrue' && $_POST['board_name']) {
 <div id="videos"></div>
 
 </div>
-
-<style>
-
-/* dark theme 
-html {background: #272727}
-.delete_button {background: #F6F6F6;border: 1px solid #CCC;}
-h1 {color:white}
-span, p, label {color: white}
-a {color: white}*/
-
-/* light theme */
-html {background: white}
-.delete_button {background: #F6F6F6;border: 1px solid #CCC;}
-h1 a {color:black}
-#logo {background:black}
-#logo a {color:white;}
-span, p, label {color: black}
-a {color: black}
-
-.left {width:250px;float:left;overflow: hidden;position:fixed;}
-.right {width:900px;float:left;overflow: hidden;margin-left:250px;}
-
-.left .links {float: left; width:100%}
-.left .links a {display: block}
-.admins {float: left;}
-
-h1 {font-family: 'Contrail One', cursive;}
-#logo {width: 100px;padding: 50px 14px;border-radius: 100px;margin: 100px 0;}
-span, p, label {font-size:11px;}
-a {text-decoration: none;}
-body {width: 1150px; margin: 0 auto; font-family: Arial; font-size: 12px}
-#video_area {width: 100%; overflow: hidden}
-.vid_container, iframe {width: 400px; float: left; height: 190px; padding: 5px 12px}
-#login_form {display: none;}
-#login_link, #logout_link {cursor:pointer; padding-right: 10px; font-size: 11px;}
-.delete_link {width: 150px; margin: 0 auto; text-align:center}
-.delete_button {padding: 5px 10px;border-radius: 3px;cursor: pointer;}
-footer a {font-size:11px;}
-
-
-<?php if (isset($_SESSION['bro']) && $_SESSION['bro'] == 'truetrue') { ?>
-	#login_link {display: none}
-<?php } else { ?>
-	#logout_link {display: none}
-<?php } ?>
-
-
-</style>
 
 <script>
 $(document).ready(function() {

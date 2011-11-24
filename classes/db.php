@@ -2,7 +2,7 @@
 if ($_SERVER['HTTP_HOST'] == 'labs' || $_SERVER['HTTP_HOST'] == 'localhost' || $_SERVER['HTTP_HOST'] == 'mixxxxes') {
 		$host = "localhost";
 		$dbuser = "root";
-		$pass = "blahblah";
+		$pass = "root";
 		$database = "mixxxxes";
 } else if ($_SERVER['HTTP_HOST'] == 'mixxxx.es' || $_SERVER['HTTP_HOST'] == 'www.mixxxx.es') {
 		require('protected.php');
