@@ -13,6 +13,7 @@ Changelog
 ### 25/11/2011
   - HTML5 Boilerplate integrated.
   - Board URLs now support via hashtags - e.g. mixxxx.es/#dnb.
+  - User boards (all except reddit stream) now support Pagination!
   - Fetching boards by name rather than ID for ease of JS. (could consider building simple API).
 
 ### 23/11/2011
@@ -32,8 +33,6 @@ Changelog
 To-dos
 ------
 
-- Limit & cache requests. (reddit asks for no more than 0.5req/sec).
-- Pagination for boards.
 - Potentially add support for comments.
 -- Add some security to SQL statements.
 - Support youtu.be links on reddit.
