@@ -111,7 +111,9 @@ a:hover, a:active { outline: 0; }
 #pagination {overflow: hidden; float: left; margin: 10px auto 35px auto; text-align: center;width:100%;}
 #pagination .current {color: #CCC;}
 
-#pagination a, #pagination span {font-size: 24px;font-family: 'Contrail One', cursive;padding:0 5px;}
+#pagination a, #pagination span {font-size: 24px;font-family: 'Contrail One', cursive;padding:0 5px;color:#000}
+#pagination a:hover {color: #06e;}
+#pagination a:visited {color:#000}
 
 /* ==|== non-semantic helper classes ======================================== */
 .ir { display: block; border: 0; text-indent: -999em; overflow: hidden; background-color: transparent; background-repeat: no-repeat; text-align: left; direction: ltr; }
