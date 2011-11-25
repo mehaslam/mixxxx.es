@@ -42,10 +42,14 @@ error_reporting(0);
 		    {
 		        unset($youtube_ids[$key]);
 		    }
-		}
-
-		foreach ($youtube_ids as $key => $youtube_id) {
-			?>
+		} ?>
+		
+		
+		<div id="all_videos">
+		
+		<?php
+		
+		foreach ($youtube_ids as $key => $youtube_id) { ?>
 			
 			<div class="vid_container">
 			
@@ -53,9 +57,12 @@ error_reporting(0);
 			
 			</div>
 		
-		<?php }
+		<?php } ?>
+		
+	</div>
+	
 
-//Generic functions.		
+<?php //Generic functions.		
 		
 function get_data($url) {
 	$ch = curl_init();

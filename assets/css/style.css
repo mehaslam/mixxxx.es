@@ -71,7 +71,7 @@ a {color: white}*/
 html {background: white}
 .delete_button {background: #F6F6F6;border: 1px solid #CCC;}
 h1 a {color:black}
-#logo {background:black}
+#logo {background:black; cursor:pointer}
 #logo a {color:white;}
 span, p, label {color: black}
 a {color: black}
@@ -105,6 +105,13 @@ a:visited { color: #000; }
 a:hover { color: #06e; }
 a:focus { outline: thin dotted; }
 a:hover, a:active { outline: 0; }
+
+
+#all_videos {overflow: hidden; float: left;margin-bottom:20px;}
+#pagination {overflow: hidden; float: left; margin: 10px auto 35px auto; text-align: center;width:100%;}
+#pagination .current {color: #CCC;}
+
+#pagination a, #pagination span {font-size: 24px;font-family: 'Contrail One', cursive;padding:0 5px;}
 
 /* ==|== non-semantic helper classes ======================================== */
 .ir { display: block; border: 0; text-indent: -999em; overflow: hidden; background-color: transparent; background-repeat: no-repeat; text-align: left; direction: ltr; }

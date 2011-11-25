@@ -79,6 +79,29 @@
 
        }
        
+       function getBoardVideosAt($boardid, $pageno) {
+       
+   			$result = mysql_query("SELECT * FROM `videos` WHERE `board_id` =".$boardid) or die("Query failed with error: ".mysql_error());
+			while ($row = mysql_fetch_array($result)) {
+				$video = array($row['id'],$row['url']);
+				$vids[] = $video;
+			}
+			
+			$videos = array_reverse($vids);
+			
+			foreach ($videos as $video) {
+				$r_videos[] = new Video($video[0],$video[1]);
+			}
+			
+			$perpage = 8; //8 per page.
+			$startpos = (($pageno-1)*$perpage); 
+			
+			$this_page = array_slice($r_videos, $startpos, 8);		
+			
+			return $this_page;
+
+       }
+       
        function getVideoByUrl($url, $boardid) {
        	
    			$result = mysql_query("SELECT * FROM `videos` WHERE `url` = '".$url."' AND `board_id` =".$boardid) or die("query failed with error: ".mysql_error());
@@ -91,6 +114,18 @@
 			} else {
 				return null;
 			}
+       }
+       
+       function countBoardVideos($boardid) {
+       
+   			$result = mysql_query("SELECT * FROM `videos` WHERE `board_id` =".$boardid) or die("Query failed with error: ".mysql_error());
+			while ($row = mysql_fetch_array($result)) {
+				$video = array($row['id'],$row['url']);
+				$vids[] = $video;
+			}
+			
+			return count($vids);
+
        }
 
 }

@@ -149,6 +149,8 @@ if ($_SESSION['bro'] == 'truetrue' && $_POST['board_name']) {
 <script>
 $(document).ready(function() {
 
+	bindBoardEvents();
+
 	$('#fg_link').click(function(e) {
 		e.preventDefault();
 		window.location.hash = "futureg";
@@ -171,7 +173,6 @@ $(document).ready(function() {
 
 	if (window.location.hash != "" && window.location.hash != "#futureg") {
 		var board = window.location.hash.replace('#', '');
-		console.log('board: '+board);
 		fetchBoard(board);
 	} else {
 		window.location.hash = "futureg";
@@ -179,12 +180,31 @@ $(document).ready(function() {
 	}
 	
 	function fetchBoard(board) {
-		console.log('fetching '+board+'...');
 		$.ajax({
 			url: "picks.php?board_name="+board,
 			type: "GET",
 			success: function(res){
 				$('.right').html(res);
+				window.board = board;
+				bindBoardEvents();
+			},
+			error: function(err) {
+				console.log(err);
+			}
+		});
+	}
+	
+	function fetchBoardAt(board, page) {
+		
+		console.log("fetching "+board+", page "+page);
+	
+		$.ajax({
+			url: "picks.php",
+			data: {board_name: board, page: page},
+			type: "GET",
+			success: function(res){
+				$('.right').html(res);
+				bindBoardEvents();
 			},
 			error: function(err) {
 				console.log(err);
@@ -200,8 +220,19 @@ $(document).ready(function() {
 			  success: function(res){
 				    $('.right').html(res);
 				   	$('.right').fadeIn();
+				   	bindBoardEvents();
 			  }
 		});
+	}
+	
+	
+	//Bind any events to elements that may have been created by an ajax call. Call this function after ajax calls.
+	function bindBoardEvents() {
+		$('#pagination a').click(function(e) {
+			e.preventDefault();
+			var pageno = $(this).attr("data-rel");
+			fetchBoardAt(window.board, pageno);
+		});	
 	}
 })
 
