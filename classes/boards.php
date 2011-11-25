@@ -63,9 +63,22 @@
 
        }
        
+       function getAllBoardsInJson() {
+       
+       	   	$result = mysql_query("SELECT * FROM `boards`") or die("Query failed with error: ".mysql_error());
+       	   	
+			while ($row = mysql_fetch_array($result)) {
+				$board = array("id" => $row['id'],"name" =>$row['name']);
+				$boards[] = $board;
+			}
+			
+			return json_encode($boards);
+       
+       }
+       
        function getBoardByName($name) {
        	
-   			$result = mysql_query("SELECT * FROM `boards` WHERE `name` = '".$name."'") or die("Query failed with error: ".mysql_error());
+   			$result = mysql_query("SELECT * FROM `boards` WHERE `name` = '".$name."'") or die("getBoardByName failed with error: ".mysql_error());
 			while ($row = mysql_fetch_array($result)) {
 				$board = new Board ($row['id'],$row['name']);
 			}

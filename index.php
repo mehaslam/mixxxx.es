@@ -81,7 +81,7 @@ if ($_SESSION['bro'] == 'truetrue' && $_POST['board_name']) {
   	
   	<link rel="stylesheet" href="assets/css/style.css" />
 	
-	<script src="js/libs/modernizr-2.0.6.min.js"></script>
+	<script src="assets/js/libs/modernizr-2.0.6.min.js"></script>
 	<link href='http://fonts.googleapis.com/css?family=Contrail+One' rel='stylesheet' type='text/css'>
 	<script type="text/javascript" charset="utf-8" src="http://ajax.googleapis.com/ajax/libs/jquery/1.5.1/jquery.js"></script>
 	
@@ -133,7 +133,7 @@ if ($_SESSION['bro'] == 'truetrue' && $_POST['board_name']) {
 				
 				$boards = board::getAllBoards();
 				foreach ($boards as $board) {
-					echo '<h1><a href="#" class="board_link" data-rel="'.$board->getID().'">'.$board->getName().'</a></h1>';
+					echo '<h1><a href="#'.$board->getName().'" class="board_link" data-rel="'.$board->getName().'">'.$board->getName().'</a></h1>';
 				}
 				
 				?>
@@ -151,6 +151,48 @@ $(document).ready(function() {
 
 	$('#fg_link').click(function(e) {
 		e.preventDefault();
+		window.location.hash = "futureg";
+		fetchFutureGarage();
+	});
+	
+	
+	$('.board_link').click(function(e) {
+		e.preventDefault();
+		var boardname = $(this).attr("data-rel");
+		window.location.hash = boardname;
+		fetchBoard(boardname);
+	});
+	
+	
+	$('#login_link').click(function() {
+		$('#login_form').show();
+		$('#login_link').hide();
+	})
+
+	if (window.location.hash != "" && window.location.hash != "#futureg") {
+		var board = window.location.hash.replace('#', '');
+		console.log('board: '+board);
+		fetchBoard(board);
+	} else {
+		window.location.hash = "futureg";
+		fetchFutureGarage();
+	}
+	
+	function fetchBoard(board) {
+		console.log('fetching '+board+'...');
+		$.ajax({
+			url: "picks.php?board_name="+board,
+			type: "GET",
+			success: function(res){
+				$('.right').html(res);
+			},
+			error: function(err) {
+				console.log(err);
+			}
+		});
+	}
+	
+	function fetchFutureGarage() {
 		$('#videos').fadeOut();
 		$.ajax({
 			  url: 'reddit.php',
@@ -160,30 +202,7 @@ $(document).ready(function() {
 				   	$('.right').fadeIn();
 			  }
 		});
-	});
-	
-	$('.board_link').click(function(e) {
-		e.preventDefault();
-		var boardid = $(this).attr("data-rel");
-		$('#videos').fadeOut();
-		$.ajax({
-			  url: 'picks.php?id='+boardid,
-			  type: "GET",
-			  success: function(res){
-				    $('.right').html(res);
-				   	$('.right').fadeIn();
-			  }
-		});
-	});
-	
-	
-	$('#login_link').click(function() {
-		$('#login_form').show();
-		$('#login_link').hide();
-	})
-	
-	$('.right').load('reddit.php');
-
+	}
 })
 
 </script>

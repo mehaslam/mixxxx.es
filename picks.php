@@ -8,10 +8,18 @@ require('classes/boards.php');
 <div id="video_area">
 <?php
 
-$boardid = $_GET['id'];
+$board_name = $_GET['board_name'];
+$board = board::getBoardByName($board_name);
 
-$videos = video::getBoardVideos($boardid);
-$board = board::getBoardByID($boardid);
+if (isset($board)) {
+$videos = video::getBoardVideos($board->getID());
+} else {
+	echo 'board not found:';
+	print_r($_GET);
+	die();
+}
+
+
 ?> <h1><?php echo $board->getName(); ?></h1> <?php
 
 if (isset($_SESSION['bro']) && $_SESSION['bro'] == 'truetrue') { ?>
