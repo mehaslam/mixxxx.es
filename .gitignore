@@ -4,3 +4,5 @@ classes/protected.php
 .DS_Store
 
 classes/db.php
+
+reddit.data
