@@ -79,9 +79,9 @@ if ($_SESSION['bro'] == 'truetrue' && $_POST['board_name']) {
   	<meta name="author" content="">
   	<meta name="viewport" content="width=device-width,initial-scale=1">
   	
-  	<link rel="stylesheet" href="assets/css/style.css" />
+  	<link rel="stylesheet" href="static/css/stylesheets/screen.css" />
 	
-	<script src="assets/js/libs/modernizr-2.0.6.min.js"></script>
+	<script src="static/js/libs/modernizr-2.0.6.min.js"></script>
 	<link href='http://fonts.googleapis.com/css?family=Contrail+One' rel='stylesheet' type='text/css'>
 	<script type="text/javascript" charset="utf-8" src="http://ajax.googleapis.com/ajax/libs/jquery/1.5.1/jquery.js"></script>
 	
@@ -90,7 +90,19 @@ if ($_SESSION['bro'] == 'truetrue' && $_POST['board_name']) {
 
 <div class="left">
 			<h1 id="logo"><a href="">mixxxx.es</a></h1>
-	
+			
+			<div class="links">
+				<h1><a href="#" id="fg_link">r/futuregarage</a></h1>
+				<?php
+				
+				$boards = board::getAllBoards();
+				foreach ($boards as $board) {
+					echo '<h1><a href="#'.$board->getName().'" class="board_link" data-rel="'.$board->getName().'">'.$board->getName().'</a></h1>';
+				}
+				
+				?>
+			</div>
+			
 			<div class="admins" <?php if (isset($_SESSION['bro']) && $_SESSION['bro'] == 'truetrue') { echo "id='authed'";} ?>>
 			
 					<?php if (!isset($_SESSION['bro']) || $_SESSION['bro'] != 'truetrue') { ?>
@@ -125,118 +137,32 @@ if ($_SESSION['bro'] == 'truetrue' && $_POST['board_name']) {
 						
 					</footer>
 			</div>
-			
-			
-			<div class="links">
-				<h1><a href="#" id="fg_link">r/futuregarage</a></h1>
-				<?php
-				
-				$boards = board::getAllBoards();
-				foreach ($boards as $board) {
-					echo '<h1><a href="#'.$board->getName().'" class="board_link" data-rel="'.$board->getName().'">'.$board->getName().'</a></h1>';
-				}
-				
-				?>
-			</div>
 </div>
 
-<div class="right">
-
-<div id="videos"></div>
-
+<div class="right_container">
+	
+	<div class="playlist">
+		<h1 class="board_name"></h1>
+		<div class="inside">
+			<h2>Playlist content here.</h2>
+		</div>
+	</div>
+	
+	<div class="right_mask"></div>
+	
+	<div class="right">
+		<div id="videos"></div>
+	</div>
+	
 </div>
 
-<script>
-$(document).ready(function() {
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.0/jquery.min.js"></script>
+<script>window.jQuery || document.write('<script src="static/js/libs/jquery-1.6.2.min.js"><\/script>')</script>
 
-	bindBoardEvents();
-
-	$('#fg_link').click(function(e) {
-		e.preventDefault();
-		window.location.hash = "futureg";
-		fetchFutureGarage();
-	});
-	
-	
-	$('.board_link').click(function(e) {
-		e.preventDefault();
-		var boardname = $(this).attr("data-rel");
-		window.location.hash = boardname;
-		fetchBoard(boardname);
-	});
-	
-	
-	$('#login_link').click(function() {
-		$('#login_form').show();
-		$('#login_link').hide();
-	})
-
-	if (window.location.hash != "" && window.location.hash != "#futureg") {
-		var board = window.location.hash.replace('#', '');
-		fetchBoard(board);
-	} else {
-		window.location.hash = "futureg";
-		fetchFutureGarage();
-	}
-	
-	function fetchBoard(board) {
-		$.ajax({
-			url: "picks.php?board_name="+board,
-			type: "GET",
-			success: function(res){
-				$('.right').html(res);
-				window.board = board;
-				bindBoardEvents();
-			},
-			error: function(err) {
-				console.log(err);
-			}
-		});
-	}
-	
-	function fetchBoardAt(board, page) {
-		
-		console.log("fetching "+board+", page "+page);
-	
-		$.ajax({
-			url: "picks.php",
-			data: {board_name: board, page: page},
-			type: "GET",
-			success: function(res){
-				$('.right').html(res);
-				bindBoardEvents();
-			},
-			error: function(err) {
-				console.log(err);
-			}
-		});
-	}
-	
-	function fetchFutureGarage() {
-		$('#videos').fadeOut();
-		$.ajax({
-			  url: 'reddit.php',
-			  type: "GET",
-			  success: function(res){
-				    $('.right').html(res);
-				   	$('.right').fadeIn();
-				   	bindBoardEvents();
-			  }
-		});
-	}
-	
-	
-	//Bind any events to elements that may have been created by an ajax call. Call this function after ajax calls.
-	function bindBoardEvents() {
-		$('#pagination a').click(function(e) {
-			e.preventDefault();
-			var pageno = $(this).attr("data-rel");
-			fetchBoardAt(window.board, pageno);
-		});	
-	}
-})
-
-</script>
+<!-- scripts concatenated and minified via ant build script-->
+<script src="static/js/plugins.js"></script>
+<script src="static/js/script.js"></script>
+<!-- end scripts-->
 
 <script type="text/javascript">
 

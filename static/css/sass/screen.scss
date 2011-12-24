@@ -1,0 +1,188 @@
+// Here's where we define some default constants
+@import "partials/base";
+
+// Then we'll import the compass extension
+@import "html5-boilerplate";
+
+// Now, you can simply include everything
+// (except media) by uncommeting this line
+//@include html5-boilerplate;
+
+// Or, you can pick and choose only the sections
+// you want by using the these includes
+@include html5-boilerplate-reset;
+@include html5-boilerplate-fonts;
+@include html5-boilerplate-styles;
+@include html5-boilerplate-helpers;
+
+// Or, you can import the "overrides" partial if
+// you want more control over individual mixins
+//@import "partials/overrides";
+
+// Finally, put your own styles in these partials
+// and add more as needed (i.e. forms, tables, nav)
+@import "partials/fonts";
+@import "partials/page";
+
+// Media should come last
+@import "partials/media";
+
+html {
+	
+	background: white;
+	color: black;
+	h1, h2 {font-family: 'Contrail One', cursive;}
+	h1 {font-size: 22px;}
+	h2 {font-size: 18px;}
+	a, a:visited {text-decoration: none;  color: #000; }
+	a:hover { color: #06e; }
+	a:focus { outline: thin dotted; }
+	a:hover, a:active { outline: 0; }
+
+	body {
+		width: 1150px;
+		margin: 0 auto;
+		font-family: Arial;
+		font-size: 12px;
+		
+		.left {
+			
+			width:250px;
+			float:left;
+			overflow: auto;
+			position:fixed;
+			height:100%;
+			
+			#logo {
+				color:white;
+				width: 100px;
+				padding: 50px 14px;
+				border-radius: 100px;
+				margin: 30px 0 40px 0;
+				cursor: pointer;
+				background: black;
+				
+				a { color: white; }
+			}
+			
+			.links {
+				float: left;
+				width:100%;
+				margin-bottom: 20px;
+				
+				h1 {margin: 7px 0; font-size:16px}
+				a {display: block}
+			}
+			
+			.admins {
+				float: left;
+				#login_form {
+					display: none;
+				}
+				
+				#login_link, #logout_link {
+					cursor:pointer;
+					padding-right: 10px;
+					font-size: 11px;
+				}
+			}
+			
+			.admins#authed #login_form {
+				display: none;
+			}
+		}
+		
+		.right_container {
+			
+			width:900px;
+			float:left;
+			overflow: hidden;
+			margin-left:250px;
+			display: block;
+			padding-top: 25px;
+		
+			
+			
+			.playlist {
+				position: fixed;
+				width: 812px;
+				height: 145px;
+				padding: 10px 0;
+				background: white;
+				top: 0;
+				
+				.board_name {
+					font-size: 30px;
+					margin-bottom: 15px;
+				}
+			
+				.inside {
+					width: 792px;
+					height: 70px;
+					padding: 10px;
+					background: rgba(0,0,0,0.3);
+				}
+			}
+			
+			.right_mask {
+				width:100%;
+				float:left;
+				overflow: hidden;
+				display: block;
+				background: white;
+			}
+			
+			.right {
+				
+				width:825px;
+				float:left;
+				overflow: hidden;
+				display: block;
+				margin-top: 125px;
+				
+				#all_videos {
+				
+					overflow: hidden;
+					float: left;
+					margin: 20px 0;
+					
+					.vid_container {
+					
+						width: 400px;
+						float: left;
+						height: 150px;
+						padding: 5px 12px 5px 0;
+						
+						iframe {
+							width: 400px;
+							float: left;
+							height: 150px;
+						}
+						
+						.delete_button {background: #F6F6F6;border: 1px solid #CCC;padding: 5px 10px;border-radius: 3px;cursor: pointer;}
+						.delete_link {width: 150px; margin: 0 auto; text-align:center}
+					}
+				}
+				
+				#pagination {
+					
+					overflow: hidden;
+					float: left;
+					margin: 10px auto 35px auto;
+					text-align: center;
+					width:100%;
+					
+					.current {color: #CCC;}
+					
+					a, span {
+						font-size: 24px;
+						font-family: 'Contrail One', cursive;
+						padding:0 5px;
+						color:#000;
+					}
+				
+				}
+			}
+		}	
+	}
+}

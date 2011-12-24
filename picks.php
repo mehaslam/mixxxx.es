@@ -28,9 +28,6 @@ $pagecount = ceil($videocount/8);
 	die();
 }
 
-
-?> <h1><?php echo $board->getName(); ?></h1> <?php
-
 if (isset($_SESSION['bro']) && $_SESSION['bro'] == 'truetrue') { ?>
 
 	<form id="submit_form" action="" method="POST">
@@ -50,7 +47,11 @@ if (isset($_SESSION['bro']) && $_SESSION['bro'] == 'truetrue') { ?>
 		
 			<div class="vid_container">
 			
-				<iframe	width="460" height="250" src="http://www.youtube.com/embed/<?php echo $video->getUrl(); ?>?html5=1" frameborder="0" allowfullscreen></iframe>
+				<iframe	width="400" height="150" src="http://www.youtube.com/embed/<?php echo $video->getUrl(); ?>?html5=1&enablejsapi=1" frameborder="0" allowfullscreen></iframe>
+				
+				<script>
+					
+				</script>
 				
 				<?php if (isset($_SESSION['bro']) && $_SESSION['bro'] == 'truetrue') { ?>
 				

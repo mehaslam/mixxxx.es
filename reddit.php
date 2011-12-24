@@ -1,4 +1,3 @@
-<h1>latest from <a href="http://reddit.com/r/futuregarage/">r/futuregarage</a></h1>
 <?php
 error_reporting(0);
 //require(__DIR__.'/../video.php');
