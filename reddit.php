@@ -43,22 +43,23 @@ error_reporting(0);
 		    }
 		} ?>
 		
-		
-		<div id="all_videos">
-		
-		<?php
-		
-		foreach ($youtube_ids as $key => $youtube_id) { ?>
+		<div id="video_area">
+			<div id="all_videos">
 			
-			<div class="vid_container">
+			<?php
 			
-				<iframe	id="<?php echo $key; ?>" width="460" height="250" src="http://www.youtube.com/embed/<?php echo $youtube_id; ?>?html5=1&enablejsapi=1" frameborder="0" allowfullscreen></iframe>
+			foreach ($youtube_ids as $key => $youtube_id) { ?>
+				
+				<div class="vid_container">
+				
+					<iframe	id="<?php echo $key; ?>" width="460" height="250" src="http://www.youtube.com/embed/<?php echo $youtube_id; ?>?html5=1&enablejsapi=1" frameborder="0" allowfullscreen></iframe>
+				
+				</div>
 			
+			<?php } ?>
+				
 			</div>
-		
-		<?php } ?>
-		
-	</div>
+		</div>
 	
 
 <?php //Generic functions.		

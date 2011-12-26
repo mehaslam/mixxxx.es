@@ -162,9 +162,13 @@ $(document).ready(function() {
 	if (window.location.hash != "" && window.location.hash != "#futureg") {
 		var board = window.location.hash.replace('#', '');
 		fetchBoard(board);
-	} else {
+	} else if (window.location.hash == "#futureg") {
 		window.location.hash = "futureg";
 		fetchFutureGarage();
+	} else {
+		window.location.hash = "clssx";
+		var board = window.location.hash.replace('#', '');
+		fetchBoard(board);
 	}
 	
 	function fetchBoard(board) {
