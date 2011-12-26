@@ -514,7 +514,7 @@ html body .right_container .playlist .inside .thumbnails {
 /* line 135, ../sass/screen.scss */
 html body .right_container .playlist .inside .thumbnails .strip {
   max-width: 20000px;
-  min-width: 2000px;
+  min-width: 15000px;
   padding-left: 5px;
 }
 /* line 140, ../sass/screen.scss */
