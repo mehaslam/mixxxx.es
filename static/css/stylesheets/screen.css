@@ -481,7 +481,7 @@ html body .right_container {
 html body .right_container .playlist {
   position: fixed;
   width: 812px;
-  height: 145px;
+  height: 165px;
   padding: 10px 0;
   background: white;
   top: 0;
@@ -494,11 +494,40 @@ html body .right_container .playlist .board_name {
 /* line 117, ../sass/screen.scss */
 html body .right_container .playlist .inside {
   width: 792px;
-  height: 70px;
+  height: 90px;
   padding: 10px;
-  background: rgba(0, 0, 0, 0.3);
+  background: rgba(0, 0, 0, 0.1);
 }
-/* line 125, ../sass/screen.scss */
+/* line 123, ../sass/screen.scss */
+html body .right_container .playlist .inside #playlist_player {
+  float: left;
+  width: 200px;
+  height: 90px;
+}
+/* line 129, ../sass/screen.scss */
+html body .right_container .playlist .inside .thumbnails {
+  float: left;
+  width: 592px;
+  overflow: hidden;
+  overflow-x: auto;
+}
+/* line 135, ../sass/screen.scss */
+html body .right_container .playlist .inside .thumbnails .strip {
+  max-width: 20000px;
+  min-width: 2000px;
+  padding-left: 5px;
+}
+/* line 140, ../sass/screen.scss */
+html body .right_container .playlist .inside .thumbnails .strip img {
+  float: left;
+  margin: 0 10px;
+  opacity: 0.5;
+}
+/* line 146, ../sass/screen.scss */
+html body .right_container .playlist .inside .thumbnails .strip img:hover {
+  opacity: 1;
+}
+/* line 154, ../sass/screen.scss */
 html body .right_container .right_mask {
   width: 100%;
   float: left;
@@ -506,61 +535,66 @@ html body .right_container .right_mask {
   display: block;
   background: white;
 }
-/* line 133, ../sass/screen.scss */
+/* line 162, ../sass/screen.scss */
 html body .right_container .right {
   width: 825px;
   float: left;
   overflow: hidden;
   display: block;
-  margin-top: 125px;
+  margin-top: 145px;
 }
-/* line 141, ../sass/screen.scss */
-html body .right_container .right #all_videos {
-  overflow: hidden;
-  float: left;
+/* line 172, ../sass/screen.scss */
+html body .right_container .right #video_area #submit_form {
+  display: block;
   margin: 20px 0;
 }
-/* line 147, ../sass/screen.scss */
-html body .right_container .right #all_videos .vid_container {
+/* line 177, ../sass/screen.scss */
+html body .right_container .right #video_area #all_videos {
+  overflow: hidden;
+  float: left;
+  margin-bottom: 20px;
+}
+/* line 183, ../sass/screen.scss */
+html body .right_container .right #video_area #all_videos .vid_container {
   width: 400px;
   float: left;
   height: 150px;
   padding: 5px 12px 5px 0;
 }
-/* line 154, ../sass/screen.scss */
-html body .right_container .right #all_videos .vid_container iframe {
+/* line 190, ../sass/screen.scss */
+html body .right_container .right #video_area #all_videos .vid_container iframe {
   width: 400px;
   float: left;
   height: 150px;
 }
-/* line 160, ../sass/screen.scss */
-html body .right_container .right #all_videos .vid_container .delete_button {
+/* line 196, ../sass/screen.scss */
+html body .right_container .right #video_area #all_videos .vid_container .delete_button {
   background: #F6F6F6;
   border: 1px solid #CCC;
   padding: 5px 10px;
   border-radius: 3px;
   cursor: pointer;
 }
-/* line 161, ../sass/screen.scss */
-html body .right_container .right #all_videos .vid_container .delete_link {
+/* line 197, ../sass/screen.scss */
+html body .right_container .right #video_area #all_videos .vid_container .delete_link {
   width: 150px;
   margin: 0 auto;
   text-align: center;
 }
-/* line 165, ../sass/screen.scss */
-html body .right_container .right #pagination {
+/* line 201, ../sass/screen.scss */
+html body .right_container .right #video_area #pagination {
   overflow: hidden;
   float: left;
   margin: 10px auto 35px auto;
   text-align: center;
   width: 100%;
 }
-/* line 173, ../sass/screen.scss */
-html body .right_container .right #pagination .current {
+/* line 209, ../sass/screen.scss */
+html body .right_container .right #video_area #pagination .current {
   color: #CCC;
 }
-/* line 175, ../sass/screen.scss */
-html body .right_container .right #pagination a, html body .right_container .right #pagination span {
+/* line 211, ../sass/screen.scss */
+html body .right_container .right #video_area #pagination a, html body .right_container .right #video_area #pagination span {
   font-size: 24px;
   font-family: 'Contrail One', cursive;
   padding: 0 5px;

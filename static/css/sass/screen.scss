@@ -104,7 +104,7 @@ html {
 			.playlist {
 				position: fixed;
 				width: 812px;
-				height: 145px;
+				height: 165px;
 				padding: 10px 0;
 				background: white;
 				top: 0;
@@ -116,9 +116,38 @@ html {
 			
 				.inside {
 					width: 792px;
-					height: 70px;
+					height: 90px;
 					padding: 10px;
-					background: rgba(0,0,0,0.3);
+					background: rgba(0,0,0,0.1);
+					
+					#playlist_player {
+						float: left;
+						width: 200px;
+						height: 90px;
+					}
+					
+					.thumbnails {
+						float: left;
+						width: 592px;
+						overflow: hidden;
+						overflow-x: auto;
+						
+						.strip {
+							max-width: 20000px;
+							min-width: 2000px;
+							padding-left: 5px;
+							
+							img {
+								float: left;
+								margin: 0 10px;
+								opacity: 0.5;
+							}
+							
+							img:hover {
+									opacity: 1;
+							}
+						}
+					}
 				}
 			}
 			
@@ -136,47 +165,56 @@ html {
 				float:left;
 				overflow: hidden;
 				display: block;
-				margin-top: 125px;
+				margin-top: 145px;
 				
-				#all_videos {
+				#video_area {
+					
+					#submit_form {
+						display: block;
+						margin: 20px 0;
+					}
 				
-					overflow: hidden;
-					float: left;
-					margin: 20px 0;
+					#all_videos {
 					
-					.vid_container {
-					
-						width: 400px;
+						overflow: hidden;
 						float: left;
-						height: 150px;
-						padding: 5px 12px 5px 0;
+						margin-bottom: 20px;
 						
-						iframe {
+						.vid_container {
+						
 							width: 400px;
 							float: left;
 							height: 150px;
+							padding: 5px 12px 5px 0;
+							
+							iframe {
+								width: 400px;
+								float: left;
+								height: 150px;
+							}
+							
+							.delete_button {background: #F6F6F6;border: 1px solid #CCC;padding: 5px 10px;border-radius: 3px;cursor: pointer;}
+							.delete_link {width: 150px; margin: 0 auto; text-align:center}
 						}
-						
-						.delete_button {background: #F6F6F6;border: 1px solid #CCC;padding: 5px 10px;border-radius: 3px;cursor: pointer;}
-						.delete_link {width: 150px; margin: 0 auto; text-align:center}
 					}
-				}
-				
-				#pagination {
 					
-					overflow: hidden;
-					float: left;
-					margin: 10px auto 35px auto;
-					text-align: center;
-					width:100%;
+					#pagination {
+						
+						overflow: hidden;
+						float: left;
+						margin: 10px auto 35px auto;
+						text-align: center;
+						width:100%;
+						
+						.current {color: #CCC;}
+						
+						a, span {
+							font-size: 24px;
+							font-family: 'Contrail One', cursive;
+							padding:0 5px;
+							color:#000;
+						}
 					
-					.current {color: #CCC;}
-					
-					a, span {
-						font-size: 24px;
-						font-family: 'Contrail One', cursive;
-						padding:0 5px;
-						color:#000;
 					}
 				
 				}

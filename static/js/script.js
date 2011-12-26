@@ -7,40 +7,26 @@ var tag = document.createElement('script');
 tag.src = "http://www.youtube.com/player_api";
 var firstScriptTag = document.getElementsByTagName('script')[0];
 firstScriptTag.parentNode.insertBefore(tag,firstScriptTag);
+
+//required global vars for youtube.
 var youtube_player;
 var videos = [];
 var currentIndex = 0;
 var started = 0;
+if (typeof(board) === "undefined" || board == "") {
+	var board = "clssx"; //gets overwritten upon changing board using nav.
+}
 
 //YouTube callbacks.
 
 function onYouTubePlayerAPIReady() {
-
-	youtube_player = new YT.Player('playlist_player', {
-		height: '70', width: '200',
-		playerVars: {
-			'autoplay': 1,
-			'html5': 1
-		},
-		events: {
-			'onStateChange': 
-					onPlayerStateChange,
-			'onError':
-					handleError
-		}
-	});
-}
-
-
-function onYouTubePlayerReady(playerId) {
-	console.log("YEEAAAHH!!");
-	getPlaylist();
+	getPlaylist(board);	
 }
 
 function handleError(error) {
 	console.log("player error:");
 	console.log(error);
-	getPlaylist(); //skip song
+	getPlaylist(board); //skip song
 }
 
 function onPlayerStateChange(input) {
@@ -48,17 +34,16 @@ function onPlayerStateChange(input) {
 	//console.log("state:" +input.data);
 	
 	if (input.data == 0) {
-		//console.log("video ended! load next url from videos[] into player!");
-		getPlaylist();
 		started = 1;
+		queueVideo();
 	}
 }
 
-function getPlaylist() {
+function getPlaylist(board) {
   
   $.ajax({
     dataType: 'json',
-    url: 'feed.php?id=clssx',
+    url: 'feed.php?id='+board,
     success: function(response) { //videos[] should be title, thumbnail, videoid.
       if (response.videos && response.videos.length > 0) {
       
@@ -69,8 +54,9 @@ function getPlaylist() {
             'videoid': response.videos[i]['video']['videoid'],
           });
         });
-		        
-        queueVideo();
+		
+		//Put playlist into the youtube player.
+        initiatePlaylist(videos[0]['videoid']);
         
       } else {
        	console.log("problem getting video thumbs/ids");
@@ -84,15 +70,60 @@ function getPlaylist() {
 }
 
 function queueVideo() {
-	//player.cueVideoById(videoId:String, startSeconds:Number, suggestedQuality:String):Void
-	//e.g. player.cueVideoById(videos[0]['videoid'],0,large);
-
-	youtube_player.cueVideoById(videos[currentIndex]['videoid']);
-	if (started == 1) { //they already watched 1 video, so started the playlist
-		youtube_player.playVideo();
-	}
-	currentIndex++;
 	
+	//Update thumbnails.
+	showThumbnails();
+	
+	if (youtube_player.cueVideoById) {
+		youtube_player.cueVideoById(videos[currentIndex]['videoid']);
+		if (started == 1) { //they already watched 1 video, so started the playlist
+			youtube_player.playVideo();
+		}
+		currentIndex++;
+	} else {
+		console.log("cueVideoById wasn't ready!");
+	}
+	
+}
+
+function initiatePlaylist(firstVideo) {
+	
+	youtube_player = new YT.Player('playlist_player', {
+		height: '90', width: '200',
+		videoId: firstVideo,
+		playerVars: {
+			'enablejsapi': 1,
+			'autoplay': 0,
+			'html5': 1,
+			'origin': window.location.host
+		},
+		events: {
+			'onStateChange': 
+					onPlayerStateChange,
+			'onError':
+					handleError,
+			'onReady':
+					onReady
+		}
+	});
+	
+}
+
+function onReady() {
+	//since onYouTubePlayerReady isn't firing, using the onReady event seems to work instead.
+	queueVideo();
+}
+
+function showThumbnails() {
+	//display all of videos above currentIndex.
+	
+	$('.inside .thumbnails .strip').empty();
+	
+	$.each(videos, function(i) {
+		if (i > currentIndex) {	
+			$('.inside .thumbnails .strip').append('<img src="'+videos[i]['thumbnail']+'" alt="Upcoming video."/>');
+		}
+	})
 }
 
 //Rest of scripts
@@ -110,9 +141,16 @@ $(document).ready(function() {
 	
 	$('.board_link').click(function(e) {
 		e.preventDefault();
+		
+		//board ajax actions
 		var boardname = $(this).attr("data-rel");
 		window.location.hash = boardname;
 		fetchBoard(boardname);
+		
+		//youtube playlist actions
+		videos.length = 0;
+		board = boardname;
+		getPlaylist(board);
 	});
 	
 	
