@@ -7,11 +7,13 @@
        private $id;
        private $url;
 	   private $board_id;
+	   private $thumbnail;
 
-       function __construct($id = null, $url = null, $board_id = null)
+       function __construct($id = null, $url = null, $thumbnail = null, $board_id = null)
        {
 	       $this->id = $id;
 	       $this->url = $url;
+	       $this->thumbnail = $thumbnail;
 		   $this->board_id = $board_id;
        }
        
@@ -30,6 +32,16 @@
        {
         $this->url = $url;
        }
+       
+       function getThumbnail()
+       {
+       	return $this->thumbnail;
+       }
+       
+       function setThumbnail($thumbnail)
+       {
+       	$this->thumbnail = $thumbnail;
+       }
 	   
 	   function getBoardID() {
 			return $this->board_id;
@@ -45,13 +57,12 @@
        
 	        if ($this->id == NULL) {
 	        	
-		        mysql_query("INSERT INTO `videos` ( `url`, `board_id` ) VALUES ( '".$this->url."', '".$this->board_id."' );") or die("Query failed with ersror: ".mysql_error());
+		        mysql_query("INSERT INTO `videos` ( `url`, `thumbnail`, `board_id` ) VALUES ( '".$this->url."', '".$this->thumbnail."', '".$this->board_id."' );") or die("Query failed with error: ".mysql_error());
 		        $this->id = mysql_insert_id();
 	         
 	        } else {
-
-		        mysql_query("UPDATE `videos` SET `url`, `board_id` = '".$this->url."', '".$this->board_id."' WHERE `id` = ".$this->id.";") or die("Qzuery failed with error: ".mysql_error());
-	         
+				
+		        mysql_query("UPDATE `videos` SET `url` = '".$this->url."', `thumbnail` = '".$this->thumbnail."', `board_id` = '".$this->board_id."' WHERE `id` = ".$this->id.";") or die("Query failed with error: ".mysql_error());
 	        }
 	        
        }
@@ -65,14 +76,14 @@
        
    			$result = mysql_query("SELECT * FROM `videos` WHERE `board_id` =".$boardid) or die("Query failed with error: ".mysql_error());
 			while ($row = mysql_fetch_array($result)) {
-				$video = array($row['id'],$row['url']);
+				$video = array($row['id'],$row['url'],$row['thumbnail']);
 				$vids[] = $video;
 			}
 			
 			$videos = array_reverse($vids);
 			
 			foreach ($videos as $video) {
-				$r_videos[] = new Video($video[0],$video[1]);
+				$r_videos[] = new Video($video[0],$video[1],$video[2],$boardid);
 			}
 			
 			return $r_videos;
@@ -83,14 +94,14 @@
        
    			$result = mysql_query("SELECT * FROM `videos` WHERE `board_id` =".$boardid) or die("Query failed with error: ".mysql_error());
 			while ($row = mysql_fetch_array($result)) {
-				$video = array($row['id'],$row['url']);
+				$video = array($row['id'],$row['url'],$row['thumbnail']);
 				$vids[] = $video;
 			}
 			
 			$videos = array_reverse($vids);
 			
 			foreach ($videos as $video) {
-				$r_videos[] = new Video($video[0],$video[1]);
+				$r_videos[] = new Video($video[0],$video[1],$video[2],$boardid);
 			}
 			
 			$perpage = 8; //8 per page.
@@ -104,9 +115,9 @@
        
        function getVideoByUrl($url, $boardid) {
        	
-   			$result = mysql_query("SELECT * FROM `videos` WHERE `url` = '".$url."' AND `board_id` =".$boardid) or die("query failed with error: ".mysql_error());
+   			$result = mysql_query("SELECT * FROM `videos` WHERE `url` = '".$url."' AND `board_id` =".$boardid) or die("Query failed with error: ".mysql_error());
 			while ($row = mysql_fetch_array($result)) {
-				$video = new Video ($row['id'],$row['url'],$row['board_id']);
+				$video = new Video ($row['id'],$row['url'],$row['thumbnail'],$row['board_id']);
 			}
 			
 			if (isset($video)) {
@@ -120,7 +131,7 @@
        
    			$result = mysql_query("SELECT * FROM `videos` WHERE `board_id` =".$boardid) or die("Query failed with error: ".mysql_error());
 			while ($row = mysql_fetch_array($result)) {
-				$video = array($row['id'],$row['url']);
+				$video = array($row['id'],$row['url'],$row['thumbnail']);
 				$vids[] = $video;
 			}
 			

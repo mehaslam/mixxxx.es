@@ -52,7 +52,7 @@ error_reporting(0);
 			
 			<div class="vid_container">
 			
-				<iframe	id="<?php echo $key; ?>" width="460" height="250" src="http://www.youtube.com/embed/<?php echo $youtube_id; ?>?html5=1" frameborder="0" allowfullscreen></iframe>
+				<iframe	id="<?php echo $key; ?>" width="460" height="250" src="http://www.youtube.com/embed/<?php echo $youtube_id; ?>?html5=1&enablejsapi=1" frameborder="0" allowfullscreen></iframe>
 			
 			</div>
 		

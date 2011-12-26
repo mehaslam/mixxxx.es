@@ -69,6 +69,7 @@ if ($_SESSION['bro'] == 'truetrue' && $_POST['board_name']) {
 	$new_board->save();
 	header("location: ../");
 } ?>
+<!DOCTYPE html> 
 <!-- twitter.com/samuelgbrown yo. -->
 <html>
 <head>
@@ -144,7 +145,7 @@ if ($_SESSION['bro'] == 'truetrue' && $_POST['board_name']) {
 	<div class="playlist">
 		<h1 class="board_name"></h1>
 		<div class="inside">
-			<h2>Playlist content here.</h2>
+			<div id="playlist_player"></div>
 		</div>
 	</div>
 	
