@@ -124,11 +124,12 @@ html {
 						float: left;
 						width: 200px;
 						height: 90px;
+						margin-right: 10px;
 					}
 					
 					.thumbnails {
 						float: left;
-						width: 592px;
+						width: 582px;
 						overflow: hidden;
 						overflow-x: auto;
 						
@@ -139,7 +140,7 @@ html {
 							
 							img {
 								float: left;
-								margin: 0 10px;
+								margin: 0 10px 0 0;
 								opacity: 0.5;
 							}
 							
@@ -165,7 +166,7 @@ html {
 				float:left;
 				overflow: hidden;
 				display: block;
-				margin-top: 145px;
+				margin-top: 160px;
 				
 				#video_area {
 					
