@@ -558,7 +558,7 @@ html body .right_container .right #video_area #all_videos {
 html body .right_container .right #video_area #all_videos .vid_container {
   width: 400px;
   float: left;
-  height: 150px;
+  height: 180px;
   padding: 5px 12px 5px 0;
 }
 /* line 190, ../sass/screen.scss */
@@ -577,11 +577,14 @@ html body .right_container .right #video_area #all_videos .vid_container .delete
 }
 /* line 197, ../sass/screen.scss */
 html body .right_container .right #video_area #all_videos .vid_container .delete_link {
-  width: 150px;
-  margin: 0 auto;
+  width: 400px;
+  margin: 5px auto;
   text-align: center;
+  display: block;
+  height: 30px;
+  float: left;
 }
-/* line 201, ../sass/screen.scss */
+/* line 208, ../sass/screen.scss */
 html body .right_container .right #video_area #pagination {
   overflow: hidden;
   float: left;
@@ -589,11 +592,11 @@ html body .right_container .right #video_area #pagination {
   text-align: center;
   width: 100%;
 }
-/* line 209, ../sass/screen.scss */
+/* line 216, ../sass/screen.scss */
 html body .right_container .right #video_area #pagination .current {
   color: #CCC;
 }
-/* line 211, ../sass/screen.scss */
+/* line 218, ../sass/screen.scss */
 html body .right_container .right #video_area #pagination a, html body .right_container .right #video_area #pagination span {
   font-size: 24px;
   font-family: 'Contrail One', cursive;
