@@ -144,9 +144,11 @@ if ($_SESSION['bro'] == 'truetrue' && $_POST['board_name']) {
 	
 	<div class="playlist">
 		<h1 class="board_name"></h1>
+		<?php if (isset($_SESSION['bro']) && $_SESSION['bro'] == 'truetrue') {  //for DEBUG. ?> 
 		<div class="inside">
 			<div id="playlist_player"></div>
 		</div>
+		<?php } ?>
 	</div>
 	
 	<div class="right_mask"></div>

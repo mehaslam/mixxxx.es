@@ -7,7 +7,7 @@ var tag = document.createElement('script');
 tag.src = "http://www.youtube.com/player_api";
 var firstScriptTag = document.getElementsByTagName('script')[0];
 firstScriptTag.parentNode.insertBefore(tag,firstScriptTag);
-var player;
+var youtube_player;
 var videos = [];
 var currentIndex = 0;
 var started = 0;
@@ -16,7 +16,7 @@ var started = 0;
 
 function onYouTubePlayerAPIReady() {
 
-	player = new YT.Player('playlist_player', {
+	youtube_player = new YT.Player('playlist_player', {
 		height: '70', width: '200',
 		playerVars: {
 			'autoplay': 1,
@@ -31,7 +31,8 @@ function onYouTubePlayerAPIReady() {
 	});
 }
 
-function onYouTubePlayerReady() {
+
+function onYouTubePlayerReady(playerId) {
 	console.log("YEEAAAHH!!");
 	getPlaylist();
 }
@@ -39,11 +40,12 @@ function onYouTubePlayerReady() {
 function handleError(error) {
 	console.log("player error:");
 	console.log(error);
+	getPlaylist(); //skip song
 }
 
 function onPlayerStateChange(input) {
 	//Possible values are unstarted (-1), ended (0), playing (1), paused (2), buffering (3), video cued (5).
-	console.log("state:" +input.data);
+	//console.log("state:" +input.data);
 	
 	if (input.data == 0) {
 		//console.log("video ended! load next url from videos[] into player!");
@@ -85,9 +87,9 @@ function queueVideo() {
 	//player.cueVideoById(videoId:String, startSeconds:Number, suggestedQuality:String):Void
 	//e.g. player.cueVideoById(videos[0]['videoid'],0,large);
 
-	player.cueVideoById(videos[currentIndex]['videoid']);
+	youtube_player.cueVideoById(videos[currentIndex]['videoid']);
 	if (started == 1) { //they already watched 1 video, so started the playlist
-		player.playVideo();
+		youtube_player.playVideo();
 	}
 	currentIndex++;
 	
