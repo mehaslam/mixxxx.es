@@ -33,8 +33,9 @@ function onPlayerStateChange(input) {
 	//Possible values are unstarted (-1), ended (0), playing (1), paused (2), buffering (3), video cued (5).
 	//console.log("state:" +input.data);
 	
-	if (input.data == 0) {
+	if (input.data == 0) { //user finished watching a video
 		started = 1;
+		currentIndex++;
 		queueVideo();
 	}
 }
@@ -79,7 +80,6 @@ function queueVideo() {
 		if (started == 1) { //they already watched 1 video, so started the playlist
 			youtube_player.playVideo();
 		}
-		currentIndex++;
 	} else {
 		console.log("cueVideoById wasn't ready!");
 	}
