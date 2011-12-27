@@ -33,7 +33,7 @@ if (isset($_SESSION['bro']) && $_SESSION['bro'] == 'truetrue') { ?>
 	<form id="submit_form" action="" method="POST">
 		<label>youtube url</label>
 		<input type="text" name="vid" value=""/>
-		<input type="hidden" name="board_id" value="<?php echo $boardid; ?>"/>
+		<input type="hidden" name="board_id" value="<?php echo $board->getID(); ?>"/>
 		<input type="submit" value="add"/>
 	</form>
 
@@ -56,6 +56,7 @@ if (isset($_SESSION['bro']) && $_SESSION['bro'] == 'truetrue') { ?>
 				<?php if (isset($_SESSION['bro']) && $_SESSION['bro'] == 'truetrue') { ?>
 				
 				<form action="" method="POST" class="delete_link">
+					<input type="hidden" name="board_id" value="<?php echo $board->getID(); ?>"/>
 					<input type="hidden" name="vid" value="http://www.youtube.com/watch?v=<?php echo $video->getUrl(); ?>"/>
 					<input class="delete_button" type="submit" value="delete"/>
 				</form>

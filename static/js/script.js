@@ -92,7 +92,12 @@ function queueVideo() {
 }
 
 function initiatePlaylist(firstVideo) {
+
+	//clear any existing player
+	youtube_player = null;
+	$('#playlist_player').empty();
 	
+	//create player
 	youtube_player = new YT.Player('playlist_player', {
 		height: '90', width: '200',
 		videoId: firstVideo,

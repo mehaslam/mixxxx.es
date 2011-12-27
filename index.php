@@ -53,10 +53,10 @@ if (isset($_POST['vid']) && $_POST['vid'] != null && $_SESSION['bro'] == 'truetr
 		
 		//if the POST[vid] video exists, assume we want to delete it, otherwise add it.
 		if ($video_exists == null) {
-			$video = new Video(null, $video_params['v'], $boardid); 
+			$video = new Video(null, $video_params['v'], null, $boardid);
 			$video->save();
 		} else {
-			$video_exists->delete();	
+			$video_exists->delete();
 		}
 		
 	}
