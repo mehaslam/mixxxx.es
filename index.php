@@ -84,7 +84,7 @@ if ($_SESSION['bro'] == 'truetrue' && $_POST['board_name']) {
 	
 	<script src="static/js/libs/modernizr-2.0.6.min.js"></script>
 	<link href='http://fonts.googleapis.com/css?family=Contrail+One' rel='stylesheet' type='text/css'>
-	<script type="text/javascript" charset="utf-8" src="http://ajax.googleapis.com/ajax/libs/jquery/1.5.1/jquery.js"></script>
+	<script type="text/javascript" charset="utf-8" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.js"></script>
 	
 </head>
 <body>
