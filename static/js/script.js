@@ -13,8 +13,11 @@ var youtube_player;
 var videos = [];
 var currentIndex = 0;
 var started = 0;
-if (typeof(board) === "undefined" || board == "") {
+if (typeof(window.location.hash) === "undefined" || window.location.hash == "") {
+	window.location.hash = "clssx";
 	var board = "clssx"; //gets overwritten upon changing board using nav.
+} else {
+	var board = window.location.hash;
 }
 
 //YouTube callbacks.
