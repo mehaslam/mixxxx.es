@@ -25,7 +25,9 @@ function onYouTubePlayerAPIReady() {
 
 function handleError(error) {
 	console.log("player error:");
-	console.log(error);
+	if (error.data == "150" || error.data == "101") { console.log("video had embedding disabled.") }
+	if (error.data == "100") { console.log("video not found (removed?)") }
+	if (error.data == "2") { console.log("video request contained invalid parameter (missing/invalid video id?)") }
 	skipToVideo(currentIndex+1); //skip song
 }
 
