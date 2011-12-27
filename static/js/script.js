@@ -116,14 +116,27 @@ function onReady() {
 
 function showThumbnails() {
 	//display all of videos above currentIndex.
-	
+
 	$('.inside .thumbnails .strip').empty();
 	
 	$.each(videos, function(i) {
 		if (i > currentIndex) {	
-			$('.inside .thumbnails .strip').append('<img src="'+videos[i]['thumbnail']+'" alt="Upcoming video."/>');
+			$('.inside .thumbnails .strip').append('<a href="javascript:skipToVideo('+i+');"><img src="'+videos[i]['thumbnail']+'" alt="Upcoming video."/></a>');
 		}
 	})
+}
+
+function skipToVideo(i) {
+
+	if (videos[i]) {
+		currentIndex = i;
+		youtube_player.cueVideoById(videos[i]['videoid']);
+		youtube_player.playVideo();
+		showThumbnails();
+	} else {
+		console.log("video not found!");
+	}
+
 }
 
 //Rest of scripts
