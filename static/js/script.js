@@ -26,7 +26,7 @@ function onYouTubePlayerAPIReady() {
 function handleError(error) {
 	console.log("player error:");
 	console.log(error);
-	getPlaylist(board); //skip song
+	skipToVideo(currentIndex+1); //skip song
 }
 
 function onPlayerStateChange(input) {
@@ -122,7 +122,7 @@ function showThumbnails() {
 	$.each(videos, function(i) {
 		if (i > currentIndex) {	
 			$('.inside .thumbnails .strip').append('<a href="javascript:skipToVideo('+i+');"><img src="'+videos[i]['thumbnail']+'" alt="Upcoming video."/></a>');
-		}
+		}	
 	})
 }
 
