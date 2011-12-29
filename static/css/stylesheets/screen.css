@@ -446,29 +446,29 @@ html body .left .links h1 {
   margin: 7px 0;
   font-size: 16px;
 }
-/* line 74, ../sass/screen.scss */
+/* line 78, ../sass/screen.scss */
 html body .left .links a {
   display: block;
 }
-/* line 77, ../sass/screen.scss */
+/* line 81, ../sass/screen.scss */
 html body .left .admins {
   float: left;
 }
-/* line 79, ../sass/screen.scss */
+/* line 83, ../sass/screen.scss */
 html body .left .admins #login_form {
   display: none;
 }
-/* line 83, ../sass/screen.scss */
+/* line 87, ../sass/screen.scss */
 html body .left .admins #login_link, html body .left .admins #logout_link {
   cursor: pointer;
   padding-right: 10px;
   font-size: 11px;
 }
-/* line 90, ../sass/screen.scss */
+/* line 94, ../sass/screen.scss */
 html body .left .admins#authed #login_form {
   display: none;
 }
-/* line 95, ../sass/screen.scss */
+/* line 99, ../sass/screen.scss */
 html body .right_container {
   width: 900px;
   float: left;
@@ -477,7 +477,7 @@ html body .right_container {
   display: block;
   padding-top: 25px;
 }
-/* line 104, ../sass/screen.scss */
+/* line 108, ../sass/screen.scss */
 html body .right_container .playlist {
   position: fixed;
   width: 812px;
@@ -486,49 +486,49 @@ html body .right_container .playlist {
   background: white;
   top: 0;
 }
-/* line 112, ../sass/screen.scss */
+/* line 116, ../sass/screen.scss */
 html body .right_container .playlist .board_name {
   font-size: 30px;
   margin-bottom: 15px;
 }
-/* line 117, ../sass/screen.scss */
+/* line 121, ../sass/screen.scss */
 html body .right_container .playlist .inside {
   width: 792px;
   height: 90px;
   padding: 10px;
   background: rgba(0, 0, 0, 0.1);
 }
-/* line 123, ../sass/screen.scss */
+/* line 127, ../sass/screen.scss */
 html body .right_container .playlist .inside #playlist_player {
   float: left;
   width: 200px;
   height: 90px;
   margin-right: 10px;
 }
-/* line 130, ../sass/screen.scss */
+/* line 134, ../sass/screen.scss */
 html body .right_container .playlist .inside .thumbnails {
   float: left;
   width: 582px;
   overflow: hidden;
   overflow-x: auto;
 }
-/* line 136, ../sass/screen.scss */
+/* line 140, ../sass/screen.scss */
 html body .right_container .playlist .inside .thumbnails .strip {
   max-width: 20000px;
   min-width: 15000px;
   padding-left: 5px;
 }
-/* line 141, ../sass/screen.scss */
+/* line 145, ../sass/screen.scss */
 html body .right_container .playlist .inside .thumbnails .strip img {
   float: left;
   margin: 0 10px 0 0;
   opacity: 0.5;
 }
-/* line 147, ../sass/screen.scss */
+/* line 151, ../sass/screen.scss */
 html body .right_container .playlist .inside .thumbnails .strip img:hover {
   opacity: 1;
 }
-/* line 155, ../sass/screen.scss */
+/* line 159, ../sass/screen.scss */
 html body .right_container .right_mask {
   width: 100%;
   float: left;
@@ -536,7 +536,7 @@ html body .right_container .right_mask {
   display: block;
   background: white;
 }
-/* line 163, ../sass/screen.scss */
+/* line 167, ../sass/screen.scss */
 html body .right_container .right {
   width: 825px;
   float: left;
@@ -544,31 +544,31 @@ html body .right_container .right {
   display: block;
   margin-top: 160px;
 }
-/* line 173, ../sass/screen.scss */
+/* line 177, ../sass/screen.scss */
 html body .right_container .right #video_area #submit_form {
   display: block;
   margin: 20px 0;
 }
-/* line 178, ../sass/screen.scss */
+/* line 182, ../sass/screen.scss */
 html body .right_container .right #video_area #all_videos {
   overflow: hidden;
   float: left;
   margin-bottom: 20px;
 }
-/* line 184, ../sass/screen.scss */
+/* line 188, ../sass/screen.scss */
 html body .right_container .right #video_area #all_videos .vid_container {
   width: 400px;
   float: left;
   height: 180px;
   padding: 5px 12px 5px 0;
 }
-/* line 191, ../sass/screen.scss */
+/* line 195, ../sass/screen.scss */
 html body .right_container .right #video_area #all_videos .vid_container iframe {
   width: 400px;
   float: left;
   height: 150px;
 }
-/* line 197, ../sass/screen.scss */
+/* line 201, ../sass/screen.scss */
 html body .right_container .right #video_area #all_videos .vid_container .delete_button {
   background: #F6F6F6;
   border: 1px solid #CCC;
@@ -576,7 +576,7 @@ html body .right_container .right #video_area #all_videos .vid_container .delete
   border-radius: 3px;
   cursor: pointer;
 }
-/* line 198, ../sass/screen.scss */
+/* line 202, ../sass/screen.scss */
 html body .right_container .right #video_area #all_videos .vid_container .delete_link {
   width: 400px;
   margin: 5px auto;
@@ -585,7 +585,7 @@ html body .right_container .right #video_area #all_videos .vid_container .delete
   height: 30px;
   float: left;
 }
-/* line 209, ../sass/screen.scss */
+/* line 213, ../sass/screen.scss */
 html body .right_container .right #video_area #pagination {
   overflow: hidden;
   float: left;
@@ -593,11 +593,11 @@ html body .right_container .right #video_area #pagination {
   text-align: center;
   width: 100%;
 }
-/* line 217, ../sass/screen.scss */
+/* line 221, ../sass/screen.scss */
 html body .right_container .right #video_area #pagination .current {
   color: #CCC;
 }
-/* line 219, ../sass/screen.scss */
+/* line 223, ../sass/screen.scss */
 html body .right_container .right #video_area #pagination a, html body .right_container .right #video_area #pagination span {
   font-size: 24px;
   font-family: 'Contrail One', cursive;

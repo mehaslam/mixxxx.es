@@ -1,0 +1,59 @@
+/*
+Syntax error: File to import not found or unreadable: html5-boilerplate.
+              Load path: /Applications/MAMP/htdocs/mixxxx.es/static/css/sass
+        on line 5 of screen.scss
+
+1: // Here's where we define some default constants
+2: @import "partials/base";
+3: 
+4: // Then we'll import the compass extension
+5: @import "html5-boilerplate";
+6: 
+7: // Now, you can simply include everything
+8: // (except media) by uncommeting this line
+9: //@include html5-boilerplate;
+10: 
+
+Backtrace:
+screen.scss:5
+/Library/Ruby/Gems/1.8/gems/sass-3.1.12/bin/../lib/sass/../sass/tree/import_node.rb:64:in `import'
+/Library/Ruby/Gems/1.8/gems/sass-3.1.12/bin/../lib/sass/../sass/tree/import_node.rb:25:in `imported_file'
+/Library/Ruby/Gems/1.8/gems/sass-3.1.12/bin/../lib/sass/../sass/tree/visitors/perform.rb:149:in `visit_import'
+/Library/Ruby/Gems/1.8/gems/sass-3.1.12/bin/../lib/sass/../sass/tree/visitors/base.rb:37:in `send'
+/Library/Ruby/Gems/1.8/gems/sass-3.1.12/bin/../lib/sass/../sass/tree/visitors/base.rb:37:in `visit'
+/Library/Ruby/Gems/1.8/gems/sass-3.1.12/bin/../lib/sass/../sass/tree/visitors/perform.rb:18:in `visit'
+/Library/Ruby/Gems/1.8/gems/sass-3.1.12/bin/../lib/sass/../sass/tree/visitors/base.rb:53:in `visit_children'
+/Library/Ruby/Gems/1.8/gems/sass-3.1.12/bin/../lib/sass/../sass/tree/visitors/base.rb:53:in `map'
+/Library/Ruby/Gems/1.8/gems/sass-3.1.12/bin/../lib/sass/../sass/tree/visitors/base.rb:53:in `visit_children'
+/Library/Ruby/Gems/1.8/gems/sass-3.1.12/bin/../lib/sass/../sass/tree/visitors/perform.rb:27:in `visit_children'
+/Library/Ruby/Gems/1.8/gems/sass-3.1.12/bin/../lib/sass/../sass/tree/visitors/perform.rb:39:in `with_environment'
+/Library/Ruby/Gems/1.8/gems/sass-3.1.12/bin/../lib/sass/../sass/tree/visitors/perform.rb:26:in `visit_children'
+/Library/Ruby/Gems/1.8/gems/sass-3.1.12/bin/../lib/sass/../sass/tree/visitors/base.rb:37:in `visit'
+/Library/Ruby/Gems/1.8/gems/sass-3.1.12/bin/../lib/sass/../sass/tree/visitors/perform.rb:47:in `visit_root'
+/Library/Ruby/Gems/1.8/gems/sass-3.1.12/bin/../lib/sass/../sass/tree/visitors/base.rb:37:in `send'
+/Library/Ruby/Gems/1.8/gems/sass-3.1.12/bin/../lib/sass/../sass/tree/visitors/base.rb:37:in `visit'
+/Library/Ruby/Gems/1.8/gems/sass-3.1.12/bin/../lib/sass/../sass/tree/visitors/perform.rb:18:in `visit'
+/Library/Ruby/Gems/1.8/gems/sass-3.1.12/bin/../lib/sass/../sass/tree/visitors/perform.rb:7:in `send'
+/Library/Ruby/Gems/1.8/gems/sass-3.1.12/bin/../lib/sass/../sass/tree/visitors/perform.rb:7:in `visit'
+/Library/Ruby/Gems/1.8/gems/sass-3.1.12/bin/../lib/sass/../sass/tree/root_node.rb:20:in `render'
+/Library/Ruby/Gems/1.8/gems/sass-3.1.12/bin/../lib/sass/../sass/engine.rb:300:in `_render'
+/Library/Ruby/Gems/1.8/gems/sass-3.1.12/bin/../lib/sass/../sass/engine.rb:247:in `render'
+/Library/Ruby/Gems/1.8/gems/sass-3.1.12/bin/../lib/sass/../sass/plugin/compiler.rb:339:in `update_stylesheet'
+/Library/Ruby/Gems/1.8/gems/sass-3.1.12/bin/../lib/sass/../sass/plugin/compiler.rb:202:in `update_stylesheets'
+/Library/Ruby/Gems/1.8/gems/sass-3.1.12/bin/../lib/sass/../sass/plugin/compiler.rb:200:in `each'
+/Library/Ruby/Gems/1.8/gems/sass-3.1.12/bin/../lib/sass/../sass/plugin/compiler.rb:200:in `update_stylesheets'
+/Library/Ruby/Gems/1.8/gems/sass-3.1.12/bin/../lib/sass/../sass/plugin/compiler.rb:234:in `watch'
+/Library/Ruby/Gems/1.8/gems/sass-3.1.12/bin/../lib/sass/../sass/plugin.rb:107:in `send'
+/Library/Ruby/Gems/1.8/gems/sass-3.1.12/bin/../lib/sass/../sass/plugin.rb:107:in `method_missing'
+/Library/Ruby/Gems/1.8/gems/sass-3.1.12/bin/../lib/sass/../sass/exec.rb:421:in `watch_or_update'
+/Library/Ruby/Gems/1.8/gems/sass-3.1.12/bin/../lib/sass/../sass/exec.rb:302:in `process_result'
+/Library/Ruby/Gems/1.8/gems/sass-3.1.12/bin/../lib/sass/../sass/exec.rb:41:in `parse'
+/Library/Ruby/Gems/1.8/gems/sass-3.1.12/bin/../lib/sass/../sass/exec.rb:21:in `parse!'
+/Library/Ruby/Gems/1.8/gems/sass-3.1.12/bin/sass:8
+/usr/bin/sass:19:in `load'
+/usr/bin/sass:19
+*/
+body:before {
+  white-space: pre;
+  font-family: monospace;
+  content: "Syntax error: File to import not found or unreadable: html5-boilerplate.\A               Load path: /Applications/MAMP/htdocs/mixxxx.es/static/css/sass\A         on line 5 of screen.scss\A \A 1: // Here's where we define some default constants\A 2: @import \"partials/base\";\A 3: \A 4: // Then we'll import the compass extension\A 5: @import \"html5-boilerplate\";\A 6: \A 7: // Now, you can simply include everything\A 8: // (except media) by uncommeting this line\A 9: //@include html5-boilerplate;\A 10: "; }
