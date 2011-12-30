@@ -1,3 +1,5 @@
+@import "mixins.scss";
+
 html {
 
 	body {
@@ -13,7 +15,7 @@ html {
 			border-radius: 200px;
 			color: #fff;
 			display: block;
-			font-family: 'Contrail One', cursive, sans-serif;
+			font-family: 'Contrail One', "Helvetica Neue", Helvetica, sans-serif;
 			font-weight: bold;
 			
 			/* 300px x 300px */
@@ -47,27 +49,23 @@ html {
 		
 			/* presentational markup */
 			margin: 20px 0;
+			/* ********************* */	
 			
-			-webkit-border-radius: 4px;
-			-moz-border-radius: 4px;
-			border-radius: 4px;
+			@include border-radius;
 			cursor: pointer;
 			display: inline-block;
 			font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
 			height: 16px;
 			padding: 10px 15px;
 			text-align: center;
+			-webkit-transition: all 0.3s linear;
+			-moz-transition: all 0.3s linear;
+			-o-transition: all 0.3s linear;
+			transition: all 0.3s linear;
 			
 			/* state styles - dark / light / good / bad / inactive */
 			&.dark {
-				background: #282828; /* Old browsers */
-				background-image: -moz-linear-gradient(top, #282828 0%, #000000 100%); /* FF3.6+ */
-				background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#282828), color-stop(100%,#000000)); /* Chrome,Safari4+ */
-				background-image: -webkit-linear-gradient(top, #282828 0%,#000000 100%); /* Chrome10+,Safari5.1+ */
-				background-image: -o-linear-gradient(top, #282828 0%,#000000 100%); /* Opera 11.10+ */
-				background-image: -ms-linear-gradient(top, #282828 0%,#000000 100%); /* IE10+ */
-				background-image: linear-gradient(top, #282828 0%,#000000 100%); /* W3C */
-				filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#282828', endColorstr='#000000',GradientType=0 ); /* IE6-9 */
+				background: #282828;
 				border: 1px solid #000;
 				color: #fff;
 				
@@ -86,17 +84,14 @@ html {
 					padding-right: 35px;
 				}
 				
+				&:hover {
+					background-color: #414141;
+				}
+				
 			}
 			
 			&.light {
 				background: #ebebeb;
-				/*background: -moz-linear-gradient(top, #ffffff 0%, #dbdbdb 100%);
-				background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#ffffff), color-stop(100%,#dbdbdb));
-				background: -webkit-linear-gradient(top, #ffffff 0%,#dbdbdb 100%);
-				background: -o-linear-gradient(top, #ffffff 0%,#dbdbdb 100%);
-				background: -ms-linear-gradient(top, #ffffff 0%,#dbdbdb 100%);
-				background: linear-gradient(top, #ffffff 0%,#dbdbdb 100%);
-				filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#dbdbdb',GradientType=0 );*/
 				border: 1px solid #c7c7c7;
 				color: #2b2b2b;
 				
@@ -115,25 +110,39 @@ html {
 					padding-right: 35px;
 				}
 				
+				&:hover {
+					background-color: #dfdfdf;
+					
+				}
+				
 			}
 			
 			&.good {
 				background: #b6ff8e;
 				border: 1px solid #41b70e;
-				color: #5ba233;/*
-				text-shadow: 1px 1px 1px #37a10a;
-				filter: dropshadow(color=#37a10a, offx=1, offy=1);*/
+				color: #5ba233;
 				-webkit-transition: all 0.5s linear;  
 			    -moz-transition: all 0.5s linear;  
 			    -o-transition: all 0.5s linear;  
 			    transition: all 0.5s linear; 
+			    
+			    &:hover {
+			    	background: #d5ffbe;
+			    	color: #225f00;
+			    }
 				
 			}
 			
 			&.bad {
-				background: #e78383; /* Old browsers */
+				background: #e78383;
 				border: 1px solid #c13535;
 				color: #8e1010;
+				
+				&:hover {
+					background: #f3c0c0;
+					color: #a20f0f;
+				}
+				
 			}
 			
 			&.inactive {
@@ -147,7 +156,7 @@ html {
 		/* headings */
 		h1, h2, h3, h4, h5 {
 			color: #000;
-			font-family: 'Contrail One', cursive, sans-serif;
+			font-family: 'Contrail One', 'Helvetica Neue', Helvetica, sans-serif;
 		}
 		
 		h1 {
@@ -175,6 +184,7 @@ html {
 			-webkit-border-radius: 4px;
 			-moz-border-radius: 4px;
 			border-radius: 4px;
+			cursor: pointer;
 			display: block;
 			padding: 15px;
 			
@@ -244,6 +254,12 @@ html {
 			outline-color: #b8eaff; outline-width: thin;
 		}
 		
+		fieldset {
+			border: 0;
+			margin: 0;
+			padding: 0;
+		}
+		
 		input {
 			border: 1px solid #a4a4a4;
 			-webkit-border-radius: 4px;
@@ -257,7 +273,6 @@ html {
 			&.error {
 				box-shadow: inset 0px 0px 4px #ff3131;
 				outline: none;
-				
 			}
 			
 		}
