@@ -54,7 +54,7 @@ html {
 			cursor: pointer;
 			display: inline-block;
 			font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-			font-weight: bold;
+			height: 16px;
 			padding: 10px 15px;
 			text-align: center;
 			
@@ -68,37 +68,61 @@ html {
 				background-image: -ms-linear-gradient(top, #282828 0%,#000000 100%); /* IE10+ */
 				background-image: linear-gradient(top, #282828 0%,#000000 100%); /* W3C */
 				filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#282828', endColorstr='#000000',GradientType=0 ); /* IE6-9 */
-				border: #000;
+				border: 1px solid #000;
 				color: #fff;
+				
+				/* contextual styles - back / forward */
+				&.back {
+					background-image: url('../../images/arrows.png');
+					background-position: 7% -90px;
+					background-repeat: no-repeat;
+					padding-left: 35px;
+				}
+				
+				&.forward {
+					background-image: url('../../images/arrows.png');
+					background-position: 93% 10px;
+					background-repeat: no-repeat;
+					padding-right: 35px;
+				}
 				
 			}
 			
 			&.light {
-				background: #ffffff;
-				background: -moz-linear-gradient(top, #ffffff 0%, #dbdbdb 100%);
+				background: #ebebeb;
+				/*background: -moz-linear-gradient(top, #ffffff 0%, #dbdbdb 100%);
 				background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#ffffff), color-stop(100%,#dbdbdb));
 				background: -webkit-linear-gradient(top, #ffffff 0%,#dbdbdb 100%);
 				background: -o-linear-gradient(top, #ffffff 0%,#dbdbdb 100%);
 				background: -ms-linear-gradient(top, #ffffff 0%,#dbdbdb 100%);
 				background: linear-gradient(top, #ffffff 0%,#dbdbdb 100%);
-				filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#dbdbdb',GradientType=0 );
-				border: 1px solid #999999;
-				color: #8d8d8d;
+				filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#dbdbdb',GradientType=0 );*/
+				border: 1px solid #c7c7c7;
+				color: #2b2b2b;
+				
+				/* contextual styles - back / forward */
+				&.back {
+					background-image: url('../../images/arrows.png');
+					background-position: 7% -290px;
+					background-repeat: no-repeat;
+					padding-left: 35px;
+				}
+				
+				&.forward {
+					background-image: url('../../images/arrows.png');
+					background-position: 93% -190px;
+					background-repeat: no-repeat;
+					padding-right: 35px;
+				}
+				
 			}
 			
 			&.good {
-				background: #b1ff2b; /* Old browsers */
-				background: -moz-linear-gradient(top, #b1ff2b 0%, #55cc26 100%); /* FF3.6+ */
-				background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#b1ff2b), color-stop(100%,#55cc26)); /* Chrome,Safari4+ */
-				background: -webkit-linear-gradient(top, #b1ff2b 0%,#55cc26 100%); /* Chrome10+,Safari5.1+ */
-				background: -o-linear-gradient(top, #b1ff2b 0%,#55cc26 100%); /* Opera 11.10+ */
-				background: -ms-linear-gradient(top, #b1ff2b 0%,#55cc26 100%); /* IE10+ */
-				background: linear-gradient(top, #b1ff2b 0%,#55cc26 100%); /* W3C */
-				filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#b1ff2b', endColorstr='#55cc26',GradientType=0 ); /* IE6-9 */
+				background: #b6ff8e;
 				border: 1px solid #41b70e;
-				color: #fff;
+				color: #5ba233;/*
 				text-shadow: 1px 1px 1px #37a10a;
-				filter: dropshadow(color=#37a10a, offx=1, offy=1);
+				filter: dropshadow(color=#37a10a, offx=1, offy=1);*/
 				-webkit-transition: all 0.5s linear;  
 			    -moz-transition: all 0.5s linear;  
 			    -o-transition: all 0.5s linear;  
@@ -107,46 +131,15 @@ html {
 			}
 			
 			&.bad {
-				background: #ed7200; /* Old browsers */
-				background: -moz-linear-gradient(top, #ed7200 0%, #cc0000 100%); /* FF3.6+ */
-				background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#ed7200), color-stop(100%,#cc0000)); /* Chrome,Safari4+ */
-				background: -webkit-linear-gradient(top, #ed7200 0%,#cc0000 100%); /* Chrome10+,Safari5.1+ */
-				background: -o-linear-gradient(top, #ed7200 0%,#cc0000 100%); /* Opera 11.10+ */
-				background: -ms-linear-gradient(top, #ed7200 0%,#cc0000 100%); /* IE10+ */
-				background: linear-gradient(top, #ed7200 0%,#cc0000 100%); /* W3C */
-				filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ed7200', endColorstr='#cc0000',GradientType=0 ); /* IE6-9 */
-				border: 1px solid #981900;
-				color: #fff;
-				text-shadow: 1px 1px 1px #7f1500;
-				filter: dropshadow(color=#7f1500, offx=1, offy=1);
+				background: #e78383; /* Old browsers */
+				border: 1px solid #c13535;
+				color: #8e1010;
 			}
 			
 			&.inactive {
 				background: #828282;
-				background-image: -moz-linear-gradient(top,  #828282 0%, #3f3f3f 100%);
-				background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#828282), color-stop(100%,#3f3f3f));
-				background-image: -webkit-linear-gradient(top,  #828282 0%,#3f3f3f 100%);
-				background-image: -o-linear-gradient(top,  #828282 0%,#3f3f3f 100%);
-				background-image: -ms-linear-gradient(top,  #828282 0%,#3f3f3f 100%);
-				background-image: linear-gradient(top,  #828282 0%,#3f3f3f 100%);
-				filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#828282', endColorstr='#3f3f3f',GradientType=0 );
 				border: 1px solid #3d3d3d;
-				color: #8c8c8c;
-			}
-			
-			/* contextual styles - back / forward */
-			&.back {
-				background-image: url('../../images/arrows.png');
-				background-position: 7% -90px;
-				background-repeat: no-repeat;
-				padding-left: 35px;
-			}
-			
-			&.forward {
-				background-image: url('../../images/arrows.png');
-				background-position: 93% 10px;
-				background-repeat: no-repeat;
-				padding-right: 35px;
+				color: #585858;
 			}
 			
 		}
@@ -158,7 +151,7 @@ html {
 		}
 		
 		h1 {
-			font-size: 2.5em;
+			font-size: 3.1em;
 		}
 		
 		h2 {
@@ -247,6 +240,10 @@ html {
 		}
 		
 		/* form styles */	
+		textarea, input{ 
+			outline-color: #b8eaff; outline-width: thin;
+		}
+		
 		input {
 			border: 1px solid #a4a4a4;
 			-webkit-border-radius: 4px;
@@ -258,11 +255,34 @@ html {
 			padding: 10px;
 			
 			&.error {
-				border: 1px solid #981900;
+				box-shadow: inset 0px 0px 4px #ff3131;
+				outline: none;
+				
 			}
 			
 		}
-
+		
+		.error-message {
+			-webkit-border-radius: 4px;
+			-moz-border-radius: 4px;
+			border-radius: 4px;
+			color: #8e1010;
+			display: inline;
+			font-size: 1em;
+			margin: 20px;
+			padding: 3px 0 0 0;
+			
+			&:before {
+				content: url('../../images/error-icon.png');
+				display: block;
+				height: 26px;
+				position: relative;
+				left: -10px;
+				top: 7px;
+				width: 26px;
+			} 
+			
+		}
 				
 	}	
 

@@ -55,11 +55,10 @@ html body .button {
   cursor: pointer;
   display: inline-block;
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-  font-weight: bold;
+  height: 16px;
   padding: 10px 15px;
   text-align: center;
   /* state styles - dark / light / good / bad / inactive */
-  /* contextual styles - back / forward */
 }
 /* line 62, ../sass/bootstrap.scss */
 html body .button.dark {
@@ -79,125 +78,104 @@ html body .button.dark {
   /* W3C */
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#282828', endColorstr='#000000',GradientType=0 );
   /* IE6-9 */
-  border: #000;
+  border: 1px solid #000;
   color: #fff;
+  /* contextual styles - back / forward */
 }
-/* line 76, ../sass/bootstrap.scss */
-html body .button.light {
-  background: #ffffff;
-  background: -moz-linear-gradient(top, white 0%, #dbdbdb 100%);
-  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, white), color-stop(100%, #dbdbdb));
-  background: -webkit-linear-gradient(top, white 0%, #dbdbdb 100%);
-  background: -o-linear-gradient(top, white 0%, #dbdbdb 100%);
-  background: -ms-linear-gradient(top, white 0%, #dbdbdb 100%);
-  background: linear-gradient(top, #ffffff 0%, #dbdbdb 100%);
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffff', endColorstr='#dbdbdb',GradientType=0 );
-  border: 1px solid #999999;
-  color: #8d8d8d;
-}
-/* line 89, ../sass/bootstrap.scss */
-html body .button.good {
-  background: #b1ff2b;
-  /* Old browsers */
-  background: -moz-linear-gradient(top, #b1ff2b 0%, #55cc26 100%);
-  /* FF3.6+ */
-  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #b1ff2b), color-stop(100%, #55cc26));
-  /* Chrome,Safari4+ */
-  background: -webkit-linear-gradient(top, #b1ff2b 0%, #55cc26 100%);
-  /* Chrome10+,Safari5.1+ */
-  background: -o-linear-gradient(top, #b1ff2b 0%, #55cc26 100%);
-  /* Opera 11.10+ */
-  background: -ms-linear-gradient(top, #b1ff2b 0%, #55cc26 100%);
-  /* IE10+ */
-  background: linear-gradient(top, #b1ff2b 0%, #55cc26 100%);
-  /* W3C */
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#b1ff2b', endColorstr='#55cc26',GradientType=0 );
-  /* IE6-9 */
-  border: 1px solid #41b70e;
-  color: #fff;
-  text-shadow: 1px 1px 1px #37a10a;
-  filter: dropshadow(color=#37a10a, offx=1, offy=1);
-  -webkit-transition: all 0.5s linear;
-  -moz-transition: all 0.5s linear;
-  -o-transition: all 0.5s linear;
-  transition: all 0.5s linear;
-}
-/* line 109, ../sass/bootstrap.scss */
-html body .button.bad {
-  background: #ed7200;
-  /* Old browsers */
-  background: -moz-linear-gradient(top, #ed7200 0%, #cc0000 100%);
-  /* FF3.6+ */
-  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #ed7200), color-stop(100%, #cc0000));
-  /* Chrome,Safari4+ */
-  background: -webkit-linear-gradient(top, #ed7200 0%, #cc0000 100%);
-  /* Chrome10+,Safari5.1+ */
-  background: -o-linear-gradient(top, #ed7200 0%, #cc0000 100%);
-  /* Opera 11.10+ */
-  background: -ms-linear-gradient(top, #ed7200 0%, #cc0000 100%);
-  /* IE10+ */
-  background: linear-gradient(top, #ed7200 0%, #cc0000 100%);
-  /* W3C */
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ed7200', endColorstr='#cc0000',GradientType=0 );
-  /* IE6-9 */
-  border: 1px solid #981900;
-  color: #fff;
-  text-shadow: 1px 1px 1px #7f1500;
-  filter: dropshadow(color=#7f1500, offx=1, offy=1);
-}
-/* line 124, ../sass/bootstrap.scss */
-html body .button.inactive {
-  background: #828282;
-  background-image: -moz-linear-gradient(top, #828282 0%, #3f3f3f 100%);
-  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #828282), color-stop(100%, #3f3f3f));
-  background-image: -webkit-linear-gradient(top, #828282 0%, #3f3f3f 100%);
-  background-image: -o-linear-gradient(top, #828282 0%, #3f3f3f 100%);
-  background-image: -ms-linear-gradient(top, #828282 0%, #3f3f3f 100%);
-  background-image: linear-gradient(top, #828282 0%, #3f3f3f 100%);
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#828282', endColorstr='#3f3f3f',GradientType=0 );
-  border: 1px solid #3d3d3d;
-  color: #8c8c8c;
-}
-/* line 138, ../sass/bootstrap.scss */
-html body .button.back {
+/* line 75, ../sass/bootstrap.scss */
+html body .button.dark.back {
   background-image: url("../../images/arrows.png");
   background-position: 7% -90px;
   background-repeat: no-repeat;
   padding-left: 35px;
 }
-/* line 145, ../sass/bootstrap.scss */
-html body .button.forward {
+/* line 82, ../sass/bootstrap.scss */
+html body .button.dark.forward {
   background-image: url("../../images/arrows.png");
   background-position: 93% 10px;
   background-repeat: no-repeat;
   padding-right: 35px;
 }
-/* line 155, ../sass/bootstrap.scss */
+/* line 91, ../sass/bootstrap.scss */
+html body .button.light {
+  background: #ebebeb;
+  /*background: -moz-linear-gradient(top, #ffffff 0%, #dbdbdb 100%);
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#ffffff), color-stop(100%,#dbdbdb));
+  background: -webkit-linear-gradient(top, #ffffff 0%,#dbdbdb 100%);
+  background: -o-linear-gradient(top, #ffffff 0%,#dbdbdb 100%);
+  background: -ms-linear-gradient(top, #ffffff 0%,#dbdbdb 100%);
+  background: linear-gradient(top, #ffffff 0%,#dbdbdb 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#dbdbdb',GradientType=0 );*/
+  border: 1px solid #c7c7c7;
+  color: #2b2b2b;
+  /* contextual styles - back / forward */
+}
+/* line 104, ../sass/bootstrap.scss */
+html body .button.light.back {
+  background-image: url("../../images/arrows.png");
+  background-position: 7% -290px;
+  background-repeat: no-repeat;
+  padding-left: 35px;
+}
+/* line 111, ../sass/bootstrap.scss */
+html body .button.light.forward {
+  background-image: url("../../images/arrows.png");
+  background-position: 93% -190px;
+  background-repeat: no-repeat;
+  padding-right: 35px;
+}
+/* line 120, ../sass/bootstrap.scss */
+html body .button.good {
+  background: #b6ff8e;
+  border: 1px solid #41b70e;
+  color: #5ba233;
+               /*
+text-shadow: 1px 1px 1px #37a10a;
+filter: dropshadow(color=#37a10a, offx=1, offy=1);*/
+  -webkit-transition: all 0.5s linear;
+  -moz-transition: all 0.5s linear;
+  -o-transition: all 0.5s linear;
+  transition: all 0.5s linear;
+}
+/* line 133, ../sass/bootstrap.scss */
+html body .button.bad {
+  background: #e78383;
+  /* Old browsers */
+  border: 1px solid #c13535;
+  color: #8e1010;
+}
+/* line 139, ../sass/bootstrap.scss */
+html body .button.inactive {
+  background: #828282;
+  border: 1px solid #3d3d3d;
+  color: #585858;
+}
+/* line 148, ../sass/bootstrap.scss */
 html body h1, html body h2, html body h3, html body h4, html body h5 {
   color: #000;
   font-family: 'Contrail One', cursive, sans-serif;
 }
-/* line 160, ../sass/bootstrap.scss */
+/* line 153, ../sass/bootstrap.scss */
 html body h1 {
-  font-size: 2.5em;
+  font-size: 3.1em;
 }
-/* line 164, ../sass/bootstrap.scss */
+/* line 157, ../sass/bootstrap.scss */
 html body h2 {
   font-size: 2em;
 }
-/* line 168, ../sass/bootstrap.scss */
+/* line 161, ../sass/bootstrap.scss */
 html body h3 {
   font-size: 1.7em;
 }
-/* line 172, ../sass/bootstrap.scss */
+/* line 165, ../sass/bootstrap.scss */
 html body h4 {
   font-size: 1.3em;
 }
-/* line 176, ../sass/bootstrap.scss */
+/* line 169, ../sass/bootstrap.scss */
 html body h5 {
   font-size: 1em;
 }
-/* line 181, ../sass/bootstrap.scss */
+/* line 174, ../sass/bootstrap.scss */
 html body .message {
   -webkit-border-radius: 4px;
   -moz-border-radius: 4px;
@@ -205,13 +183,13 @@ html body .message {
   display: block;
   padding: 15px;
 }
-/* line 188, ../sass/bootstrap.scss */
+/* line 181, ../sass/bootstrap.scss */
 html body .message.warning {
   background-color: #f3e990;
   border: 1px solid #e3d55d;
   color: #726600;
 }
-/* line 194, ../sass/bootstrap.scss */
+/* line 187, ../sass/bootstrap.scss */
 html body .message.warning:before {
   content: "x";
   display: block;
@@ -219,13 +197,13 @@ html body .message.warning:before {
   float: right;
   width: 20px;
 }
-/* line 204, ../sass/bootstrap.scss */
+/* line 197, ../sass/bootstrap.scss */
 html body .message.error {
   background-color: #e78383;
   border: 1px solid #c13535;
   color: #8e1010;
 }
-/* line 210, ../sass/bootstrap.scss */
+/* line 203, ../sass/bootstrap.scss */
 html body .message.error:before {
   content: "x";
   display: block;
@@ -233,13 +211,13 @@ html body .message.error:before {
   float: right;
   width: 20px;
 }
-/* line 220, ../sass/bootstrap.scss */
+/* line 213, ../sass/bootstrap.scss */
 html body .message.notification {
   background-color: #8edeff;
   border: 1px solid #1ba5de;
   color: #0a6287;
 }
-/* line 226, ../sass/bootstrap.scss */
+/* line 219, ../sass/bootstrap.scss */
 html body .message.notification:before {
   content: "x";
   display: block;
@@ -247,7 +225,7 @@ html body .message.notification:before {
   float: right;
   width: 20px;
 }
-/* line 239, ../sass/bootstrap.scss */
+/* line 232, ../sass/bootstrap.scss */
 html body .well {
   background: #f5f5f5;
   -webkit-border-radius: 4px;
@@ -257,7 +235,12 @@ html body .well {
   display: block;
   padding: 15px 20px;
 }
-/* line 250, ../sass/bootstrap.scss */
+/* line 243, ../sass/bootstrap.scss */
+html body textarea, html body input {
+  outline-color: #b8eaff;
+  outline-width: thin;
+}
+/* line 247, ../sass/bootstrap.scss */
 html body input {
   border: 1px solid #a4a4a4;
   -webkit-border-radius: 4px;
@@ -268,7 +251,29 @@ html body input {
   font-size: 1em;
   padding: 10px;
 }
-/* line 260, ../sass/bootstrap.scss */
+/* line 257, ../sass/bootstrap.scss */
 html body input.error {
-  border: 1px solid #981900;
+  box-shadow: inset 0px 0px 4px #ff3131;
+  outline: none;
+}
+/* line 265, ../sass/bootstrap.scss */
+html body .error-message {
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  border-radius: 4px;
+  color: #8e1010;
+  display: inline;
+  font-size: 1em;
+  margin: 20px;
+  padding: 3px 0 0 0;
+}
+/* line 275, ../sass/bootstrap.scss */
+html body .error-message:before {
+  content: url("../../images/error-icon.png");
+  display: block;
+  height: 26px;
+  position: relative;
+  left: -10px;
+  top: 7px;
+  width: 26px;
 }
