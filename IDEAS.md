@@ -1,8 +1,7 @@
 Ideas
 ==========
 
-Things we're set on doing.
------
+### Things we're set on doing.
 
  	- Convert the playlist bar into more of a player, that never gets interrupted.
  		-- Make videos Play Now/Queue [we won't need all the iframes anymore, use large thumbnails? also makes it easier to store viewcount.]
@@ -13,8 +12,7 @@ Things we're set on doing.
  	- Show song titles on queued songs.
   
 
-Ideas we're playing with/considering.
-------
+### Ideas we're playing with/considering.
 
  	- Custom controls for the player.
  	- Order a board's tunes using a weighting system (upload date 30% / 70% views? note: would need to access/store views).
@@ -23,8 +21,7 @@ Ideas we're playing with/considering.
  	- Shuffle functions (shuffle a board, or queue?).
 
 
-Experimental ideas
-------
+### Experimental ideas
 
 	- Public users?
 	- If we implement that weighting idea, we could have a 'popular' board of sorts; that chooses high scoring videos across all boards.
