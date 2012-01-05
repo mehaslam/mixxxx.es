@@ -4,8 +4,8 @@ Ideas
 ### Things we're set on doing.
 
   - Convert the playlist bar into more of a player, that never gets interrupted.
- 	-- Make videos Play Now/Queue [we won't need all the iframes anymore, use large thumbnails? also makes it easier to store viewcount.]
- 	--- Could make player quite large and queue songs underneath.
+  -- Make videos Play Now/Queue [we won't need all the iframes anymore, use large thumbnails? also makes it easier to store viewcount.]
+  --- Could make player quite large and queue songs underneath.
   - A rough check for duplicates upon adding to a board.
   - Ajax-ify the adding of videos/boards.
   - Be able to remove/edit boards.
@@ -23,5 +23,5 @@ Ideas
 
 ### Experimental ideas
 
-	- Public users?
-	- If we implement that weighting idea, we could have a 'popular' board of sorts; that chooses high scoring videos across all boards.
+  - Public users?
+  - If we implement that weighting idea, we could have a 'popular' board of sorts; that chooses high scoring videos across all boards.
