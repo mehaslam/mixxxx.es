@@ -1,74 +1,15 @@
 <?php
-error_reporting(E_ERROR | E_PARSE);
 session_start();
 
-	require_once('classes/db.php');
-	require('classes/video.php');
-	require('classes/boards.php');
+	require_once('classes/functions.php');
+
+	include_once('processing/logins.php');
+	include_once('processing/videos.php');
+	include_once('processing/boards.php');
 
 
-//PROCESS LOGINS
-if (isset($_POST['user']) && isset($_POST['pass'])) {
-	if ($_POST['user'] != null && $_POST['pass'] != null) {
-		//	echo 'lol';
-		function checkUserPass($user, $pass) {
-       
-   			$result = mysql_query("SELECT * FROM `users` WHERE user = '".$user."'") or die("Query failed with error: ".mysql_error());
-			while ($row = mysql_fetch_array($result)) {
-				$the_user = array("user" => $row['user'],"pass" => $row['pass']);
-			}
-			
-			if ($pass == $the_user["pass"]) {
-			 	return true;
-			} else {
-				return false;
-			}
-		}
-		
-		$success = checkUserPass($_POST['user'], md5($_POST['pass']));
-		
-		if ($success == true) {
-			$_SESSION['bro'] = 'truetrue';
-			header("location: ../");
-		} else {
-			echo 'Nawwwww. Login wrong breh.';
-		}
-	}
-}
+?>
 
-//PROCESS LOGOUT
-if (isset($_GET['q'])) {
-	session_destroy();
-	header("location: ../");
-}
-
-//PROCESS CONTENT ADD/DELETES
-if (isset($_POST['vid']) && $_POST['vid'] != null && $_SESSION['bro'] == 'truetrue' && isset($_POST['board_id']) && $_POST['board_id'] != null) {
-	$boardid = $_POST['board_id'];
-	$url = $_POST['vid'];
-	parse_str(parse_url( $url, PHP_URL_QUERY ), $video_params);
-	
-	if ($video_params['v'] != null) {
-		$video_exists = video::getVideoByUrl($video_params['v'], $boardid);
-		
-		//if the POST[vid] video exists, assume we want to delete it, otherwise add it.
-		if ($video_exists == null) {
-			$video = new Video(null, $video_params['v'], null, $boardid);
-			$video->save();
-		} else {
-			$video_exists->delete();
-		}
-		
-	}
-	
-	header("location: ../");
-}
-
-if ($_SESSION['bro'] == 'truetrue' && $_POST['board_name']) {
-	$new_board = new Board(null, $_POST['board_name']);
-	$new_board->save();
-	header("location: ../");
-} ?>
 <!DOCTYPE html> 
 <!-- twitter.com/samuelgbrown yo. -->
 <html>
@@ -96,7 +37,7 @@ if ($_SESSION['bro'] == 'truetrue' && $_POST['board_name']) {
 				<h1><a href="#" id="fg_link">r/futuregarage</a></h1>
 				<?php
 				
-				$boards = board::getAllBoards();
+				$boards = getAllBoards();
 				foreach ($boards as $board) {
 					echo '<h1><a href="#'.$board->getName().'" class="board_link" data-rel="'.$board->getName().'">'.$board->getName().'</a></h1>';
 				}
@@ -108,7 +49,7 @@ if ($_SESSION['bro'] == 'truetrue' && $_POST['board_name']) {
 			
 					<?php if (!isset($_SESSION['bro']) || $_SESSION['bro'] != 'truetrue') { ?>
 
-					<form id="login_form" method="POST" action="">
+					<form id="login_form" method="POST" action="processing/logins.php">
 						<label>user</label>
 						<input name="user" value="" type="text"/>
 						<label>pass</label>
@@ -124,7 +65,7 @@ if ($_SESSION['bro'] == 'truetrue' && $_POST['board_name']) {
 							<label>add new board</label>
 							<input type="text" name="board_name" value=""/>
 							<input type="submit" value="add"/>
-						<form>
+						</form>
 						<?php
 						
 					} ?>
@@ -155,7 +96,17 @@ if ($_SESSION['bro'] == 'truetrue' && $_POST['board_name']) {
 	<div class="right_mask"></div>
 	
 	<div class="right">
-		<div id="videos"></div>
+
+			<?php if (isset($_SESSION['bro']) && $_SESSION['bro'] == 'truetrue') { ?>
+
+			<form id="submit_form" action="processing/videos.php" method="POST">
+				<label>youtube url</label>
+				<input type="text" name="vid" value=""/>
+				<input type="hidden" name="board_id" value="<?php echo $board->getID(); ?>"/>
+				<input type="submit" value="add"/>
+			</form>
+
+			<?php } ?>
 	</div>
 	
 </div>
@@ -164,6 +115,7 @@ if ($_SESSION['bro'] == 'truetrue' && $_POST['board_name']) {
 <script>window.jQuery || document.write('<script src="static/js/libs/jquery-1.6.2.min.js"><\/script>')</script>
 
 <!-- scripts concatenated and minified via ant build script-->
+<script src="static/js/youtube.js"></script>
 <script src="static/js/plugins.js"></script>
 <script src="static/js/script.js"></script>
 <!-- end scripts-->

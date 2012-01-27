@@ -1,7 +1,5 @@
 <?php
 	
-	require_once('db.php');
-	
     class Board {
 
        private $id;
@@ -49,61 +47,6 @@
        function delete(){
 	        mysql_query("DELETE FROM `boards` WHERE `id` = '".$this->id."';") or die("Query failed with error: ".mysql_error());
        }
-       
-       
-       function getAllBoards() {
-       
-   			$result = mysql_query("SELECT * FROM `boards`") or die("Query failed with error: ".mysql_error());
-			while ($row = mysql_fetch_array($result)) {
-				$board = new Board($row['id'],$row['name']);
-				$boards[] = $board;
-			}
-			
-			return $boards;
-
-       }
-       
-       function getAllBoardsInJson() {
-       
-       	   	$result = mysql_query("SELECT * FROM `boards`") or die("Query failed with error: ".mysql_error());
-       	   	
-			while ($row = mysql_fetch_array($result)) {
-				$board = array("id" => $row['id'],"name" =>$row['name']);
-				$boards[] = $board;
-			}
-			
-			return json_encode($boards);
-       
-       }
-       
-       function getBoardByName($name) {
-       	
-   			$result = mysql_query("SELECT * FROM `boards` WHERE `name` = '".$name."'") or die("getBoardByName failed with error: ".mysql_error());
-			while ($row = mysql_fetch_array($result)) {
-				$board = new Board ($row['id'],$row['name']);
-			}
-			
-			if (isset($board)) {
-				return $board;
-			} else {
-				return null;
-			}
-       }
-	   
-	    function getBoardByID($id) {
-       	
-   			$result = mysql_query("SELECT * FROM `boards` WHERE `id` = '".$id."'") or die("Query failed with error: ".mysql_error());
-			while ($row = mysql_fetch_array($result)) {
-				$board = new Board ($row['id'],$row['name']);
-			}
-			
-			if (isset($board)) {
-				return $board;
-			} else {
-				return null;
-			}
-       }
-
 }
 
 
