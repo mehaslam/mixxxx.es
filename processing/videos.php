@@ -22,19 +22,21 @@ if (isset($_POST['vid']) && $_POST['vid'] != null && isset($_SESSION['bro']) && 
 		//if the POST[vid] video exists, assume we want to delete it, otherwise add it.
 		if ($video_exists == null) {
 
-			
+			//get info from youtube api.
 			$video_data = getVideoData($video_params['v']);
-			//echo '<pre>';
-			//print_r($video_data);
 
+			//declare and save the video first
 			$video = new Video(null, $video_data->entry->title->{'$t'}, $video_params['v'], $video_data->entry->content->{'$t'});
 			$video->save();
 
+			//store the id for quick use
 			$videoid = $video->getID();
 
+			//put the video into the board it was submitted on
 			$boardvideo = new BoardVideo(null, $videoid, $boardid, $_SESSION['userid']);
 			$boardvideo->save();
 
+			//save all the thumbnails retrieved from youtube api
 			foreach ($video_data->entry->{'media$group'}->{'media$thumbnail'} as $thumb) {
 				$thumbnail = new VideoThumb(null, $videoid, $thumb->url);
 				$thumbnail->save();
@@ -42,12 +44,13 @@ if (isset($_POST['vid']) && $_POST['vid'] != null && isset($_SESSION['bro']) && 
 
 		} else {
 			
-			//$video_exists->delete();
+			//video already existed, for now let's assume user wanted to delete it
+			$video_exists->delete();
 		}
 		
 	}
 	
-	//header("location: ../");
+	header("location: ../");
 }
 
 function getVideoData($url) {
