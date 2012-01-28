@@ -3,8 +3,6 @@ if(!isset($_SESSION)) {
 	session_start(); 
 }
 
-print_r($_POST);
-
 require_once(__DIR__.'../../classes/functions.php');
 
 //PROCESS CONTENT ADD/DELETES

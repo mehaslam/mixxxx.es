@@ -1,6 +1,5 @@
 <?php
 session_start();
-//error_reporting(0);
 header('Content-type: application/json');
 require('../classes/functions.php');
 
@@ -11,7 +10,7 @@ if (isset($_GET['board_name'])) {
 
 if (isset($board)) {
 
-	$videos = getBoardVideos($board->getID());
+	$boardvideos = getBoardVideos($board->getID());
 
 } else {
 	echo 'board not found:';
@@ -19,9 +18,33 @@ if (isset($board)) {
 	die();
 }
 
-foreach ($videos as $video) {
-	$obj_to_arr[] = array($video->getID(),$video->getBoardID(),$video->getVideoID(),$video->getUploaderID());
+foreach ($boardvideos as $boardvideo) {
+	
+	$videoid = $boardvideo->getVideoID();
+	
+	$videoobj = getVideoById($videoid);
+	if (isset($videoobj)) {
+		$video = array(
+			"id" => $videoobj->getID(),
+			"title" => $videoobj->getTitle(),
+			"url" => $videoobj->getUrl(),
+			"description" => $videoobj->getDescription()
+		);
+	}
+	
+	$thumbnails = getVideoThumbnails($videoid);
+	
+	
+	$frontend_content[] = array(
+		"id" => $boardvideo->getID(),
+		"boardid" => $boardvideo->getBoardID(),
+		"uploaderid" => $boardvideo->getUploaderID(),
+		"video" => $video,
+		"thumbnails" => $thumbnails
+	);
 }
-echo json_encode($obj_to_arr);
+
+//print_r($frontend_content);
+echo json_encode($frontend_content);
 
 ?>

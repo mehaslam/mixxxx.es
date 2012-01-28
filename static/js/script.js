@@ -8,14 +8,14 @@ $(document).ready(function() {
 
 	if (window.location.hash !== "" && window.location.hash != "#futureg") {
 		board = window.location.hash.replace('#', '');
-		//fetchBoard(board);
+		fetchBoard(board);
 	} else if (window.location.hash == "#futureg") {
 		window.location.hash = "futureg";
 		fetchFutureGarage();
 	} else {
 		window.location.hash = "clssx";
 		board = window.location.hash.replace('#', '');
-		//fetchBoard(board);
+		fetchBoard(board);
 	}
 
 	$('#fg_link').click(function(e) {
@@ -47,22 +47,25 @@ $(document).ready(function() {
 	
 	function fetchBoard(board) {
 		$.ajax({
-			url: "board.php?board_name="+board,
+			url: "api/videos.php",
 			type: "GET",
+			data: "board_name="+board,
 			success: function(res){
 				$('.right_container .board_name').text(board);
+				console.log(res);
+				
 				for (var video in res) {
-
 					var url = res[video].url;
 					// latest
 					//pick up all bits we need and populate html.
-
 				}
+				
 				window.board = board;
 				bindBoardEvents();
 			},
 			error: function(err) {
-				console.log("ERROR: "+err);
+				console.log("ERROR:");
+				console.log(err.responseText);
 			}
 		});
 	}

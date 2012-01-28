@@ -33,6 +33,22 @@
 				return null;
 			}
        }
+       
+       function getVideoThumbnails($videoid) {
+       
+       		$result = mysql_query("SELECT * FROM `videothumbs` WHERE `videoid` =".$videoid) or die("Query failed with error: ".mysql_error());
+			
+			while ($row = mysql_fetch_array($result)) {
+				$thumbnail = array("id"=>$row['id'],"videoid"=>$row['videoid'],"url"=>$row['url']);
+				$thumbnails[] = $thumbnail;
+			}
+			
+			if (isset($thumbnails)) {
+				return $thumbnails;
+			} else {
+				return null;
+			}
+       }
 
 
        function getBoardVideos($boardid) {
@@ -40,7 +56,7 @@
 			$result = mysql_query("SELECT * FROM `boardvideos` WHERE `boardid` =".$boardid) or die("Query failed with error: ".mysql_error());
 			
 			while ($row = mysql_fetch_array($result)) {
-				$video = array($row['id'],$row['boardid'],$row['videoid'],$row['uploaderid']);
+				$video = array($row['id'],$row['videoid'],$row['boardid'],$row['uploaderid']);
 				$vids[] = $video;
 			}
 			
