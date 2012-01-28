@@ -40,11 +40,15 @@
 			$result = mysql_query("SELECT * FROM `boardvideos` WHERE `boardid` =".$boardid) or die("Query failed with error: ".mysql_error());
 			
 			while ($row = mysql_fetch_array($result)) {
-				$video = array($row['id'],$row['title'],$row['url'],$row['description']);
+				$video = array($row['id'],$row['boardid'],$row['videoid'],$row['uploaderid']);
 				$vids[] = $video;
 			}
 			
 			$videos = array_reverse($vids);
+			
+			foreach ($videos as $video) {
+				$r_videos[] = new BoardVideo($video[0],$video[1],$video[2],$video[3]);
+			}
 			
 			return $r_videos;
 

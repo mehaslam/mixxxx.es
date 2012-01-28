@@ -1,16 +1,17 @@
 <?php
 session_start();
-error_reporting(0);
+//error_reporting(0);
 header('Content-type: application/json');
-require('../classes/video.php');
-require('../classes/boards.php');
+require('../classes/functions.php');
 
-$board_name = $_GET['board_name'];
-$board = board::getBoardByName($board_name);
+if (isset($_GET['board_name'])) {
+	$board_name = $_GET['board_name'];
+	$board = getBoardByName($board_name);
+}
 
 if (isset($board)) {
 
-	$videos = video::getBoardVideosJson($board->getID());
+	$videos = getBoardVideos($board->getID());
 
 } else {
 	echo 'board not found:';
@@ -18,6 +19,9 @@ if (isset($board)) {
 	die();
 }
 
-echo json_encode($videos);
+foreach ($videos as $video) {
+	$obj_to_arr[] = array($video->getID(),$video->getBoardID(),$video->getVideoID(),$video->getUploaderID());
+}
+echo json_encode($obj_to_arr);
 
 ?>

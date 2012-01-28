@@ -21,12 +21,12 @@
        	return $this->id;
        }
 
-       function videoID()
+       function getVideoID()
        {
         return $this->videoid;
        }
        
-       function boardID()
+       function getBoardID()
        {
         return $this->boardid;
        }
