@@ -20,7 +20,6 @@ if ($board) {
 	
 	$json = array('videos' => $objects);
 	
-	
 	echo json_encode($json);
 
 }
