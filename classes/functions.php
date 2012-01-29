@@ -60,13 +60,18 @@
 				$vids[] = $video;
 			}
 			
-			$videos = array_reverse($vids);
+			if (isset($vids)) {
+				$videos = array_reverse($vids);
+				
+				foreach ($videos as $video) {
+					$r_videos[] = new BoardVideo($video[0],$video[1],$video[2],$video[3]);
+				}
+				
+				return $r_videos;
 			
-			foreach ($videos as $video) {
-				$r_videos[] = new BoardVideo($video[0],$video[1],$video[2],$video[3]);
+			} else {
+				return null;
 			}
-			
-			return $r_videos;
 
 		}
 

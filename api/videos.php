@@ -18,33 +18,43 @@ if (isset($board)) {
 	die();
 }
 
-foreach ($boardvideos as $boardvideo) {
-	
-	$videoid = $boardvideo->getVideoID();
-	
-	$videoobj = getVideoById($videoid);
-	if (isset($videoobj)) {
-		$video = array(
-			"id" => $videoobj->getID(),
-			"title" => $videoobj->getTitle(),
-			"url" => $videoobj->getUrl(),
-			"description" => $videoobj->getDescription()
-		);
+if (isset($boardvideos)) {
+
+	foreach ($boardvideos as $boardvideo) {
+		
+		$videoid = $boardvideo->getVideoID();
+		
+		$videoobj = getVideoById($videoid);
+		if (isset($videoobj)) {
+		
+			$video = array(
+				"id" => $videoobj->getID(),
+				"title" => $videoobj->getTitle(),
+				"url" => $videoobj->getUrl(),
+				"description" => $videoobj->getDescription()
+			);
+			
+			
+			$thumbnails = getVideoThumbnails($videoid);
+			
+			
+			$frontend_content[] = array(
+				"id" => $boardvideo->getID(),
+				"boardid" => $boardvideo->getBoardID(),
+				"uploaderid" => $boardvideo->getUploaderID(),
+				"video" => $video,
+				"thumbnails" => $thumbnails
+			);
+		
+		}
 	}
 	
-	$thumbnails = getVideoThumbnails($videoid);
+	if (isset($frontend_content)) {
+		echo json_encode($frontend_content);
+	}
 	
-	
-	$frontend_content[] = array(
-		"id" => $boardvideo->getID(),
-		"boardid" => $boardvideo->getBoardID(),
-		"uploaderid" => $boardvideo->getUploaderID(),
-		"video" => $video,
-		"thumbnails" => $thumbnails
-	);
+} else {
+	echo json_encode(null);
 }
-
-//print_r($frontend_content);
-echo json_encode($frontend_content);
 
 ?>

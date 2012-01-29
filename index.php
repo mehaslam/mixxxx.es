@@ -100,15 +100,14 @@ session_start();
 
 			<?php } ?>
 			
-			<div class="videos_area">
-				<script id="video-template" type="text/x-handlebars-template">
+			<script id="video-template" type="text/x-handlebars-template">
 					<div class="video" data-url="{{url}}" data-title="{{title}}" data-smallthumb="{{smallthumb}}">
 						<h3>{{title}}</h3>
 						<div class="playbtn"></div>
 						<img src="{{thumbnail}}" alt="{{title}}"/>
 					</div>
-				</script>
-			</div>
+			</script>
+			<div class="videos_area"></div>
 	</div>
 	
 </div>
@@ -125,7 +124,7 @@ session_start();
 							<div class="playbtn"></div>
 							<img src="{{thumbnail}}" alt="{{title}}"/>
 					</div>
-				</script>
+			</script>
 			<div class="strip"></div>
 		</div>
 	</div>

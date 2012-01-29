@@ -32,11 +32,7 @@ $(document).ready(function() {
 		var boardname = $(this).attr("data-rel");
 		window.location.hash = boardname;
 		fetchBoard(boardname);
-		
-		//youtube playlist actions
-		videos.length = 0;
 		board = boardname;
-		getPlaylist(board);
 	});
 	
 	
@@ -51,41 +47,51 @@ $(document).ready(function() {
 			type: "GET",
 			data: "board_name="+board,
 			success: function(res){
-			
+				
 				$('.right_container .board_name').text(board);
+				$('.videos_area').empty();
 				
-				for (var video in res) {
+				if (res) {
 				
-					var url = res[video].video.url;
-					var title = res[video].video.title;
-					var description = res[video].video.description;
-					var uploader = res[video].uploader;
-					var thumbnails = []
-					if (res[video].thumbnails !== null) {
+					for (var video in res) {
 					
-						thumbnails = res[video].thumbnails;
+						var url = res[video].video.url;
+						var title = res[video].video.title;
+						var description = res[video].video.description;
+						var uploader = res[video].uploader;
+						var thumbnails = [];
 						
-						var source   = $("#video-template").html();
-						var template = Handlebars.compile(source);
+						if (res[video].thumbnails !== null) {
 						
-						var content = {url: url, title: title, thumbnail: thumbnails[0].url, smallthumb: thumbnails[1].url};
-						var html = template(content);
-						$('.videos_area').append(html);
+							thumbnails = res[video].thumbnails;
+							
+							var source   = $("#video-template").html();
+							var template = Handlebars.compile(source);
+							
+							var content = {url: url, title: title, thumbnail: thumbnails[0].url, smallthumb: thumbnails[1].url};
+							var html = template(content);
+							$('.videos_area').append(html);
+							
+						} else {
+							$('.videos_area').prepend('<h3 class="notice">Notice: Thumbnails missing for '+title+'</h3>');
+						}
 						
-					} else {
-						//no thumbnail - iframe or fallback image?
 					}
 					
-					
-					
+				} else {
+					$('.videos_area').empty().append("No videos found.");
 				}
 				
 				window.board = board;
 				bindBoardEvents();
 			},
 			error: function(err) {
-				console.log("ERROR:");
-				console.log(err.responseText);
+				$('.right_container .board_name').text(board);
+				if (err.responseText !== null && err.responseText !== "") {
+					$('.videos_area').empty().append(err.responseText);
+				} else {
+					$('.videos_area').empty().append("No videos found.");
+				}
 			}
 		});
 	}
@@ -141,11 +147,11 @@ $(document).ready(function() {
 			}
 		});
 	
-		/*$('#pagination a').click(function(e) {
+		$('#pagination a').click(function(e) {
 			e.preventDefault();
 			var pageno = $(this).attr("data-rel");
 			fetchBoardAt(window.board, pageno);
-		});*/
+		});
 	}
 	
 });

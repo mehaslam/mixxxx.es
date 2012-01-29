@@ -94,6 +94,7 @@ function onReady() {
 
 function skipToVideo(i) {
 	
+	console.log(i);
 	//when user skips to song, simply move the selected one to queuedVideos[0] and play,
 	//therefore the rest of the queue is unaffected.
 	
@@ -108,14 +109,16 @@ function skipToVideo(i) {
 		youtube_player.playVideo();
 		queuedVideos.splice(0,1);
 		
-		//fadeout and remove targeted entry
+		console.log($('.playlist .thumbnails .strip div:eq('+i+') h4').text());
+		
+		/* fadeout and remove targeted entry
 		$('.playlist .thumbnails .strip div:eq('+i+')').fadeOut("medium", function() {
 			$('.playlist .thumbnails .strip div:eq('+i+')').remove();
 			
 			//clean up
 			refreshThumbnailQueue();
 		});
-		
+		*/
 		
 		
 	} else {
@@ -133,7 +136,7 @@ function playNextVideo() {
 		youtube_player.playVideo();
 		queuedVideos.splice(0,1);
 		
-		//fadeout and remove queue entry
+		// fadeout and remove queue entry
 		$('.playlist .thumbnails .strip div:eq(0)').fadeOut("medium", function() {
 			$('.playlist .thumbnails .strip div:eq(0)').remove();
 			
@@ -171,6 +174,10 @@ function refreshThumbnailQueue() {
 		strip.children('.smallthumb').click(function(e) {
 			var index = $(this).index();
 			skipToVideo(index);
+			$(this).fadeOut("medium", function () {
+				$(this).remove();
+				refreshThumbnailQueue();
+			});
 		});
 		
 }
