@@ -57,10 +57,12 @@ if (isset($boardvideos)) {
 	
 	if (isset($frontend_content)) {
 		echo json_encode($frontend_content);
+	} else {
+		echo json_encode(array("boardid"=>$board->getID()));
 	}
 	
 } else {
-	echo json_encode(null);
+	echo json_encode(array("boardid"=>$board->getID()));
 }
 
 ?>

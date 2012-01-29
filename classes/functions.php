@@ -91,10 +91,10 @@
 					$r_videos[] = new BoardVideo($video[0],$video[1],$video[2],$video[3]);
 				}
 				
-				$perpage = 8; //8 per page.
+				$perpage = 10; //but returns 9
 				$startpos = (($pageno-1)*$perpage); 
 				
-				$this_page = array_slice($r_videos, $startpos, 8);
+				$this_page = array_slice($r_videos, $startpos, $perpage);
 				
 				return $this_page;
 			
@@ -103,30 +103,6 @@
 			}
 
 		}
-
-		/*function getBoardVideosAtOLD($boardid, $pageno) {
-
-			$result = mysql_query("SELECT * FROM `boardvideos` WHERE `boardid` =".$boardid) or die("Query failed with error: ".mysql_error());
-			
-			while ($row = mysql_fetch_array($result)) {
-				$video = array($row['id'],$row['title'],$row['url'],$row['description']);
-				$vids[] = $video;
-			}
-			
-			$videos = array_reverse($vids);
-			
-			foreach ($videos as $video) {
-				$r_videos[] = new Video($row['id'],$row['title'],$row['url'],$row['description']);
-			}
-			
-			$perpage = 8; //8 per page.
-			$startpos = (($pageno-1)*$perpage); 
-			
-			$this_page = array_slice($r_videos, $startpos, 8);		
-			
-			return $this_page;
-
-		}*/
 
 
 		function countBoardVideos($boardid) {

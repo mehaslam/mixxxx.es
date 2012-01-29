@@ -42,7 +42,11 @@ $(document).ready(function() {
 	});
 	
 	function fetchBoard(board, pageno) {
-	
+		
+		if (typeof(board) === "undefined" || board === null || board === "") {
+			return;
+		}
+		
 		if (typeof(pageno) !== "number") {
 			pageno = 0;	 //see picks.php
 		}
@@ -56,10 +60,12 @@ $(document).ready(function() {
 				$('.right_container .board_name').text(board);
 				$('.videos_area').empty();
 				
-				if (res) {
+				if (res && res.length > 0) {
+		
+					$('#current_board_id').val(res[0].boardid);
 				
 					for (var video in res) {
-					
+
 						var url = res[video].video.url;
 						var title = res[video].video.title;
 						var description = res[video].video.description;
@@ -78,13 +84,15 @@ $(document).ready(function() {
 							$('.videos_area').append(html);
 							
 						} else {
-							$('.videos_area').prepend('<h3 class="notice">Notice: Thumbnails missing for '+title+'</h3>');
+							$('.videos_area').prepend('<h3 class="notice" data-url="'+url+'">Notice: Thumbnails missing for '+title+'('+url+'). May have been deleted from YouTube.<span class="shortcuts"><a class="notice_delete">Delete video from mixxxx.es</a><a class="dismiss">Dismiss</a></span></h3>');
 						}
 						
 					}
 					
 				} else {
+					$('#current_board_id').val(res.boardid);
 					$('.videos_area').empty().append("No videos found.");
+					console.log(res);
 				}
 				
 				window.board = board;
@@ -139,6 +147,45 @@ $(document).ready(function() {
 			var pageno = $(this).attr("data-rel");
 			fetchBoardAt(window.board, pageno);
 		});
+		
+		$('.videos_area .notice .dismiss').click(function() {
+			var parent = $(this).parent().parent();
+			parent.fadeOut("medium",function() {
+				parent.remove();
+			});
+		})
+		
+		//actions binded if there is a notice (e.g. videos taken down from youtube).
+		if ($('.videos_area .notice').length) {
+		
+			$('.videos_area .notice .notice_delete').click(function() {
+				
+				var parent = $(this).parent().parent();
+				var urlToDelete = parent.attr("data-url");
+				
+				if (typeof(urlToDelete) !== "undefined" && urlToDelete !== null && urlToDelete !== "") {
+					$.ajax({
+						url: "api/delete.php",
+						method: "GET",
+						data: {"url":urlToDelete},
+						success: function(res) {
+							parent.addClass("success");
+							parent.removeClass("notice");
+							parent.text("Successfully removed.");
+							parent.fadeOut(1300,function() {
+								parent.remove();
+							})
+						},
+						error: function(err) {
+							parent.text("Error deleting video "+urlToDelete+" :(");
+						}
+					});
+				} else {
+					parent.text("Error deleting video URL '"+urlToDelete+"'.");
+				};
+			})
+		
+		}
 	}
 	
 });

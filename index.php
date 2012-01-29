@@ -21,6 +21,8 @@ session_start();
   	<meta name="author" content="">
   	<meta name="viewport" content="width=device-width,initial-scale=1">
   	
+  	<!--<link rel="stylesheet" href="static/css/stylesheets/bootstrap.css" type="text/css" />
+	<link rel="stylesheet" href="http://meyerweb.com/eric/tools/css/reset/reset.css" type="text/css" />-->
   	<link rel="stylesheet" href="static/css/stylesheets/screen.css" />
 	
 	<script src="static/js/libs/modernizr-2.0.6.min.js"></script>
@@ -90,13 +92,15 @@ session_start();
 	<div class="right">
 
 			<?php if (isset($_SESSION['bro']) && $_SESSION['bro'] == 'truetrue') { ?>
+			
+			<?php if (isset($_GET['badurl'])) { echo '<span class="error">Invalid URL.</span>'; } ?>
 
 			<form id="submit_form" action="processing/videos.php" method="POST">
 				<label>youtube url</label>
 				<input type="text" name="vid" value=""/>
-				<input type="hidden" name="board_id" value="<?php echo $board->getID(); ?>"/>
+				<input type="hidden" name="board_id" value="" id="current_board_id"/>
 				<input type="submit" value="add"/>
-			</form>
+			</form>			
 
 			<?php } ?>
 			

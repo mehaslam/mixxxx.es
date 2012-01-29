@@ -13,7 +13,7 @@ if (isset($_POST['vid']) && $_POST['vid'] != null && isset($_SESSION['bro']) && 
 
 	parse_str(parse_url( $url, PHP_URL_QUERY ), $video_params);
 	
-	if ($video_params['v'] != null) {
+	if (isset($video_params['v']) && $video_params['v'] != null) {
 
 		$video_exists = getVideoByUrl($video_params['v']);
 
@@ -48,7 +48,7 @@ if (isset($_POST['vid']) && $_POST['vid'] != null && isset($_SESSION['bro']) && 
 		
 	}
 	
-	header("location: ../");
+	header("location: ../?badurl");
 }
 
 function getVideoData($url) {

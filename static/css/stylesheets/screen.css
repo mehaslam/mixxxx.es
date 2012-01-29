@@ -504,41 +504,72 @@ html body .right_container .right .videos_area {
   min-height: 400px;
 }
 /* line 134, ../sass/screen.scss */
+html body .right_container .right .videos_area .notice {
+  margin: 20px 0;
+  border-radius: 5px;
+  background: #FFF9CF;
+  padding: 10px;
+  cursor: pointer;
+  font-weight: normal;
+}
+/* line 143, ../sass/screen.scss */
+html body .right_container .right .videos_area .notice .shortcuts {
+  float: right;
+}
+/* line 146, ../sass/screen.scss */
+html body .right_container .right .videos_area .notice .shortcuts a {
+  font-weight: bold;
+}
+/* line 150, ../sass/screen.scss */
+html body .right_container .right .videos_area .notice .shortcuts .dismiss {
+  margin-left: 15px;
+}
+/* line 156, ../sass/screen.scss */
+html body .right_container .right .videos_area .success {
+  margin: 20px 0;
+  border-radius: 5px;
+  background: #A9E39A;
+  padding: 10px;
+  cursor: pointer;
+  font-weight: normal;
+}
+/* line 165, ../sass/screen.scss */
 html body .right_container .right .videos_area .video {
   width: 250px;
-  height: 220px;
+  height: 240px;
   padding: 10px;
   border-radius: 5px;
   cursor: pointer;
   float: left;
-  margin: 0 10px;
+  margin: 0 10px 30px 10px;
 }
-/* line 144, ../sass/screen.scss */
+/* line 175, ../sass/screen.scss */
 html body .right_container .right .videos_area .video h3 {
   font-size: 16px;
   padding-bottom: 10px;
+  height: 40px;
 }
-/* line 149, ../sass/screen.scss */
+/* line 181, ../sass/screen.scss */
 html body .right_container .right .videos_area .video img {
   max-width: 250px;
   height: auto;
 }
-/* line 154, ../sass/screen.scss */
+/* line 186, ../sass/screen.scss */
 html body .right_container .right .videos_area .video .playbtn {
   display: none;
 }
-/* line 161, ../sass/screen.scss */
+/* line 193, ../sass/screen.scss */
 html body .right_container .right .videos_area .video:hover {
   background: #F1F1F1;
   -webkit-box-shadow: 0px 1px 0px 0px #CCCCCC;
   -moz-box-shadow: 0px 1px 0px 0px #CCCCCC;
   box-shadow: 0px 1px 0px 0px #CCCCCC;
 }
-/* line 167, ../sass/screen.scss */
+/* line 199, ../sass/screen.scss */
 html body .right_container .right .videos_area .video:hover .playbtn {
   display: block;
 }
-/* line 176, ../sass/screen.scss */
+/* line 208, ../sass/screen.scss */
 html body .playlist {
   position: fixed;
   width: 100%;
@@ -552,7 +583,7 @@ html body .playlist {
   border-width: 1px 0;
   background: #F6F6F6;
 }
-/* line 189, ../sass/screen.scss */
+/* line 221, ../sass/screen.scss */
 html body .playlist .player_loading {
   background: #F6F6F6;
   width: 200px;
@@ -560,38 +591,38 @@ html body .playlist .player_loading {
   position: absolute;
   text-align: center;
 }
-/* line 196, ../sass/screen.scss */
+/* line 228, ../sass/screen.scss */
 html body .playlist .player_loading img {
   margin-top: 35px;
 }
-/* line 201, ../sass/screen.scss */
+/* line 233, ../sass/screen.scss */
 html body .playlist .board_name {
   font-size: 30px;
   margin-bottom: 15px;
 }
-/* line 206, ../sass/screen.scss */
+/* line 238, ../sass/screen.scss */
 html body .playlist .inside {
   width: 100%;
   padding: 10px;
 }
-/* line 210, ../sass/screen.scss */
+/* line 242, ../sass/screen.scss */
 html body .playlist .inside #playlist_player {
   float: left;
   width: 200px;
   height: 95px;
   margin-right: 10px;
 }
-/* line 217, ../sass/screen.scss */
+/* line 249, ../sass/screen.scss */
 html body .playlist .inside .thumbnails {
   overflow-x: auto;
   margin-right: 20px;
 }
-/* line 221, ../sass/screen.scss */
+/* line 253, ../sass/screen.scss */
 html body .playlist .inside .thumbnails .strip {
   height: 95px;
   padding-left: 5px;
 }
-/* line 225, ../sass/screen.scss */
+/* line 257, ../sass/screen.scss */
 html body .playlist .inside .thumbnails .strip .smallthumb {
   height: 95px;
   display: block;
@@ -601,7 +632,7 @@ html body .playlist .inside .thumbnails .strip .smallthumb {
   cursor: pointer;
   overflow: hidden;
 }
-/* line 235, ../sass/screen.scss */
+/* line 267, ../sass/screen.scss */
 html body .playlist .inside .thumbnails .strip .smallthumb img {
   width: 130px;
   height: auto;

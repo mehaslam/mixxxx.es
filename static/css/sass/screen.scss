@@ -131,19 +131,51 @@ html {
 					overflow: hidden;
 					min-height: 400px;
 					
+					.notice {
+					
+					margin: 20px 0;
+					border-radius: 5px;
+					background:#FFF9CF;
+					padding: 10px;
+					cursor: pointer;
+					font-weight:normal;
+					
+						.shortcuts {
+							float: right;
+							
+							a {
+								font-weight: bold;
+							}
+							
+							.dismiss {
+								margin-left: 15px;
+							}
+						}
+					}
+					
+					.success {
+						margin: 20px 0;
+						border-radius: 5px;
+						background: #A9E39A;
+						padding: 10px;
+						cursor: pointer;
+						font-weight:normal;
+					}
+					
 					.video {
 						
 						width: 250px;
-						height: 220px;
+						height: 240px;
 						padding: 10px;
 						border-radius: 5px;
 						cursor: pointer;
 						float: left;
-						margin:0 10px;
+						margin: 0 10px 30px 10px;
 						
 						h3 {
 							font-size: 16px;
 							padding-bottom: 10px;
+							height: 40px;
 						}
 					
 						img {

@@ -42,7 +42,7 @@
        
 	        if ($this->id == NULL) {
 	        	
-		        mysql_query("INSERT INTO `videos` ( `title`, `url`, `description` ) VALUES ( '".$this->title."', '".$this->url."', '".$this->description."' );") or die("Query failed with error: ".mysql_error());
+		        mysql_query("INSERT INTO `videos` ( `title`, `url`, `description` ) VALUES ( '".mysql_real_escape_string($this->title)."', '".$this->url."', '".mysql_real_escape_string($this->description)."' );") or die("Query failed with error: ".mysql_error());
 		        $this->id = mysql_insert_id();
 	         
 	        } else {
