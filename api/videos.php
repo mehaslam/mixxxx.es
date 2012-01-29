@@ -45,18 +45,23 @@ if (isset($boardvideos)) {
 			
 			
 			$frontend_content[] = array(
-				"id" => $boardvideo->getID(),
-				"boardid" => $boardvideo->getBoardID(),
-				"uploaderid" => $boardvideo->getUploaderID(),
-				"video" => $video,
-				"thumbnails" => $thumbnails
+					"id" => $boardvideo->getID(),
+					"boardid" => $boardvideo->getBoardID(),
+					"uploaderid" => $boardvideo->getUploaderID(),
+					"video" => $video,
+					"thumbnails" => $thumbnails
 			);
 		
 		}
 	}
 	
 	if (isset($frontend_content)) {
-		echo json_encode($frontend_content);
+	
+		echo json_encode(array(
+			"videocount" => countBoardVideos($boardvideo->getBoardID()),
+			"videos" => $frontend_content
+			));
+		
 	} else {
 		echo json_encode(array("boardid"=>$board->getID()));
 	}

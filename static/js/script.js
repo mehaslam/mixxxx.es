@@ -51,6 +51,10 @@ $(document).ready(function() {
 			pageno = 0;	 //see picks.php
 		}
 		
+		console.log(pageno);
+		
+		//request videos JSON from api.
+		
 		$.ajax({
 			url: "api/videos.php",
 			type: "GET",
@@ -59,34 +63,74 @@ $(document).ready(function() {
 				
 				$('.right_container .board_name').text(board);
 				$('.videos_area').empty();
+				var videocount;
 				
-				if (res && res.length > 0) {
+				if (res && res.videos && res.videos.length > 0) {
 		
-					$('#current_board_id').val(res[0].boardid);
+					$('#current_board_id').val(res.videos[0].boardid);
+					videocount = res.videocount;
 				
-					for (var video in res) {
+					//Videos were returned - now process them.
+					for (var video in res.videos) {
 
-						var url = res[video].video.url;
-						var title = res[video].video.title;
-						var description = res[video].video.description;
-						var uploader = res[video].uploader;
+						var url = res.videos[video].video.url;
+						var title = res.videos[video].video.title;
+						var description = res.videos[video].video.description;
+						var uploader = res.videos[video].uploader;
 						var thumbnails = [];
 						
-						if (res[video].thumbnails !== null) {
+						//check thumbnails - if they are null, the video has likely been removed from youtube.
+						if (res.videos[video].thumbnails !== null) {
 						
-							thumbnails = res[video].thumbnails;
+							thumbnails = res.videos[video].thumbnails;
 							
+							//Pick up handlebars.js template for a video
 							var source   = $("#video-template").html();
 							var template = Handlebars.compile(source);
 							
+							//Push content into template, generate html
 							var content = {url: url, title: title, thumbnail: thumbnails[0].url, smallthumb: thumbnails[1].url};
 							var html = template(content);
+							
+							//Push html into DOM
 							$('.videos_area').append(html);
 							
 						} else {
+							//Video likely removed from youtube - provide notice (with dismiss/delete from mixxxxes shortcuts).
 							$('.videos_area').prepend('<h3 class="notice" data-url="'+url+'">Notice: Thumbnails missing for '+title+'('+url+'). May have been deleted from YouTube.<span class="shortcuts"><a class="notice_delete">Delete video from mixxxx.es</a><a class="dismiss">Dismiss</a></span></h3>');
 						}
 						
+					}
+					
+					//Finished processing videos, now generate pagination html based on videocount
+					if (typeof(videocount) === "number" && videocount > 9) {
+						
+						//calculate page count, generate html and insert into DOM.
+						var pagecount = videocount/9; //9 videos per page
+						
+						var links = "";
+						
+						for (var i = 0; i<pagecount+1; i++) {
+							links += '<a class="pagination_link" href="#">'+(i+1)+'</a>';
+						}
+						
+						var html = '<div class="pagination">'+links+'</div>';
+						if ($('.right .pagination')) {
+							$('.right .pagination').remove();
+						}
+						$('.right').append(html);
+						
+						if ($('.right .pagination')) {
+							$('.right .pagination a:eq('+(pageno)+')').addClass("active");
+						}
+						
+						$('.right .pagination .pagination_link').click(function(e) {
+							e.preventDefault();
+							var page = $(this).index();
+							if (typeof(board) === "string") {
+								fetchBoard(board, page);
+							}
+						});
 					}
 					
 				} else {
@@ -140,12 +184,6 @@ $(document).ready(function() {
 				queuedVideos.push(this_video);
 				refreshThumbnailQueue();
 			}
-		});
-	
-		$('#pagination a').click(function(e) {
-			e.preventDefault();
-			var pageno = $(this).attr("data-rel");
-			fetchBoardAt(window.board, pageno);
 		});
 		
 		$('.videos_area .notice .dismiss').click(function() {

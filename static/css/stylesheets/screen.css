@@ -501,9 +501,10 @@ html body .right_container .right #submit_form {
 /* line 129, ../sass/screen.scss */
 html body .right_container .right .videos_area {
   overflow: hidden;
-  min-height: 400px;
+  min-height: 750px;
+  margin-bottom: 15px;
 }
-/* line 134, ../sass/screen.scss */
+/* line 135, ../sass/screen.scss */
 html body .right_container .right .videos_area .notice {
   margin: 20px 0;
   border-radius: 5px;
@@ -512,19 +513,19 @@ html body .right_container .right .videos_area .notice {
   cursor: pointer;
   font-weight: normal;
 }
-/* line 143, ../sass/screen.scss */
+/* line 144, ../sass/screen.scss */
 html body .right_container .right .videos_area .notice .shortcuts {
   float: right;
 }
-/* line 146, ../sass/screen.scss */
+/* line 147, ../sass/screen.scss */
 html body .right_container .right .videos_area .notice .shortcuts a {
   font-weight: bold;
 }
-/* line 150, ../sass/screen.scss */
+/* line 151, ../sass/screen.scss */
 html body .right_container .right .videos_area .notice .shortcuts .dismiss {
   margin-left: 15px;
 }
-/* line 156, ../sass/screen.scss */
+/* line 157, ../sass/screen.scss */
 html body .right_container .right .videos_area .success {
   margin: 20px 0;
   border-radius: 5px;
@@ -533,7 +534,7 @@ html body .right_container .right .videos_area .success {
   cursor: pointer;
   font-weight: normal;
 }
-/* line 165, ../sass/screen.scss */
+/* line 166, ../sass/screen.scss */
 html body .right_container .right .videos_area .video {
   width: 250px;
   height: 240px;
@@ -543,33 +544,50 @@ html body .right_container .right .videos_area .video {
   float: left;
   margin: 0 10px 30px 10px;
 }
-/* line 175, ../sass/screen.scss */
+/* line 176, ../sass/screen.scss */
 html body .right_container .right .videos_area .video h3 {
   font-size: 16px;
   padding-bottom: 10px;
   height: 40px;
 }
-/* line 181, ../sass/screen.scss */
+/* line 182, ../sass/screen.scss */
 html body .right_container .right .videos_area .video img {
   max-width: 250px;
   height: auto;
 }
-/* line 186, ../sass/screen.scss */
+/* line 187, ../sass/screen.scss */
 html body .right_container .right .videos_area .video .playbtn {
   display: none;
 }
-/* line 193, ../sass/screen.scss */
+/* line 194, ../sass/screen.scss */
 html body .right_container .right .videos_area .video:hover {
   background: #F1F1F1;
   -webkit-box-shadow: 0px 1px 0px 0px #CCCCCC;
   -moz-box-shadow: 0px 1px 0px 0px #CCCCCC;
   box-shadow: 0px 1px 0px 0px #CCCCCC;
 }
-/* line 199, ../sass/screen.scss */
+/* line 200, ../sass/screen.scss */
 html body .right_container .right .videos_area .video:hover .playbtn {
   display: block;
 }
-/* line 208, ../sass/screen.scss */
+/* line 207, ../sass/screen.scss */
+html body .right_container .right .pagination {
+  width: 100%;
+  text-align: center;
+  display: block;
+  margin: 20px 0;
+}
+/* line 213, ../sass/screen.scss */
+html body .right_container .right .pagination a {
+  font-size: 24px;
+  font-family: 'Contrail One', cursive;
+  margin: 0 5px;
+}
+/* line 219, ../sass/screen.scss */
+html body .right_container .right .pagination .active {
+  color: #06E;
+}
+/* line 224, ../sass/screen.scss */
 html body .playlist {
   position: fixed;
   width: 100%;
@@ -583,7 +601,7 @@ html body .playlist {
   border-width: 1px 0;
   background: #F6F6F6;
 }
-/* line 221, ../sass/screen.scss */
+/* line 237, ../sass/screen.scss */
 html body .playlist .player_loading {
   background: #F6F6F6;
   width: 200px;
@@ -591,38 +609,38 @@ html body .playlist .player_loading {
   position: absolute;
   text-align: center;
 }
-/* line 228, ../sass/screen.scss */
+/* line 244, ../sass/screen.scss */
 html body .playlist .player_loading img {
   margin-top: 35px;
 }
-/* line 233, ../sass/screen.scss */
+/* line 249, ../sass/screen.scss */
 html body .playlist .board_name {
   font-size: 30px;
   margin-bottom: 15px;
 }
-/* line 238, ../sass/screen.scss */
+/* line 254, ../sass/screen.scss */
 html body .playlist .inside {
   width: 100%;
   padding: 10px;
 }
-/* line 242, ../sass/screen.scss */
+/* line 258, ../sass/screen.scss */
 html body .playlist .inside #playlist_player {
   float: left;
   width: 200px;
   height: 95px;
   margin-right: 10px;
 }
-/* line 249, ../sass/screen.scss */
+/* line 265, ../sass/screen.scss */
 html body .playlist .inside .thumbnails {
   overflow-x: auto;
   margin-right: 20px;
 }
-/* line 253, ../sass/screen.scss */
+/* line 269, ../sass/screen.scss */
 html body .playlist .inside .thumbnails .strip {
   height: 95px;
   padding-left: 5px;
 }
-/* line 257, ../sass/screen.scss */
+/* line 273, ../sass/screen.scss */
 html body .playlist .inside .thumbnails .strip .smallthumb {
   height: 95px;
   display: block;
@@ -632,7 +650,7 @@ html body .playlist .inside .thumbnails .strip .smallthumb {
   cursor: pointer;
   overflow: hidden;
 }
-/* line 267, ../sass/screen.scss */
+/* line 283, ../sass/screen.scss */
 html body .playlist .inside .thumbnails .strip .smallthumb img {
   width: 130px;
   height: auto;

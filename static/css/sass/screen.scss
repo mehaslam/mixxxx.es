@@ -129,7 +129,8 @@ html {
 				.videos_area {
 				
 					overflow: hidden;
-					min-height: 400px;
+					min-height: 750px;
+					margin-bottom: 15px;
 					
 					.notice {
 					
@@ -201,6 +202,21 @@ html {
 						}
 					}
 				
+				}
+				
+				.pagination {
+					width: 100%;
+					text-align: center;
+					display: block;
+					margin: 20px 0;
+					
+					a {
+						font-size: 24px;
+						font-family: 'Contrail One', cursive;
+						margin: 0 5px;
+					}
+					
+					.active {color: #06E}
 				}
 			}
 		}	

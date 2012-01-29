@@ -79,6 +79,7 @@ function initiatePlaylist(firstVideo) {
 		setTimeout(function() {
 			$('.player_loading').fadeOut();
 			autoPlay = 1;
+			$('.right').css("margin-bottom","140px");
 		}, 400);
 		
 	});

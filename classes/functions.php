@@ -85,14 +85,15 @@
 			}
 			
 			if (isset($vids)) {
+			
 				$videos = array_reverse($vids);
 				
-				foreach ($videos as $video) {
+				foreach ($vids as $video) {
 					$r_videos[] = new BoardVideo($video[0],$video[1],$video[2],$video[3]);
 				}
 				
-				$perpage = 10; //but returns 9
-				$startpos = (($pageno-1)*$perpage); 
+				$perpage = 9;
+				$startpos = (($pageno-1)*$perpage);
 				
 				$this_page = array_slice($r_videos, $startpos, $perpage);
 				
