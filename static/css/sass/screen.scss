@@ -40,7 +40,7 @@ html {
 	a:hover, a:active { outline: 0; }
 
 	body {
-		width: 1150px;
+		width: 1130px;
 		margin: 0 auto;
 		font-family: Arial;
 		font-size: 12px;
@@ -98,63 +98,12 @@ html {
 		
 		.right_container {
 			
-			width:900px;
+			width:870px;
 			float:left;
 			overflow: hidden;
 			margin-left:250px;
 			display: block;
 			padding-top: 25px;
-			
-			.playlist {
-				position: fixed;
-				width: 812px;
-				height: 165px;
-				padding: 10px 0;
-				background: white;
-				top: 0;
-				
-				.board_name {
-					font-size: 30px;
-					margin-bottom: 15px;
-				}
-			
-				.inside {
-					width: 792px;
-					height: 90px;
-					padding: 10px;
-					background: rgba(0,0,0,0.1);
-					
-					#playlist_player {
-						float: left;
-						width: 200px;
-						height: 90px;
-						margin-right: 10px;
-					}
-					
-					.thumbnails {
-						float: left;
-						width: 582px;
-						overflow: hidden;
-						overflow-x: auto;
-						
-						.strip {
-							max-width: 20000px;
-							min-width: 15000px;
-							padding-left: 5px;
-							
-							img {
-								float: left;
-								margin: 0 10px 0 0;
-								opacity: 0.5;
-							}
-							
-							img:hover {
-									opacity: 1;
-							}
-						}
-					}
-				}
-			}
 			
 			.right_mask {
 				width:100%;
@@ -166,71 +115,133 @@ html {
 			
 			.right {
 				
-				width:825px;
+				width:870px;
 				float:left;
 				overflow: hidden;
 				display: block;
-				margin-top: 160px;
+				margin-top: 20px;
 				
-				#video_area {
-					
-					#submit_form {
+				#submit_form {
 						display: block;
 						margin: 20px 0;
 					}
 				
-					#all_videos {
+				.videos_area {
+				
+					overflow: hidden;
+					min-height: 400px;
 					
-						overflow: hidden;
+					.video {
+						
+						width: 250px;
+						height: 220px;
+						padding: 10px;
+						border-radius: 5px;
+						cursor: pointer;
 						float: left;
-						margin-bottom: 20px;
+						margin:0 10px;
 						
-						.vid_container {
-						
-							width: 400px;
-							float: left;
-							height: 180px;
-							padding: 5px 12px 5px 0;
-							
-							iframe {
-								width: 400px;
-								float: left;
-								height: 150px;
-							}
-							
-							.delete_button {background: #F6F6F6;border: 1px solid #CCC;padding: 5px 10px;border-radius: 3px;cursor: pointer;}
-							.delete_link {
-								width: 400px;
-								margin: 5px auto;
-								text-align: center;
-								display: block;
-								height: 30px;
-								float: left;
-							}
+						h3 {
+							font-size: 16px;
+							padding-bottom: 10px;
 						}
+					
+						img {
+							max-width: 250px;
+							height: auto;
+						}
+						
+						.playbtn {
+							display: none;
+							
+						}
+					
 					}
 					
-					#pagination {
+					.video:hover {
+						background: #F4F4F4;
+						-webkit-box-shadow: 0px 1px 0px 0px #CCCCCC;
+						-moz-box-shadow: 0px 1px 0px 0px #CCCCCC;
+						box-shadow: 0px 1px 0px 0px #CCCCCC;
 						
-						overflow: hidden;
-						float: left;
-						margin: 10px auto 35px auto;
-						text-align: center;
-						width:100%;
-						
-						.current {color: #CCC;}
-						
-						a, span {
-							font-size: 24px;
-							font-family: 'Contrail One', cursive;
-							padding:0 5px;
-							color:#000;
+						.playbtn {
+							display: block;
 						}
-					
 					}
 				
 				}
 			}
 		}	
+	
+		.playlist {
+			position: fixed;
+			width: 100%;
+			height: 110px;
+			padding: 10px 0;
+			background: white;
+			bottom:-140px;
+			left: 0;
+			color: black;
+			border: 1px solid #CCC;
+			border-width: 1px 0;
+			background: #F6F6F6;
+			
+			.player_loading {
+				background: #F6F6F6;
+				width: 200px;
+				height: 100px;
+				position: absolute;
+				text-align: center;
+				
+				img {
+					margin-top: 35px;
+				}
+			}
+			
+			.board_name {
+				font-size: 30px;
+				margin-bottom: 15px;
+			}
+		
+			.inside {
+				width: 100%;
+				padding: 10px;
+				
+				#playlist_player {
+					float: left;
+					width: 200px;
+					height: 95px;
+					margin-right: 10px;
+				}
+				
+				.thumbnails {
+					overflow-x: auto;
+					margin-right: 20px;
+					
+					.strip {
+						height: 95px;
+						padding-left: 5px;
+						
+						.smallthumb {
+							
+							height: 95px;
+							display: block;
+							float: left;
+							width: 130px;
+							margin: 0 10px 0 0;
+							cursor: pointer;
+							overflow: hidden;
+							
+							img {
+								width: 130px;
+								height: auto;
+							}
+						}
+						
+					}
+				}
+			}
+		}
+		
 	}
 }

@@ -82,16 +82,8 @@ session_start();
 </div>
 
 <div class="right_container">
-	
-	<div class="playlist">
-		<h1 class="board_name"></h1>
-		<div class="inside">
-			<div id="playlist_player"></div>
-			<div class="thumbnails">
-				<div class="strip"></div>
-			</div>
-		</div>
-	</div>
+
+	<h1 class="board_name"></h1>
 	
 	<div class="right_mask"></div>
 	
@@ -107,8 +99,36 @@ session_start();
 			</form>
 
 			<?php } ?>
+			
+			<div class="videos_area">
+				<script id="video-template" type="text/x-handlebars-template">
+					<div class="video" data-url="{{url}}" data-title="{{title}}" data-smallthumb="{{smallthumb}}">
+						<h3>{{title}}</h3>
+						<div class="playbtn"></div>
+						<img src="{{thumbnail}}" alt="{{title}}"/>
+					</div>
+				</script>
+			</div>
 	</div>
 	
+</div>
+
+<div class="playlist">
+	<div class="inside">
+		
+		<div class="player_loading"><img src="static/images/loading.gif" alt="loading"/></div>
+		<div id="playlist_player"></div>
+		<div class="thumbnails">
+			<script id="thumbnail-template" type="text/x-handlebars-template">
+					<div class="smallthumb" data-url="{{url}}">
+							<h4>{{title}}</h4>
+							<div class="playbtn"></div>
+							<img src="{{thumbnail}}" alt="{{title}}"/>
+					</div>
+				</script>
+			<div class="strip"></div>
+		</div>
+	</div>
 </div>
 
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.0/jquery.min.js"></script>
@@ -117,6 +137,8 @@ session_start();
 <!-- scripts concatenated and minified via ant build script-->
 <script src="static/js/youtube.js"></script>
 <script src="static/js/plugins.js"></script>
+<script src="static/js/libs/handlebars.js"></script>
+
 <script src="static/js/script.js"></script>
 <!-- end scripts-->
 

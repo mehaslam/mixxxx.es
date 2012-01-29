@@ -51,13 +51,33 @@ $(document).ready(function() {
 			type: "GET",
 			data: "board_name="+board,
 			success: function(res){
+			
 				$('.right_container .board_name').text(board);
-				console.log(res);
 				
 				for (var video in res) {
-					var url = res[video].url;
-					// latest
-					//pick up all bits we need and populate html.
+				
+					var url = res[video].video.url;
+					var title = res[video].video.title;
+					var description = res[video].video.description;
+					var uploader = res[video].uploader;
+					var thumbnails = []
+					if (res[video].thumbnails !== null) {
+					
+						thumbnails = res[video].thumbnails;
+						
+						var source   = $("#video-template").html();
+						var template = Handlebars.compile(source);
+						
+						var content = {url: url, title: title, thumbnail: thumbnails[0].url, smallthumb: thumbnails[1].url};
+						var html = template(content);
+						$('.videos_area').append(html);
+						
+					} else {
+						//no thumbnail - iframe or fallback image?
+					}
+					
+					
+					
 				}
 				
 				window.board = board;
@@ -106,10 +126,26 @@ $(document).ready(function() {
 	//Bind any events to elements that may have been created by an ajax call. Call this function after ajax calls.
 	function bindBoardEvents() {
 	
-		$('#pagination a').click(function(e) {
+		$('.videos_area .video').click(function(e) {
+			var url = $(this).attr("data-url");
+			var title = $(this).attr("data-title");
+			var smallthumb = $(this).attr("data-smallthumb");
+			
+			var this_video = {"title": title, "url": url, "smallthumb": smallthumb};
+			
+			if (typeof(playerstatus) === "undefined") {
+				initiatePlaylist(this_video.url);
+			} else {
+				queuedVideos.push(this_video);
+				refreshThumbnailQueue();
+			}
+		});
+	
+		/*$('#pagination a').click(function(e) {
 			e.preventDefault();
 			var pageno = $(this).attr("data-rel");
 			fetchBoardAt(window.board, pageno);
-		});
+		});*/
 	}
+	
 });

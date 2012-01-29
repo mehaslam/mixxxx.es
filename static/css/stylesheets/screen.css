@@ -408,7 +408,7 @@ html a:hover, html a:active {
 }
 /* line 42, ../sass/screen.scss */
 html body {
-  width: 1150px;
+  width: 1130px;
   margin: 0 auto;
   font-family: Arial;
   font-size: 12px;
@@ -470,7 +470,7 @@ html body .left .admins#authed #login_form {
 }
 /* line 99, ../sass/screen.scss */
 html body .right_container {
-  width: 900px;
+  width: 870px;
   float: left;
   overflow: hidden;
   margin-left: 250px;
@@ -478,57 +478,6 @@ html body .right_container {
   padding-top: 25px;
 }
 /* line 108, ../sass/screen.scss */
-html body .right_container .playlist {
-  position: fixed;
-  width: 812px;
-  height: 165px;
-  padding: 10px 0;
-  background: white;
-  top: 0;
-}
-/* line 116, ../sass/screen.scss */
-html body .right_container .playlist .board_name {
-  font-size: 30px;
-  margin-bottom: 15px;
-}
-/* line 121, ../sass/screen.scss */
-html body .right_container .playlist .inside {
-  width: 792px;
-  height: 90px;
-  padding: 10px;
-  background: rgba(0, 0, 0, 0.1);
-}
-/* line 127, ../sass/screen.scss */
-html body .right_container .playlist .inside #playlist_player {
-  float: left;
-  width: 200px;
-  height: 90px;
-  margin-right: 10px;
-}
-/* line 134, ../sass/screen.scss */
-html body .right_container .playlist .inside .thumbnails {
-  float: left;
-  width: 582px;
-  overflow: hidden;
-  overflow-x: auto;
-}
-/* line 140, ../sass/screen.scss */
-html body .right_container .playlist .inside .thumbnails .strip {
-  max-width: 20000px;
-  min-width: 15000px;
-  padding-left: 5px;
-}
-/* line 145, ../sass/screen.scss */
-html body .right_container .playlist .inside .thumbnails .strip img {
-  float: left;
-  margin: 0 10px 0 0;
-  opacity: 0.5;
-}
-/* line 151, ../sass/screen.scss */
-html body .right_container .playlist .inside .thumbnails .strip img:hover {
-  opacity: 1;
-}
-/* line 159, ../sass/screen.scss */
 html body .right_container .right_mask {
   width: 100%;
   float: left;
@@ -536,71 +485,124 @@ html body .right_container .right_mask {
   display: block;
   background: white;
 }
-/* line 167, ../sass/screen.scss */
+/* line 116, ../sass/screen.scss */
 html body .right_container .right {
-  width: 825px;
+  width: 870px;
   float: left;
   overflow: hidden;
   display: block;
-  margin-top: 160px;
+  margin-top: 20px;
 }
-/* line 177, ../sass/screen.scss */
-html body .right_container .right #video_area #submit_form {
+/* line 124, ../sass/screen.scss */
+html body .right_container .right #submit_form {
   display: block;
   margin: 20px 0;
 }
-/* line 182, ../sass/screen.scss */
-html body .right_container .right #video_area #all_videos {
+/* line 129, ../sass/screen.scss */
+html body .right_container .right .videos_area {
   overflow: hidden;
-  float: left;
-  margin-bottom: 20px;
+  min-height: 400px;
 }
-/* line 188, ../sass/screen.scss */
-html body .right_container .right #video_area #all_videos .vid_container {
-  width: 400px;
+/* line 134, ../sass/screen.scss */
+html body .right_container .right .videos_area .video {
+  width: 250px;
+  height: 220px;
+  padding: 10px;
+  border-radius: 5px;
+  cursor: pointer;
   float: left;
-  height: 180px;
-  padding: 5px 12px 5px 0;
+  margin: 0 10px;
 }
-/* line 195, ../sass/screen.scss */
-html body .right_container .right #video_area #all_videos .vid_container iframe {
-  width: 400px;
-  float: left;
-  height: 150px;
+/* line 144, ../sass/screen.scss */
+html body .right_container .right .videos_area .video h3 {
+  font-size: 16px;
+  padding-bottom: 10px;
+}
+/* line 149, ../sass/screen.scss */
+html body .right_container .right .videos_area .video img {
+  max-width: 250px;
+  height: auto;
+}
+/* line 154, ../sass/screen.scss */
+html body .right_container .right .videos_area .video .playbtn {
+  display: none;
+}
+/* line 161, ../sass/screen.scss */
+html body .right_container .right .videos_area .video:hover {
+  background: #F4F4F4;
+  -webkit-box-shadow: 0px 1px 0px 0px #CCCCCC;
+  -moz-box-shadow: 0px 1px 0px 0px #CCCCCC;
+  box-shadow: 0px 1px 0px 0px #CCCCCC;
+}
+/* line 167, ../sass/screen.scss */
+html body .right_container .right .videos_area .video:hover .playbtn {
+  display: block;
+}
+/* line 176, ../sass/screen.scss */
+html body .playlist {
+  position: fixed;
+  width: 100%;
+  height: 110px;
+  padding: 10px 0;
+  background: white;
+  bottom: -140px;
+  left: 0;
+  color: black;
+  border: 1px solid #CCC;
+  border-width: 1px 0;
+  background: #F6F6F6;
+}
+/* line 189, ../sass/screen.scss */
+html body .playlist .player_loading {
+  background: #F6F6F6;
+  width: 200px;
+  height: 100px;
+  position: absolute;
+  text-align: center;
+}
+/* line 196, ../sass/screen.scss */
+html body .playlist .player_loading img {
+  margin-top: 35px;
 }
 /* line 201, ../sass/screen.scss */
-html body .right_container .right #video_area #all_videos .vid_container .delete_button {
-  background: #F6F6F6;
-  border: 1px solid #CCC;
-  padding: 5px 10px;
-  border-radius: 3px;
-  cursor: pointer;
+html body .playlist .board_name {
+  font-size: 30px;
+  margin-bottom: 15px;
 }
-/* line 202, ../sass/screen.scss */
-html body .right_container .right #video_area #all_videos .vid_container .delete_link {
-  width: 400px;
-  margin: 5px auto;
-  text-align: center;
-  display: block;
-  height: 30px;
-  float: left;
-}
-/* line 213, ../sass/screen.scss */
-html body .right_container .right #video_area #pagination {
-  overflow: hidden;
-  float: left;
-  margin: 10px auto 35px auto;
-  text-align: center;
+/* line 206, ../sass/screen.scss */
+html body .playlist .inside {
   width: 100%;
+  padding: 10px;
+}
+/* line 210, ../sass/screen.scss */
+html body .playlist .inside #playlist_player {
+  float: left;
+  width: 200px;
+  height: 95px;
+  margin-right: 10px;
+}
+/* line 217, ../sass/screen.scss */
+html body .playlist .inside .thumbnails {
+  overflow-x: auto;
+  margin-right: 20px;
 }
 /* line 221, ../sass/screen.scss */
-html body .right_container .right #video_area #pagination .current {
-  color: #CCC;
+html body .playlist .inside .thumbnails .strip {
+  height: 95px;
+  padding-left: 5px;
 }
-/* line 223, ../sass/screen.scss */
-html body .right_container .right #video_area #pagination a, html body .right_container .right #video_area #pagination span {
-  font-size: 24px;
-  font-family: 'Contrail One', cursive;
-  padding: 0 5px;
-  color: #000;
+/* line 225, ../sass/screen.scss */
+html body .playlist .inside .thumbnails .strip .smallthumb {
+  height: 95px;
+  display: block;
+  float: left;
+  width: 130px;
+  margin: 0 10px 0 0;
+  cursor: pointer;
+  overflow: hidden;
+}
+/* line 235, ../sass/screen.scss */
+html body .playlist .inside .thumbnails .strip .smallthumb img {
+  width: 130px;
+  height: auto;
 }
