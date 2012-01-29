@@ -41,11 +41,16 @@ $(document).ready(function() {
 		$('#login_link').hide();
 	});
 	
-	function fetchBoard(board) {
+	function fetchBoard(board, pageno) {
+	
+		if (typeof(pageno) !== "number") {
+			pageno = 0;	 //see picks.php
+		}
+		
 		$.ajax({
 			url: "api/videos.php",
 			type: "GET",
-			data: "board_name="+board,
+			data: {board_name: board, page: pageno},
 			success: function(res){
 				
 				$('.right_container .board_name').text(board);
@@ -92,24 +97,6 @@ $(document).ready(function() {
 				} else {
 					$('.videos_area').empty().append("No videos found.");
 				}
-			}
-		});
-	}
-	
-	function fetchBoardAt(board, page) {
-	
-		$.ajax({
-			url: "picks.php",
-			data: {board_name: board, page: page},
-			type: "GET",
-			success: function(res){
-				//$('.right').html(res);
-				$('.right_container .board_name').text(board);
-				bindBoardEvents();
-			},
-			error: function(err) {
-				console.log("ERROR: "+err);
-				fetchBoard("clssx");
 			}
 		});
 	}

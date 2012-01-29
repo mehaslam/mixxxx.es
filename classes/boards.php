@@ -46,6 +46,7 @@
 
        function delete(){
 	        mysql_query("DELETE FROM `boards` WHERE `id` = '".$this->id."';") or die("Query failed with error: ".mysql_error());
+	        mysql_query("DELETE FROM `boardvideos` WHERE `boardid` = '".$this->id."';") or die("Query failed with error: ".mysql_error());
        }
 }
 

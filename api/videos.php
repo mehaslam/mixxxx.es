@@ -8,9 +8,15 @@ if (isset($_GET['board_name'])) {
 	$board = getBoardByName($board_name);
 }
 
-if (isset($board)) {
+if (isset($_GET['page'])) {
+	$pageno = $_GET['page'];
+} else {
+	$pageno = 0;
+}
 
-	$boardvideos = getBoardVideos($board->getID());
+if (isset($board) && isset($pageno)) {
+
+	$boardvideos = getBoardVideosAt($board->getID(), $pageno);
 
 } else {
 	echo 'board not found:';

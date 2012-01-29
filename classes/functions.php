@@ -74,8 +74,37 @@
 			}
 
 		}
-
+		
 		function getBoardVideosAt($boardid, $pageno) {
+
+			$result = mysql_query("SELECT * FROM `boardvideos` WHERE `boardid` =".$boardid) or die("Query failed with error: ".mysql_error());
+			
+			while ($row = mysql_fetch_array($result)) {
+				$video = array($row['id'],$row['videoid'],$row['boardid'],$row['uploaderid']);
+				$vids[] = $video;
+			}
+			
+			if (isset($vids)) {
+				$videos = array_reverse($vids);
+				
+				foreach ($videos as $video) {
+					$r_videos[] = new BoardVideo($video[0],$video[1],$video[2],$video[3]);
+				}
+				
+				$perpage = 8; //8 per page.
+				$startpos = (($pageno-1)*$perpage); 
+				
+				$this_page = array_slice($r_videos, $startpos, 8);
+				
+				return $this_page;
+			
+			} else {
+				return null;
+			}
+
+		}
+
+		/*function getBoardVideosAtOLD($boardid, $pageno) {
 
 			$result = mysql_query("SELECT * FROM `boardvideos` WHERE `boardid` =".$boardid) or die("Query failed with error: ".mysql_error());
 			
@@ -97,7 +126,7 @@
 			
 			return $this_page;
 
-		}
+		}*/
 
 
 		function countBoardVideos($boardid) {
