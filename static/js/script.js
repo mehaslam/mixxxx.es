@@ -48,10 +48,8 @@ $(document).ready(function() {
 		}
 		
 		if (typeof(pageno) !== "number") {
-			pageno = 0;	 //see picks.php
+			pageno = 0;	//see picks.php
 		}
-		
-		console.log(pageno);
 		
 		//request videos JSON from api.
 		
@@ -97,7 +95,8 @@ $(document).ready(function() {
 							
 						} else {
 							//Video likely removed from youtube - provide notice (with dismiss/delete from mixxxxes shortcuts).
-							$('.videos_area').prepend('<h3 class="notice" data-url="'+url+'">Notice: Thumbnails missing for '+title+'('+url+'). May have been deleted from YouTube.<span class="shortcuts"><a class="notice_delete">Delete video from mixxxx.es</a><a class="dismiss">Dismiss</a></span></h3>');
+							//Other scenario is that this tune was added before mixxxxes backend structure was updated (no thumbs grabbed)
+							$('.videos_area').prepend('<h3 class="notice" data-url="'+url+'">Notice: Thumbnails missing for '+title+' ('+url+'). May have been deleted from YouTube.<span class="shortcuts"><a class="notice_delete">Delete video from mixxxx.es</a><a class="dismiss">Dismiss</a></span></h3>');
 						}
 						
 					}
@@ -136,7 +135,7 @@ $(document).ready(function() {
 				} else {
 					$('#current_board_id').val(res.boardid);
 					$('.videos_area').empty().append("No videos found.");
-					console.log(res);
+					console.log("Empty board ("+res.boardid+")");
 				}
 				
 				window.board = board;
@@ -191,7 +190,7 @@ $(document).ready(function() {
 			parent.fadeOut("medium",function() {
 				parent.remove();
 			});
-		})
+		});
 		
 		//actions binded if there is a notice (e.g. videos taken down from youtube).
 		if ($('.videos_area .notice').length) {
@@ -212,7 +211,7 @@ $(document).ready(function() {
 							parent.text("Successfully removed.");
 							parent.fadeOut(1300,function() {
 								parent.remove();
-							})
+							});
 						},
 						error: function(err) {
 							parent.text("Error deleting video "+urlToDelete+" :(");
@@ -220,8 +219,8 @@ $(document).ready(function() {
 					});
 				} else {
 					parent.text("Error deleting video URL '"+urlToDelete+"'.");
-				};
-			})
+				}
+			});
 		
 		}
 	}

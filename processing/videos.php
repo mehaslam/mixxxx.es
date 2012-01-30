@@ -23,6 +23,11 @@ if (isset($_POST['vid']) && $_POST['vid'] != null && isset($_SESSION['bro']) && 
 			//get info from youtube api.
 			$video_data = getVideoData($video_params['v']);
 
+			//stop adding the video if we couldn't fetch data from youtube (usually happens when you add a deleted video).
+			if (!isset($video_data) || !$video_data || $video_data === null || $video_data === "404") {
+				return;
+			}
+
 			//declare and save the video first
 			$video = new Video(null, $video_data->entry->title->{'$t'}, $video_params['v'], $video_data->entry->content->{'$t'});
 			$video->save();
@@ -46,16 +51,22 @@ if (isset($_POST['vid']) && $_POST['vid'] != null && isset($_SESSION['bro']) && 
 			$video_exists->delete();
 		}
 		
+	} else {
+		header("location: ../?badurl");
 	}
 	
-	header("location: ../?badurl");
+	header("location: ../");
 }
 
 function getVideoData($url) {
   
   $json = file_get_contents("http://gdata.youtube.com/feeds/api/videos/".$url."?alt=json");
 
-  return json_decode($json);
+  if ($json) {
+  	return json_decode($json);
+  } else {
+  	return "404";
+  }
 
 }
 
