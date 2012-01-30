@@ -106,11 +106,15 @@ function skipToVideo(i) {
 		queuedVideos.splice(i, 1);
 		queuedVideos.unshift(targetVideo);
 		
+		if (queuedVideos[0]) {
+
 		youtube_player.cueVideoById(queuedVideos[0].url);
 		youtube_player.playVideo();
 		queuedVideos.splice(0,1);
+
+		}
 		
-		console.log($('.playlist .thumbnails .strip div:eq('+i+') h4').text());
+		//console.log($('.playlist .thumbnails .strip div:eq('+i+') h4').text());
 		
 		/* fadeout and remove targeted entry
 		$('.playlist .thumbnails .strip div:eq('+i+')').fadeOut("medium", function() {
@@ -158,17 +162,21 @@ function refreshThumbnailQueue() {
 		
 		//loop queuedVideos, get title/smallthumb/url
 		for (var i=0; i<queuedVideos.length; i++) {
-		
-			var title = queuedVideos[i].title;
-			var url = queuedVideos[i].url;
-			var thumbnail = queuedVideos[i].smallthumb;
-		
-			var source   = $("#thumbnail-template").html();
-			var template = Handlebars.compile(source);
 			
-			var content = {title: title, thumbnail: thumbnail, url: url};
-			var html = template(content);
-			strip.append(html);
+			if (queuedVideos[i]) {
+
+				var title = queuedVideos[i].title;
+				var url = queuedVideos[i].url;
+				var thumbnail = queuedVideos[i].smallthumb;
+			
+				var source   = $("#thumbnail-template").html();
+				var template = Handlebars.compile(source);
+				
+				var content = {title: title, thumbnail: thumbnail, url: url};
+				var html = template(content);
+				strip.append(html);
+
+			}
 			
 		}
 		
