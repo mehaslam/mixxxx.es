@@ -4,11 +4,8 @@ if(!isset($_SESSION))
 session_start(); 
 }
 
-if ($_SERVER['HTTP_HOST'] === "mixxxx.es") {
-	require(getcwd().'/classes/db.php');
-} else {
-	require(__DIR__.'../../classes/db.php');
-}
+require(__DIR__.'../../classes/db.php');
+
 
 //PROCESS LOGINS
 if (isset($_POST['user']) && isset($_POST['pass'])) {

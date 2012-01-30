@@ -113,11 +113,11 @@ $(document).ready(function() {
 							links += '<a class="pagination_link" href="#">'+(i+1)+'</a>';
 						}
 						
-						var html = '<div class="pagination">'+links+'</div>';
+						var paginationhtml = '<div class="pagination">'+links+'</div>';
 						if ($('.right .pagination')) {
 							$('.right .pagination').remove();
 						}
-						$('.right').append(html);
+						$('.right').append(paginationhtml);
 						
 						if ($('.right .pagination')) {
 							$('.right .pagination a:eq('+(pageno)+')').addClass("active");

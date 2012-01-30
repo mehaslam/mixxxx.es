@@ -3,11 +3,7 @@ if(!isset($_SESSION)) {
 	session_start(); 
 }
 
-if ($_SERVER['HTTP_HOST'] === "mixxxx.es") {
-	require(getcwd().'/classes/functions.php');
-} else {
-	require_once(__DIR__.'../../classes/functions.php');
-}
+require_once(__DIR__.'../../classes/functions.php');
 
 
 //PROCESS CONTENT ADD/DELETES
