@@ -1,12 +1,9 @@
 /* Author: Samuel Brown (@samuelgbrown, samuelgbrown.com) */
 
-//Load youtube player api asynchronously.
-var tag = document.createElement('script');
-tag.src = "http://www.youtube.com/player_api";
-var firstScriptTag = document.getElementsByTagName('script')[0];
-firstScriptTag.parentNode.insertBefore(tag,firstScriptTag);
+
 
 //globals used for storing current playlist
+var apistatus = 0;
 var queuedVideos = [];
 var started = 0;
 var playerstatus;
@@ -24,6 +21,10 @@ if (typeof(window.location.hash) === "undefined" || window.location.hash === "")
 //YouTube callbacks, player/queue functions.
 
 function onYouTubePlayerAPIReady() {
+	apistatus = 1;
+}
+
+function onYouTubePlayerPlayerReady() {
 	//console.log("youtube player api ready homeslice.");
 }
 
@@ -48,6 +49,10 @@ function onPlayerStateChange(input) {
 
 function initiatePlaylist(firstVideo) {
 	
+	if (apistatus === 0) {
+		return;
+	}
+
 	//slide up the player bar.
 	$('.playlist').animate({bottom: "0px"}, 240, function() {
 	
@@ -87,6 +92,11 @@ function initiatePlaylist(firstVideo) {
 }
 
 function onReady() {
+
+	if (apistatus === 0) {
+		return;
+	}
+
 	//since onYouTubePlayerReady isn't firing, using the onReady event seems to work instead.
 	if (typeof(autoPlay) !== "undefined" && autoPlay === 1) {
 		youtube_player.playVideo();
@@ -94,8 +104,11 @@ function onReady() {
 }
 
 function skipToVideo(i) {
-	
-	console.log(i);
+
+	if (apistatus === 0) {
+		return;
+	}
+
 	//when user skips to song, simply move the selected one to queuedVideos[0] and play,
 	//therefore the rest of the queue is unaffected.
 	
@@ -108,8 +121,7 @@ function skipToVideo(i) {
 		
 		if (queuedVideos[0]) {
 
-		youtube_player.cueVideoById(queuedVideos[0].url);
-		youtube_player.playVideo();
+		youtube_player.loadVideoById(queuedVideos[0].url);
 		queuedVideos.splice(0,1);
 
 		}
@@ -134,6 +146,11 @@ function skipToVideo(i) {
 }
 
 function playNextVideo() {
+
+	if (apistatus === 0) {
+		return;
+	}
+	
 	if (queuedVideos.length > 0) {
 		
 		//play video, splice from queuedVideos array
@@ -190,3 +207,9 @@ function refreshThumbnailQueue() {
 		});
 		
 }
+
+//Load youtube player api asynchronously.
+var tag = document.createElement('script');
+tag.src = "http://www.youtube.com/player_api";
+var firstScriptTag = document.getElementsByTagName('script')[0];
+firstScriptTag.parentNode.insertBefore(tag,firstScriptTag);
