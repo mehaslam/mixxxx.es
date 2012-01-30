@@ -40,6 +40,29 @@ $(document).ready(function() {
 		$('#login_form').show();
 		$('#login_link').hide();
 	});
+
+	$('#submit_form').submit(function(e) {
+		e.preventDefault();
+		$.ajax({
+			url: "processing/videos.php",
+			type: "POST",
+			data: {"board_id": $(this).children('#current_board_id').val(), "vid": $(this).children('#vid_field').val()},
+			success: function(res) {
+				var success_notice = '<h4 class="success added">Tune successfully added!</h4>';
+				$('.right').prepend(success_notice);
+
+				fetchBoard(board, 0);
+				$('.right .added').fadeOut(850,function() {
+					$('.right .added').remove();
+				});
+			
+			},
+			error: function(err) {
+				$('.right').prepend('<h4 class="notice">Oops! There was a problem adding that tune!</h4>');
+				console.log(err);
+			}
+		});
+	});
 	
 	function fetchBoard(board, pageno) {
 		
@@ -173,20 +196,27 @@ $(document).ready(function() {
 	function bindBoardEvents() {
 	
 		$('.videos_area .video').click(function(e) {
-			var url = $(this).attr("data-url");
-			var title = $(this).attr("data-title");
-			var smallthumb = $(this).attr("data-smallthumb");
-			
-			var this_video = {"title": title, "url": url, "smallthumb": smallthumb};
-			console.log(this_video);
-			
-			if (typeof(playerstatus) === "undefined") {
-				initiatePlaylist(this_video.url);
-			} else {
-				queuedVideos.push(this_video);
-				refreshThumbnailQueue();
+
+			//Prevent play from occuring when user clicked 'del' button.
+			if (!$(e.target).hasClass("closebtn")) {
+
+				var url = $(this).attr("data-url");
+				var title = $(this).attr("data-title");
+				var smallthumb = $(this).attr("data-smallthumb");
+				
+				var this_video = {"title": title, "url": url, "smallthumb": smallthumb};
+				
+				if (typeof(playerstatus) === "undefined") {
+					initiatePlaylist(this_video.url);
+				} else {
+					queuedVideos.push(this_video);
+					refreshThumbnailQueue();
+				}
+
 			}
 		});
+
+
 		
 		$('.videos_area .notice .dismiss').click(function() {
 			var parent = $(this).parent().parent();
@@ -226,6 +256,38 @@ $(document).ready(function() {
 			});
 		
 		}
-	}
+
+		$('.videos_area .video .closebtn').click(function(e) {
+
+			var urlToDelete = $(this).parent().attr("data-url");
+			var entry = $(this).parent();
+			$('.right').prepend('<h4 class="success">Successfully deleted.</h4>');
+			var notice = $('.right .success');
+
+			if (typeof(urlToDelete) !== "undefined" && urlToDelete !== null && urlToDelete !== "") {
+				$.ajax({
+					url: "api/delete.php",
+					method: "GET",
+					data: {"url":urlToDelete},
+					success: function(res) {
+
+						entry.fadeOut(700,function() {
+								entry.remove();
+						});
+
+						notice.fadeOut(700,function() {
+							notice.remove();
+						});
+					},
+					error: function(err) {
+						notice.text("Error deleting video "+urlToDelete+" :(");
+					}
+				});
+			} else {
+				notice.text("Error deleting video URL '"+urlToDelete+"'.");
+			}
+		});
+
+	} //end bindBoardEvents
 	
 });

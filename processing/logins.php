@@ -4,6 +4,7 @@ if(!isset($_SESSION))
 session_start(); 
 }
 
+if( !defined( __DIR__ ) )define( __DIR__, dirname(__FILE__) );
 require(__DIR__.'../../classes/db.php');
 
 

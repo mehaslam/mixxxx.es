@@ -41,7 +41,7 @@ session_start();
 				
 				$boards = getAllBoards();
 				foreach ($boards as $board) {
-					echo '<h1><a href="#'.$board->getName().'" class="board_link" data-rel="'.$board->getName().'">'.$board->getName().'</a></h1>';
+					echo '<h1><a href="#'.$board->getName().'" class="board_link" data-rel="'.$board->getName().'">'.$board->getName().'</a><span class="remove"><img src="static/images/bin.png" alt="remove board"/></span><span class="edit"><img src="static/images/edit.png" alt="edit board"/></span></h1>';
 				}
 				
 				?>
@@ -95,9 +95,9 @@ session_start();
 			
 			<?php if (isset($_GET['badurl'])) { echo '<span class="error">Invalid URL.</span>'; } ?>
 
-			<form id="submit_form" action="processing/videos.php" method="POST">
+			<form id="submit_form" action="#" method="POST">
 				<label>youtube url</label>
-				<input type="text" name="vid" value=""/>
+				<input type="text" name="vid" value="" id="vid_field"/>
 				<input type="hidden" name="board_id" value="" id="current_board_id"/>
 				<input type="submit" value="add"/>
 			</form>			
@@ -109,6 +109,10 @@ session_start();
 						<h3>{{title}}</h3>
 						<div class="playbtn"></div>
 						<img src="{{thumbnail}}" alt="{{title}}"/>
+
+						<?php if (isset($_SESSION['bro']) && $_SESSION['bro'] == "truetrue") { ?>
+							<div class="closebtn">DELETE</div>
+						<?php } ?>
 					</div>
 			</script>
 			<div class="videos_area"></div>

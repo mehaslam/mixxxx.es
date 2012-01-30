@@ -446,29 +446,37 @@ html body .left .links h1 {
   margin: 7px 0;
   font-size: 16px;
 }
+/* line 77, ../sass/screen.scss */
+html body .left .links h1 .edit {
+  display: none;
+}
 /* line 78, ../sass/screen.scss */
-html body .left .links a {
-  display: block;
-}
-/* line 81, ../sass/screen.scss */
-html body .left .admins {
-  float: left;
-}
-/* line 83, ../sass/screen.scss */
-html body .left .admins #login_form {
+html body .left .links h1 .remove {
   display: none;
 }
 /* line 87, ../sass/screen.scss */
+html body .left .links a {
+  display: inline;
+}
+/* line 90, ../sass/screen.scss */
+html body .left .admins {
+  float: left;
+}
+/* line 92, ../sass/screen.scss */
+html body .left .admins #login_form {
+  display: none;
+}
+/* line 96, ../sass/screen.scss */
 html body .left .admins #login_link, html body .left .admins #logout_link {
   cursor: pointer;
   padding-right: 10px;
   font-size: 11px;
 }
-/* line 94, ../sass/screen.scss */
+/* line 103, ../sass/screen.scss */
 html body .left .admins#authed #login_form {
   display: none;
 }
-/* line 99, ../sass/screen.scss */
+/* line 108, ../sass/screen.scss */
 html body .right_container {
   width: 870px;
   float: left;
@@ -477,7 +485,7 @@ html body .right_container {
   display: block;
   padding-top: 25px;
 }
-/* line 108, ../sass/screen.scss */
+/* line 117, ../sass/screen.scss */
 html body .right_container .right_mask {
   width: 100%;
   float: left;
@@ -485,7 +493,7 @@ html body .right_container .right_mask {
   display: block;
   background: white;
 }
-/* line 116, ../sass/screen.scss */
+/* line 125, ../sass/screen.scss */
 html body .right_container .right {
   width: 870px;
   float: left;
@@ -493,19 +501,17 @@ html body .right_container .right {
   display: block;
   margin-top: 20px;
 }
-/* line 124, ../sass/screen.scss */
-html body .right_container .right #submit_form {
-  display: block;
+/* line 133, ../sass/screen.scss */
+html body .right_container .right .success {
   margin: 20px 0;
+  border-radius: 5px;
+  background: #A9E39A;
+  padding: 10px;
+  cursor: pointer;
+  font-weight: normal;
 }
-/* line 129, ../sass/screen.scss */
-html body .right_container .right .videos_area {
-  overflow: hidden;
-  min-height: 750px;
-  margin-bottom: 15px;
-}
-/* line 135, ../sass/screen.scss */
-html body .right_container .right .videos_area .notice {
+/* line 142, ../sass/screen.scss */
+html body .right_container .right .notice {
   font-size: 11px;
   margin: 20px 0;
   border-radius: 5px;
@@ -514,28 +520,30 @@ html body .right_container .right .videos_area .notice {
   cursor: pointer;
   font-weight: normal;
 }
-/* line 145, ../sass/screen.scss */
-html body .right_container .right .videos_area .notice .shortcuts {
+/* line 152, ../sass/screen.scss */
+html body .right_container .right .notice .shortcuts {
   float: right;
 }
-/* line 148, ../sass/screen.scss */
-html body .right_container .right .videos_area .notice .shortcuts a {
+/* line 155, ../sass/screen.scss */
+html body .right_container .right .notice .shortcuts a {
   font-weight: bold;
 }
-/* line 152, ../sass/screen.scss */
-html body .right_container .right .videos_area .notice .shortcuts .dismiss {
+/* line 159, ../sass/screen.scss */
+html body .right_container .right .notice .shortcuts .dismiss {
   margin-left: 15px;
 }
-/* line 158, ../sass/screen.scss */
-html body .right_container .right .videos_area .success {
+/* line 165, ../sass/screen.scss */
+html body .right_container .right #submit_form {
+  display: block;
   margin: 20px 0;
-  border-radius: 5px;
-  background: #A9E39A;
-  padding: 10px;
-  cursor: pointer;
-  font-weight: normal;
 }
-/* line 167, ../sass/screen.scss */
+/* line 170, ../sass/screen.scss */
+html body .right_container .right .videos_area {
+  overflow: hidden;
+  min-height: 750px;
+  margin-bottom: 15px;
+}
+/* line 176, ../sass/screen.scss */
 html body .right_container .right .videos_area .video {
   width: 250px;
   height: 240px;
@@ -545,50 +553,75 @@ html body .right_container .right .videos_area .video {
   float: left;
   margin: 0 10px 30px 10px;
 }
-/* line 177, ../sass/screen.scss */
+/* line 186, ../sass/screen.scss */
 html body .right_container .right .videos_area .video h3 {
   font-size: 16px;
   padding-bottom: 10px;
   height: 40px;
 }
-/* line 183, ../sass/screen.scss */
+/* line 192, ../sass/screen.scss */
 html body .right_container .right .videos_area .video img {
   max-width: 250px;
   height: auto;
 }
-/* line 188, ../sass/screen.scss */
+/* line 197, ../sass/screen.scss */
 html body .right_container .right .videos_area .video .playbtn {
   display: none;
 }
-/* line 195, ../sass/screen.scss */
+/* line 202, ../sass/screen.scss */
+html body .right_container .right .videos_area .video .closebtn {
+  display: none;
+}
+/* line 207, ../sass/screen.scss */
 html body .right_container .right .videos_area .video:hover {
   background: #F1F1F1;
   -webkit-box-shadow: 0px 1px 0px 0px #CCCCCC;
   -moz-box-shadow: 0px 1px 0px 0px #CCCCCC;
   box-shadow: 0px 1px 0px 0px #CCCCCC;
 }
-/* line 201, ../sass/screen.scss */
+/* line 213, ../sass/screen.scss */
 html body .right_container .right .videos_area .video:hover .playbtn {
   display: block;
 }
-/* line 208, ../sass/screen.scss */
+/* line 217, ../sass/screen.scss */
+html body .right_container .right .videos_area .video:hover .closebtn {
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 10px;
+  padding: 3px 5px;
+  background: grey;
+  float: right;
+  margin-bottom: 5px;
+  color: white;
+  border-radius: 3px;
+  text-shadow: 0px 1px 0px black;
+  position: relative;
+  top: -182px;
+  left: -8px;
+  display: block;
+}
+/* line 234, ../sass/screen.scss */
+html body .right_container .right .videos_area .video:hover .closebtn:active {
+  color: black;
+}
+/* line 241, ../sass/screen.scss */
 html body .right_container .right .pagination {
   width: 100%;
   text-align: center;
   display: block;
   margin: 20px 0;
 }
-/* line 214, ../sass/screen.scss */
+/* line 247, ../sass/screen.scss */
 html body .right_container .right .pagination a {
   font-size: 24px;
   font-family: 'Contrail One', cursive;
   margin: 0 5px;
 }
-/* line 220, ../sass/screen.scss */
+/* line 253, ../sass/screen.scss */
 html body .right_container .right .pagination .active {
   color: #06E;
 }
-/* line 225, ../sass/screen.scss */
+/* line 258, ../sass/screen.scss */
 html body .playlist {
   position: fixed;
   width: 100%;
@@ -602,7 +635,7 @@ html body .playlist {
   border-width: 1px 0;
   background: #F6F6F6;
 }
-/* line 238, ../sass/screen.scss */
+/* line 271, ../sass/screen.scss */
 html body .playlist .player_loading {
   background: #F6F6F6;
   width: 200px;
@@ -610,38 +643,38 @@ html body .playlist .player_loading {
   position: absolute;
   text-align: center;
 }
-/* line 245, ../sass/screen.scss */
+/* line 278, ../sass/screen.scss */
 html body .playlist .player_loading img {
   margin-top: 35px;
 }
-/* line 250, ../sass/screen.scss */
+/* line 283, ../sass/screen.scss */
 html body .playlist .board_name {
   font-size: 30px;
   margin-bottom: 15px;
 }
-/* line 255, ../sass/screen.scss */
+/* line 288, ../sass/screen.scss */
 html body .playlist .inside {
   width: 100%;
   padding: 10px;
 }
-/* line 259, ../sass/screen.scss */
+/* line 292, ../sass/screen.scss */
 html body .playlist .inside #playlist_player {
   float: left;
   width: 200px;
   height: 95px;
   margin-right: 10px;
 }
-/* line 266, ../sass/screen.scss */
+/* line 299, ../sass/screen.scss */
 html body .playlist .inside .thumbnails {
   overflow-x: auto;
   margin-right: 20px;
 }
-/* line 270, ../sass/screen.scss */
+/* line 303, ../sass/screen.scss */
 html body .playlist .inside .thumbnails .strip {
   height: 95px;
   padding-left: 5px;
 }
-/* line 274, ../sass/screen.scss */
+/* line 307, ../sass/screen.scss */
 html body .playlist .inside .thumbnails .strip .smallthumb {
   height: 95px;
   display: block;
@@ -651,7 +684,7 @@ html body .playlist .inside .thumbnails .strip .smallthumb {
   cursor: pointer;
   overflow: hidden;
 }
-/* line 284, ../sass/screen.scss */
+/* line 317, ../sass/screen.scss */
 html body .playlist .inside .thumbnails .strip .smallthumb img {
   width: 130px;
   height: auto;

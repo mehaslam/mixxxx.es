@@ -70,6 +70,7 @@ function initiatePlaylist(firstVideo) {
 				'enablejsapi': 1,
 				'autoplay': 0,
 				'html5': 1,
+				'hd': 1,
 				'origin': window.location.host
 			},
 			events: {
@@ -120,7 +121,7 @@ function skipToVideo(i) {
 	
 	if (i > 0) {
 	
-		//perform skip	
+		//perform skip
 		var targetVideo = queuedVideos[i];
 		queuedVideos.splice(i, 1);
 		queuedVideos.unshift(targetVideo);
