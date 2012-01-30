@@ -2,8 +2,10 @@
 
 
 
-//globals used for storing current playlist
+//globals used for storing current playlist and also checking api/player status.
 var apistatus = 0;
+var ytplayerstatus = 0;
+
 var queuedVideos = [];
 var started = 0;
 var playerstatus;
@@ -25,7 +27,7 @@ function onYouTubePlayerAPIReady() {
 }
 
 function onYouTubePlayerPlayerReady() {
-	//console.log("youtube player api ready homeslice.");
+	console.log("player ready");
 }
 
 function handleError(error) {
@@ -85,7 +87,11 @@ function initiatePlaylist(firstVideo) {
 			$('.player_loading').fadeOut();
 			autoPlay = 1;
 			$('.right').css("margin-bottom","140px");
-		}, 400);
+			ytplayerstatus = 1;
+			if (typeof(playerstatus) === "undefined") {
+				playerstatus = 5;
+			}
+		}, 500);
 		
 	});
 	
@@ -105,7 +111,7 @@ function onReady() {
 
 function skipToVideo(i) {
 
-	if (apistatus === 0) {
+	if (apistatus === 0 || ytplayerstatus === 0) {
 		return;
 	}
 
@@ -147,7 +153,7 @@ function skipToVideo(i) {
 
 function playNextVideo() {
 
-	if (apistatus === 0) {
+	if (apistatus === 0 || ytplayerstatus === 0) {
 		return;
 	}
 	

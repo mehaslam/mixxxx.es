@@ -148,6 +148,8 @@ $(document).ready(function() {
 				} else {
 					$('.videos_area').empty().append("No videos found.");
 				}
+
+				bindBoardEvents();
 			}
 		});
 	}
@@ -176,6 +178,7 @@ $(document).ready(function() {
 			var smallthumb = $(this).attr("data-smallthumb");
 			
 			var this_video = {"title": title, "url": url, "smallthumb": smallthumb};
+			console.log(this_video);
 			
 			if (typeof(playerstatus) === "undefined") {
 				initiatePlaylist(this_video.url);
