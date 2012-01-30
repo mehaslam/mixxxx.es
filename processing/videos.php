@@ -62,7 +62,19 @@ if (isset($_POST['vid']) && $_POST['vid'] != null && isset($_SESSION['bro']) && 
 
 function getVideoData($url) {
   
-  $json = file_get_contents("http://gdata.youtube.com/feeds/api/videos/".$url."?alt=json");
+ 	//$json = file_get_contents("http://gdata.youtube.com/feeds/api/videos/".$url."?alt=json");
+  	$url = "http://gdata.youtube.com/feeds/api/videos/".$url."?alt=json";
+		
+	// cURL $url
+	$ch = curl_init();
+	curl_setopt($ch, CURLOPT_URL, $url);
+	curl_setopt($ch, CURLOPT_HEADER, 0);
+	curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+	curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, false);
+	curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+
+	$json = curl_exec($ch);
+	curl_close($ch);
 
   if ($json) {
   	return json_decode($json);
