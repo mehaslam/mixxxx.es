@@ -5,6 +5,7 @@ if ($_SERVER['HTTP_HOST'] == 'labs' || $_SERVER['HTTP_HOST'] == 'localhost' || $
 		$pass = "blahblah";
 		$database = "mixxxxes";
 } else if ($_SERVER['HTTP_HOST'] == 'mixxxx.es' || $_SERVER['HTTP_HOST'] == 'www.mixxxx.es') {
+		if( !defined( __DIR__ ) )define( __DIR__, dirname(__FILE__) );
 		require('protected.php');
 }
 	

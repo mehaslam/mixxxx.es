@@ -36,7 +36,7 @@ session_start();
 			<h1 id="logo"><a href="">mixxxx.es</a></h1>
 			
 			<div class="links">
-				<h1><a href="#" id="fg_link">r/futuregarage</a></h1>
+				<!--<h1><a href="#" id="fg_link">r/futuregarage</a></h1>-->
 				<?php
 				
 				$boards = getAllBoards();

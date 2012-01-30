@@ -3,7 +3,12 @@ if(!isset($_SESSION)) {
 	session_start(); 
 }
 
-require_once(__DIR__.'../../classes/functions.php');
+if ($_SERVER['HTTP_HOST'] === "mixxxx.es") {
+	require(getcwd().'/classes/functions.php');
+} else {
+	require_once(__DIR__.'../../classes/functions.php');
+}
+
 
 //PROCESS CONTENT ADD/DELETES
 if (isset($_POST['vid']) && $_POST['vid'] != null && isset($_SESSION['bro']) && $_SESSION['bro'] == 'truetrue' && isset($_POST['board_id']) && $_POST['board_id'] != null) {
