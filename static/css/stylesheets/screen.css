@@ -561,29 +561,30 @@ html body .right_container .right .videos_area .video h3 {
 }
 /* line 192, ../sass/screen.scss */
 html body .right_container .right .videos_area .video img {
-  max-width: 250px;
+  height: 187px;
+  width: 250px;
   height: auto;
 }
-/* line 197, ../sass/screen.scss */
+/* line 198, ../sass/screen.scss */
 html body .right_container .right .videos_area .video .playbtn {
   display: none;
 }
-/* line 202, ../sass/screen.scss */
+/* line 203, ../sass/screen.scss */
 html body .right_container .right .videos_area .video .closebtn {
   display: none;
 }
-/* line 207, ../sass/screen.scss */
+/* line 208, ../sass/screen.scss */
 html body .right_container .right .videos_area .video:hover {
   background: #F1F1F1;
   -webkit-box-shadow: 0px 1px 0px 0px #CCCCCC;
   -moz-box-shadow: 0px 1px 0px 0px #CCCCCC;
   box-shadow: 0px 1px 0px 0px #CCCCCC;
 }
-/* line 213, ../sass/screen.scss */
+/* line 214, ../sass/screen.scss */
 html body .right_container .right .videos_area .video:hover .playbtn {
   display: block;
 }
-/* line 217, ../sass/screen.scss */
+/* line 218, ../sass/screen.scss */
 html body .right_container .right .videos_area .video:hover .closebtn {
   cursor: pointer;
   font-weight: bold;
@@ -600,28 +601,28 @@ html body .right_container .right .videos_area .video:hover .closebtn {
   left: -8px;
   display: block;
 }
-/* line 234, ../sass/screen.scss */
+/* line 235, ../sass/screen.scss */
 html body .right_container .right .videos_area .video:hover .closebtn:active {
   color: black;
 }
-/* line 241, ../sass/screen.scss */
+/* line 242, ../sass/screen.scss */
 html body .right_container .right .pagination {
   width: 100%;
   text-align: center;
   display: block;
   margin: 20px 0;
 }
-/* line 247, ../sass/screen.scss */
+/* line 248, ../sass/screen.scss */
 html body .right_container .right .pagination a {
   font-size: 24px;
   font-family: 'Contrail One', cursive;
   margin: 0 5px;
 }
-/* line 253, ../sass/screen.scss */
+/* line 254, ../sass/screen.scss */
 html body .right_container .right .pagination .active {
   color: #06E;
 }
-/* line 258, ../sass/screen.scss */
+/* line 259, ../sass/screen.scss */
 html body .playlist {
   position: fixed;
   width: 100%;
@@ -635,7 +636,7 @@ html body .playlist {
   border-width: 1px 0;
   background: #F6F6F6;
 }
-/* line 271, ../sass/screen.scss */
+/* line 272, ../sass/screen.scss */
 html body .playlist .player_loading {
   background: #F6F6F6;
   width: 200px;
@@ -643,38 +644,38 @@ html body .playlist .player_loading {
   position: absolute;
   text-align: center;
 }
-/* line 278, ../sass/screen.scss */
+/* line 279, ../sass/screen.scss */
 html body .playlist .player_loading img {
   margin-top: 35px;
 }
-/* line 283, ../sass/screen.scss */
+/* line 284, ../sass/screen.scss */
 html body .playlist .board_name {
   font-size: 30px;
   margin-bottom: 15px;
 }
-/* line 288, ../sass/screen.scss */
+/* line 289, ../sass/screen.scss */
 html body .playlist .inside {
   width: 100%;
   padding: 10px;
 }
-/* line 292, ../sass/screen.scss */
+/* line 293, ../sass/screen.scss */
 html body .playlist .inside #playlist_player {
   float: left;
   width: 200px;
   height: 95px;
   margin-right: 10px;
 }
-/* line 299, ../sass/screen.scss */
+/* line 300, ../sass/screen.scss */
 html body .playlist .inside .thumbnails {
   overflow-x: auto;
   margin-right: 20px;
 }
-/* line 303, ../sass/screen.scss */
+/* line 304, ../sass/screen.scss */
 html body .playlist .inside .thumbnails .strip {
   height: 95px;
   padding-left: 5px;
 }
-/* line 307, ../sass/screen.scss */
+/* line 308, ../sass/screen.scss */
 html body .playlist .inside .thumbnails .strip .smallthumb {
   height: 95px;
   display: block;
@@ -684,7 +685,7 @@ html body .playlist .inside .thumbnails .strip .smallthumb {
   cursor: pointer;
   overflow: hidden;
 }
-/* line 317, ../sass/screen.scss */
+/* line 318, ../sass/screen.scss */
 html body .playlist .inside .thumbnails .strip .smallthumb img {
   width: 130px;
   height: auto;
