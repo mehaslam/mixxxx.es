@@ -138,9 +138,6 @@ session_start();
 	</div>
 </div>
 
-<script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.0/jquery.min.js"></script>
-<script>window.jQuery || document.write('<script src="static/js/libs/jquery-1.6.2.min.js"><\/script>')</script>
-
 <!-- scripts concatenated and minified via ant build script-->
 <script src="static/js/youtube.js"></script>
 <script src="static/js/plugins.js"></script>

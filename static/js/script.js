@@ -154,15 +154,22 @@ $(document).ready(function() {
 							}
 						});
 					}
+
+					
+
 					
 				} else {
 					$('#current_board_id').val(res.boardid);
 					$('.videos_area').empty().append("No videos found.");
 					console.log("Empty board ("+res.boardid+")");
 				}
+
+				//videos and pagination loaded & inserted to dom, reset scroll position to top.
+				$(window).scrollTop(0);
 				
 				window.board = board;
 				bindBoardEvents();
+
 			},
 			error: function(err) {
 				$('.right_container .board_name').text(board);

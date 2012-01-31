@@ -47,10 +47,6 @@ if (isset($_POST['vid']) && $_POST['vid'] != null && isset($_SESSION['bro']) && 
 				$thumbnail->save();
 			}
 
-		} else {
-			
-			//video already existed, for now let's assume user wanted to delete it
-			$video_exists->delete();
 		}
 		
 	} else {
