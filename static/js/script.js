@@ -1,7 +1,6 @@
 /* Author: Samuel Brown (@samuelgbrown, samuelgbrown.com) */
 
 $(document).ready(function() {
-	bindBoardEvents();
 
 	var board;
 	var videosArr = [];
@@ -213,11 +212,12 @@ $(document).ready(function() {
 				
 				var this_video = {"title": title, "url": url, "smallthumb": smallthumb};
 				
+				playlist.push(this_video);
+				
 				if (typeof(playerstatus) === "undefined") {
 					initiatePlaylist(this_video.url);
 				} else {
-					queuedVideos.push(this_video);
-					refreshThumbnailQueue();
+					addThumbnailToQueue(playlist[playlist.length-1]);
 				}
 
 			}

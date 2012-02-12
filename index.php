@@ -128,6 +128,7 @@ session_start();
 		<div class="thumbnails">
 			<script id="thumbnail-template" type="text/x-handlebars-template">
 					<div class="smallthumb" data-url="{{url}}">
+							<div class="now_playing_overlay"><span>NOW PLAYING</span></div>
 							<h4>{{title}}</h4>
 							<div class="playbtn"></div>
 							<img src="{{thumbnail}}" alt="{{title}}"/>
