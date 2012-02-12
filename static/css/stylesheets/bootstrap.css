@@ -1,3 +1,4 @@
+/* fonts */
 /* line 5, ../sass/bootstrap.scss */
 html body {
   background: white;
@@ -5,47 +6,63 @@ html body {
   font-family: "Helvetica Neue", Helvetica, sans-serif;
   font-size: 1em;
   padding: 20px;
+  /* links */
   /* mixxxx.es logo */
   /* call to action buttons */
   /* headings */
+  /* feature-list */
   /* messages - warning / error / notification */
   /* well */
   /* form styles */
 }
 /* line 13, ../sass/bootstrap.scss */
+html body a {
+  color: black;
+  -webkit-transition: all 0.5s linear;
+  -moz-transition: all 0.5s linear;
+  -ms-transition: all 0.5s linear;
+  -o-transition: all 0.5s linear;
+  transition: all 0.5s linear;
+}
+/* line 17, ../sass/bootstrap.scss */
+html body a:hover {
+  color: orange;
+}
+/* line 23, ../sass/bootstrap.scss */
 html body .logo {
   background: black;
   border-radius: 200px;
   color: #fff;
   display: block;
   font-family: 'Contrail One', "Helvetica Neue", Helvetica, sans-serif;
+  letter-spacing: 0.05em;
   font-weight: bold;
   /* 300px x 300px */
   /* 200px x 200px */
   /* 100px x 100px */
 }
-/* line 22, ../sass/bootstrap.scss */
+/* line 31, ../sass/bootstrap.scss */
 html body .logo.large {
   height: 175px;
   padding: 125px 0px 0px 37px;
   font-size: 3.5em;
   width: 263px;
 }
-/* line 30, ../sass/bootstrap.scss */
+/* line 39, ../sass/bootstrap.scss */
 html body .logo.medium {
   padding: 85px 0px 0px 25px;
   font-size: 2.2em;
   height: 115px;
   width: 175px;
 }
-/* line 38, ../sass/bootstrap.scss */
+/* line 47, ../sass/bootstrap.scss */
 html body .logo.small {
   height: 55px;
   width: 85px;
   padding: 45px 0px 0px 15px;
   font-size: 1em;
 }
-/* line 48, ../sass/bootstrap.scss */
+/* line 57, ../sass/bootstrap.scss */
 html body .button {
   /* presentational markup */
   margin: 20px 0;
@@ -65,57 +82,57 @@ html body .button {
   transition: all 0.3s linear;
   /* state styles - dark / light / good / bad / inactive */
 }
-/* line 67, ../sass/bootstrap.scss */
+/* line 76, ../sass/bootstrap.scss */
 html body .button.dark {
   background: #282828;
   border: 1px solid #000;
   color: #fff;
   /* contextual styles - back / forward */
 }
-/* line 73, ../sass/bootstrap.scss */
+/* line 82, ../sass/bootstrap.scss */
 html body .button.dark.back {
   background-image: url("../../images/arrows.png");
   background-position: 7% -90px;
   background-repeat: no-repeat;
   padding-left: 35px;
 }
-/* line 80, ../sass/bootstrap.scss */
+/* line 89, ../sass/bootstrap.scss */
 html body .button.dark.forward {
   background-image: url("../../images/arrows.png");
   background-position: 93% 10px;
   background-repeat: no-repeat;
   padding-right: 35px;
 }
-/* line 87, ../sass/bootstrap.scss */
+/* line 96, ../sass/bootstrap.scss */
 html body .button.dark:hover {
   background-color: #414141;
 }
-/* line 93, ../sass/bootstrap.scss */
+/* line 102, ../sass/bootstrap.scss */
 html body .button.light {
   background: #ebebeb;
   border: 1px solid #c7c7c7;
   color: #2b2b2b;
   /* contextual styles - back / forward */
 }
-/* line 99, ../sass/bootstrap.scss */
+/* line 108, ../sass/bootstrap.scss */
 html body .button.light.back {
   background-image: url("../../images/arrows.png");
   background-position: 7% -290px;
   background-repeat: no-repeat;
   padding-left: 35px;
 }
-/* line 106, ../sass/bootstrap.scss */
+/* line 115, ../sass/bootstrap.scss */
 html body .button.light.forward {
   background-image: url("../../images/arrows.png");
   background-position: 93% -190px;
   background-repeat: no-repeat;
   padding-right: 35px;
 }
-/* line 113, ../sass/bootstrap.scss */
+/* line 122, ../sass/bootstrap.scss */
 html body .button.light:hover {
   background-color: #dfdfdf;
 }
-/* line 120, ../sass/bootstrap.scss */
+/* line 129, ../sass/bootstrap.scss */
 html body .button.good {
   background: #b6ff8e;
   border: 1px solid #41b70e;
@@ -125,54 +142,66 @@ html body .button.good {
   -o-transition: all 0.5s linear;
   transition: all 0.5s linear;
 }
-/* line 129, ../sass/bootstrap.scss */
+/* line 138, ../sass/bootstrap.scss */
 html body .button.good:hover {
   background: #d5ffbe;
   color: #225f00;
 }
-/* line 136, ../sass/bootstrap.scss */
+/* line 145, ../sass/bootstrap.scss */
 html body .button.bad {
   background: #e78383;
   border: 1px solid #c13535;
   color: #8e1010;
 }
-/* line 141, ../sass/bootstrap.scss */
+/* line 150, ../sass/bootstrap.scss */
 html body .button.bad:hover {
   background: #f3c0c0;
   color: #a20f0f;
 }
-/* line 148, ../sass/bootstrap.scss */
+/* line 157, ../sass/bootstrap.scss */
 html body .button.inactive {
   background: #828282;
   border: 1px solid #3d3d3d;
   color: #585858;
 }
-/* line 157, ../sass/bootstrap.scss */
+/* line 166, ../sass/bootstrap.scss */
 html body h1, html body h2, html body h3, html body h4, html body h5 {
   color: #000;
-  font-family: 'Contrail One', 'Helvetica Neue', Helvetica, sans-serif;
+  font-family: 'Contrail One', "Helvetica Neue", Helvetica, sans-serif;
+  letter-spacing: 0.05em;
+  font-weight: bold;
 }
-/* line 162, ../sass/bootstrap.scss */
+/* line 171, ../sass/bootstrap.scss */
 html body h1 {
   font-size: 3.1em;
 }
-/* line 166, ../sass/bootstrap.scss */
+/* line 175, ../sass/bootstrap.scss */
 html body h2 {
   font-size: 2em;
 }
-/* line 170, ../sass/bootstrap.scss */
+/* line 179, ../sass/bootstrap.scss */
 html body h3 {
   font-size: 1.7em;
 }
-/* line 174, ../sass/bootstrap.scss */
+/* line 183, ../sass/bootstrap.scss */
 html body h4 {
   font-size: 1.3em;
 }
-/* line 178, ../sass/bootstrap.scss */
+/* line 187, ../sass/bootstrap.scss */
 html body h5 {
   font-size: 1em;
 }
-/* line 183, ../sass/bootstrap.scss */
+/* line 192, ../sass/bootstrap.scss */
+html body .feature-list {
+  font-family: 'Contrail One', "Helvetica Neue", Helvetica, sans-serif;
+  letter-spacing: 0.05em;
+  font-weight: bold;
+}
+/* line 195, ../sass/bootstrap.scss */
+html body .feature-list li {
+  list-style: none;
+}
+/* line 206, ../sass/bootstrap.scss */
 html body .message {
   -webkit-border-radius: 4px;
   -moz-border-radius: 4px;
@@ -181,27 +210,32 @@ html body .message {
   display: block;
   padding: 15px;
 }
-/* line 191, ../sass/bootstrap.scss */
+/* line 214, ../sass/bootstrap.scss */
 html body .message.warning {
   background-color: #f3e990;
   border: 1px solid #e3d55d;
   color: #726600;
 }
-/* line 197, ../sass/bootstrap.scss */
+/* line 221, ../sass/bootstrap.scss */
+html body .message.warning:hover:before {
+  background-color: white;
+}
+/* line 227, ../sass/bootstrap.scss */
 html body .message.warning:before {
   content: "x";
   display: block;
   height: 20px;
   float: right;
+  /* add padding */
   width: 20px;
 }
-/* line 207, ../sass/bootstrap.scss */
+/* line 238, ../sass/bootstrap.scss */
 html body .message.error {
   background-color: #e78383;
   border: 1px solid #c13535;
   color: #8e1010;
 }
-/* line 213, ../sass/bootstrap.scss */
+/* line 244, ../sass/bootstrap.scss */
 html body .message.error:before {
   content: "x";
   display: block;
@@ -209,13 +243,13 @@ html body .message.error:before {
   float: right;
   width: 20px;
 }
-/* line 223, ../sass/bootstrap.scss */
+/* line 254, ../sass/bootstrap.scss */
 html body .message.notification {
   background-color: #8edeff;
   border: 1px solid #1ba5de;
   color: #0a6287;
 }
-/* line 229, ../sass/bootstrap.scss */
+/* line 260, ../sass/bootstrap.scss */
 html body .message.notification:before {
   content: "x";
   display: block;
@@ -223,7 +257,7 @@ html body .message.notification:before {
   float: right;
   width: 20px;
 }
-/* line 242, ../sass/bootstrap.scss */
+/* line 273, ../sass/bootstrap.scss */
 html body .well {
   background: #f5f5f5;
   -webkit-border-radius: 4px;
@@ -233,18 +267,18 @@ html body .well {
   display: block;
   padding: 15px 20px;
 }
-/* line 253, ../sass/bootstrap.scss */
-html body textarea, html body input {
+/* line 284, ../sass/bootstrap.scss */
+html body textarea, html body input, html body select {
   outline-color: #b8eaff;
   outline-width: thin;
 }
-/* line 257, ../sass/bootstrap.scss */
+/* line 288, ../sass/bootstrap.scss */
 html body fieldset {
   border: 0;
   margin: 0;
   padding: 0;
 }
-/* line 263, ../sass/bootstrap.scss */
+/* line 294, ../sass/bootstrap.scss */
 html body input {
   border: 1px solid #a4a4a4;
   -webkit-border-radius: 4px;
@@ -255,12 +289,29 @@ html body input {
   font-size: 1em;
   padding: 10px;
 }
-/* line 273, ../sass/bootstrap.scss */
+/* line 304, ../sass/bootstrap.scss */
 html body input.error {
   box-shadow: inset 0px 0px 4px #ff3131;
   outline: none;
 }
-/* line 280, ../sass/bootstrap.scss */
+/* line 311, ../sass/bootstrap.scss */
+html body select {
+  -webkit-appearance: button;
+  -moz-appearance: button;
+  background: white;
+  background-image: url("../../images/arrows.png");
+  background-position: 90% -188px;
+  background-repeat: no-repeat;
+  border: 1px solid #a4a4a4;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  border-radius: 4px;
+  color: #3b3b3b;
+  font-size: 1em;
+  outline: none;
+  padding: 10px 40px 10px 10px;
+}
+/* line 328, ../sass/bootstrap.scss */
 html body .error-message {
   -webkit-border-radius: 4px;
   -moz-border-radius: 4px;
@@ -271,7 +322,7 @@ html body .error-message {
   margin: 20px;
   padding: 3px 0 0 0;
 }
-/* line 290, ../sass/bootstrap.scss */
+/* line 338, ../sass/bootstrap.scss */
 html body .error-message:before {
   content: url("../../images/error-icon.png");
   display: block;

@@ -9,14 +9,23 @@ html {
 		font-size: 1em;
 		padding: 20px;
 		
+		/* links */
+		&a {
+			color: black;
+			@include transition(all 0.5s linear);
+			
+			&:hover {
+				color: orange;
+			}
+		}
+		
 		/* mixxxx.es logo */
 		.logo {
 			background: black;
 			border-radius: 200px;
 			color: #fff;
 			display: block;
-			font-family: 'Contrail One', "Helvetica Neue", Helvetica, sans-serif;
-			font-weight: bold;
+			@include font-contrail;
 			
 			/* 300px x 300px */
 			&.large {
@@ -156,7 +165,7 @@ html {
 		/* headings */
 		h1, h2, h3, h4, h5 {
 			color: #000;
-			font-family: 'Contrail One', 'Helvetica Neue', Helvetica, sans-serif;
+			@include font-contrail;
 		}
 		
 		h1 {
@@ -179,6 +188,20 @@ html {
 			font-size: 1em;
 		}
 		
+		/* feature-list */
+		.feature-list {
+			@include font-contrail;
+			
+			&li {
+				list-style: none;
+				
+				&a {
+				
+				}
+				
+			}
+		}
+		
 		/* messages - warning / error / notification */
 		.message {
 			-webkit-border-radius: 4px;
@@ -193,12 +216,20 @@ html {
 				border: 1px solid #e3d55d;
 				color: #726600;
 				
+				&:hover {
+					
+					&:before {
+						background-color: white;
+					}
+					
+				}
 				
 				&:before {
 					content: "x";
 					display: block;
 					height: 20px;
 					float: right;
+					/* add padding */
 					width: 20px;
 				}
 				
@@ -250,7 +281,7 @@ html {
 		}
 		
 		/* form styles */	
-		textarea, input{ 
+		textarea, input, select{ 
 			outline-color: #b8eaff; outline-width: thin;
 		}
 		
@@ -275,6 +306,23 @@ html {
 				outline: none;
 			}
 			
+		}
+		
+		select {
+			-webkit-appearance: button;
+			-moz-appearance: button;
+			background: white;
+			background-image: url('../../images/arrows.png');
+			background-position: 90% -188px;
+			background-repeat: no-repeat;
+			border: 1px solid #a4a4a4;
+			-webkit-border-radius: 4px;
+			-moz-border-radius: 4px;
+			border-radius: 4px;
+			color: #3b3b3b;
+			font-size: 1em;
+			outline: none;
+			padding: 10px 40px 10px 10px;
 		}
 		
 		.error-message {
