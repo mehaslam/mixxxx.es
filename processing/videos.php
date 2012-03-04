@@ -50,10 +50,16 @@ if (isset($_POST['vid']) && $_POST['vid'] != null && isset($_SESSION['bro']) && 
 		}
 		
 	} else {
-		header("location: ../?badurl");
+		header('HTTP/1.1 400 Bad Request');
+		echo json_encode(array("success" => false));
+		exit();
 	}
 	
-	header("location: ../");
+	header('HTTP/1.1 200 OK');
+	echo json_encode(array("success" => true));
+
+} else {
+	header('HTTP/1.1 400 Bad Request');
 }
 
 function getVideoData($url) {

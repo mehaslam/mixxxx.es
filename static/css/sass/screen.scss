@@ -118,7 +118,7 @@ html {
 			
 			.right {
 				
-				width:870px;
+				width:880px;
 				float:left;
 				overflow: hidden;
 				display: block;
@@ -164,28 +164,34 @@ html {
 				.videos_area {
 				
 					overflow: hidden;
-					min-height: 750px;
+					min-height: 515px;
 					margin-bottom: 15px;
 					
 					.video {
 						
-						width: 250px;
-						height: 240px;
+						width: 200px;
+						height: 107px;
 						padding: 10px;
-						border-radius: 5px;
 						cursor: pointer;
 						float: left;
-						margin: 0 10px 30px 10px;
+						overflow: hidden;
 						
 						h3 {
-							font-size: 16px;
-							padding-bottom: 10px;
-							height: 40px;
+							font-size: 12px;
+							padding: 5px 10px 5px 5px;
+							position: absolute;
+							background: rgba(0, 0, 0, 0.7);
+							padding: 5px 10px 5px 5px;
+							overflow: hidden;
+							text-shadow: 0px 1px 0px rgba(0, 0, 0, 0.5);
+							width: 180px;
+							color: white;
+							font-weight: bold;
 						}
 					
 						img {
-							height: 187px;
-							width: 250px;
+							height: 127px;
+							width: 210px;
 						}
 						
 						.playbtn {
@@ -199,10 +205,6 @@ html {
 					}
 					
 					.video:hover {
-						background: #F1F1F1;
-						-webkit-box-shadow: 0px 1px 0px 0px #CCCCCC;
-						-moz-box-shadow: 0px 1px 0px 0px #CCCCCC;
-						box-shadow: 0px 1px 0px 0px #CCCCCC;
 						
 						.playbtn {
 							display: block;
@@ -213,16 +215,18 @@ html {
 							font-weight: bold;
 							font-size: 10px;
 							padding: 3px 5px;
-							background: grey;
-							float: right;
-							margin-bottom: 5px;
+							background: #666;
 							color: white;
 							border-radius: 3px;
 							text-shadow: 0px 1px 0px black;
-							position: relative;
-							top: -182px;
-							left: -8px;
+							position: absolute;
+							margin-top: -40px;
+							margin-left: 150px;
 							display: block;
+						}
+
+						.closebtn:hover {
+							background: darkred;
 						}
 
 						.closebtn:active {

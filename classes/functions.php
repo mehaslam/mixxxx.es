@@ -75,7 +75,7 @@
 
 		}
 		
-		function getBoardVideosAt($boardid, $pageno = 0) {
+		function getBoardVideosAt($boardid, $pageno) {
 
 			if ($pageno == 0) {
 				$pageno = 1;
@@ -94,7 +94,7 @@
 					$r_videos[] = new BoardVideo($video[0],$video[1],$video[2],$video[3]);
 				}
 				
-				$perpage = 9;
+				$perpage = 16;
 				$startpos = (($pageno-1)*$perpage);
 
 				$videocount = count($r_videos);

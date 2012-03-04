@@ -114,16 +114,23 @@
 	
 	<div class="right">
 
+			<script id="add-video-template" type="text/x-handlebars-template">
+				<form id="submit_form" action="#" method="POST" style="display:none">
+					<label>youtube url</label>
+					<input type="text" name="vid" value="" id="vid_field"/>
+					<input type="hidden" name="board_id" value="" id="current_board_id"/>
+					<input type="submit" value="add"/>
+				</form>
+			</script>
+
 			<?php if (isset($_SESSION['bro']) && $_SESSION['bro'] == 'truetrue') { ?>
-			
-			<?php if (isset($_GET['badurl'])) { echo '<span class="error">Invalid URL.</span>'; } ?>
 
 			<form id="submit_form" action="#" method="POST">
 				<label>youtube url</label>
 				<input type="text" name="vid" value="" id="vid_field"/>
 				<input type="hidden" name="board_id" value="" id="current_board_id"/>
 				<input type="submit" value="add"/>
-			</form>			
+			</form>	
 
 			<?php } ?>
 			
@@ -140,7 +147,7 @@
 			</script>
 
 			<div class="videos_area"></div>
-			
+
 	</div>
 	
 </div>

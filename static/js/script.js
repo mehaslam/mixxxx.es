@@ -28,14 +28,16 @@ var Mixxxxes = (function() {
 				"video_element" : $("#video-template"),
 				"authed_element": $("#authed-template"),
 				"login_form_element": $('#login-form-template'),
-				"login_state_element": $('#login-state-template')
+				"login_state_element": $('#login-state-template'),
+				"add_video_element": $('#add-video-template')
 			}
 
 			self.templates = {
 				"video_template" : elements.video_element.html(),
 				"authed_template": elements.authed_element.html(),
 				"login_state_template": elements.login_state_element.html(),
-				"login_form_template": elements.login_form_element.html()
+				"login_form_template": elements.login_form_element.html(),
+				"add_video_template": elements.add_video_element.html()
 			}
 
 			for (var key in elements) {
@@ -185,6 +187,10 @@ var Mixxxxes = (function() {
 					dataType: "json",
 					data: {"user": user, "pass": pass},
 					success: function(res) {
+
+						add_video_html = self.handlebarsRender(self.templates.add_video_template, {});
+						$('.right').prepend(add_video_html);
+
 						admin_area.fadeOut(function(){
 							admin_area.empty();
 
@@ -196,6 +202,8 @@ var Mixxxxes = (function() {
 
 							self.bindAdminEvents();
 						}).fadeIn();
+
+						$('#submit_form').fadeIn();
 					},
 					error: function(res) {
 						admin_area.parepend('<h3 class="error">Login failed.</h3>');
@@ -206,6 +214,7 @@ var Mixxxxes = (function() {
 			$('#submit_form').submit(function(e) {
 
 				e.preventDefault();
+				$('.right .notice').fadeOut();
 
 				$.ajax({
 					url: "processing/videos.php",
@@ -216,14 +225,21 @@ var Mixxxxes = (function() {
 						$('.right').prepend(success_notice);
 
 						self.fetchBoard(self.board, 0);
-						$('.right .added').fadeOut(850,function() {
+						$('.right .added').fadeOut(1450,function() {
 							$('.right .added').remove();
 						});
 					
 					},
 					error: function(err) {
-						$('.right').prepend(err.responseText);
-						$('.right').prepend('<h4 class="notice">Oops! There was a problem adding that tune!</h4>');
+						$('.right .notice').remove();
+						$('.right').prepend('<h4 class="notice" style="display:none">Error: There was a problem adding that tune! Remember to use a <strong>youtube.com</strong> URL.</h4>');
+						$('.right .notice').fadeIn();
+
+						$('.right .notice').click(function(e) {
+							$(this).fadeOut("fast", function() {
+								$(this).remove();
+							})
+						});
 					}
 				});
 			});
@@ -235,8 +251,11 @@ var Mixxxxes = (function() {
 					type: 'GET',
 					data: {"q": true},
 					success: function(res) {
+
+						$('#submit_form').fadeOut();
+
 						admin_area.fadeOut(function(){
-							
+
 							admin_area.empty();
 
 							var login_form_html = self.handlebarsRender(self.templates.login_form_template, {});
@@ -319,11 +338,11 @@ var Mixxxxes = (function() {
 						}
 						
 						//Finished processing videos, now generate pagination html based on videocount
-						if (typeof(videocount) === "number" && videocount > 9) {
+						if (typeof(videocount) === "number" && videocount > 16) {
 
 							
 							//calculate page count, generate html and insert into DOM.
-							var pagecount = Math.ceil(videocount/9); //9 videos per page
+							var pagecount = Math.ceil(videocount/16); //16 videos per page
 							
 							var links = "";
 							
@@ -359,9 +378,6 @@ var Mixxxxes = (function() {
 						$('#current_board_id').val(res.boardid);
 						$('.videos_area').empty().append("No videos found.");
 					}
-
-					//videos and pagination loaded & inserted to dom, reset scroll position to top.
-					$(window).scrollTop(0);
 					
 					self.board = board;
 					self.bindBoardEvents();
