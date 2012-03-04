@@ -153,7 +153,7 @@ function playNextVideo() {
 	if (playlist.length > 0) {
 		
 		currentIndex = currentIndex + 1;
-		playTune(playlist[currentIndex-1].url);
+		playTune(playlist[currentIndex].url);
 		refreshThumbnailQueue();
 		
 	}
