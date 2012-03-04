@@ -89,20 +89,14 @@ html {
 			
 			.admins {
 				float: left;
-				#login_form {
-					display: none;
-				}
 				
-				#login_link, #logout_link {
+				.login_link, .logout_link {
 					cursor:pointer;
 					padding-right: 10px;
 					font-size: 11px;
 				}
 			}
-			
-			.admins#authed #login_form {
-				display: none;
-			}
+
 		}
 		
 		.right_container {

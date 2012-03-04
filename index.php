@@ -1,19 +1,16 @@
 <?php
-session_start();
-
+	session_start();
 	require_once('classes/functions.php');
-
 	include_once('processing/logins.php');
 	include_once('processing/videos.php');
 	include_once('processing/boards.php');
-
-
 ?>
 
 <!DOCTYPE html> 
 <!-- twitter.com/samuelgbrown yo. -->
 <html>
 <head>
+
 	<title>mixxxx.es</title>
 	<meta charset="utf-8">
   	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
@@ -21,13 +18,13 @@ session_start();
   	<meta name="author" content="">
   	<meta name="viewport" content="width=device-width,initial-scale=1">
   	
-  	<!--<link rel="stylesheet" href="static/css/stylesheets/bootstrap.css" type="text/css" />
-	<link rel="stylesheet" href="http://meyerweb.com/eric/tools/css/reset/reset.css" type="text/css" />-->
   	<link rel="stylesheet" href="static/css/stylesheets/screen.css" />
 	
-	<script src="static/js/libs/modernizr-2.0.6.min.js"></script>
+	<script src="static/js/libs/modernizr-2.5.2.min.js"></script>
 	<link href='http://fonts.googleapis.com/css?family=Contrail+One' rel='stylesheet' type='text/css'>
-	<script type="text/javascript" charset="utf-8" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.js"></script>
+	
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+ 	<script>window.jQuery || document.write('<script src="static/js/libs/jquery-1.7.1.min.js"><\/script>')</script>
 	
 </head>
 <body>
@@ -36,7 +33,9 @@ session_start();
 			<h1 id="logo"><a href="">mixxxx.es</a></h1>
 			
 			<div class="links">
+			
 				<!--<h1><a href="#" id="fg_link">r/futuregarage</a></h1>-->
+				
 				<?php
 				
 				$boards = getAllBoards();
@@ -47,39 +46,63 @@ session_start();
 				?>
 			</div>
 			
-			<div class="admins" <?php if (isset($_SESSION['bro']) && $_SESSION['bro'] == 'truetrue') { echo "id='authed'";} ?>>
-			
-					<?php if (!isset($_SESSION['bro']) || $_SESSION['bro'] != 'truetrue') { ?>
+			<div class="admins">
 
-					<form id="login_form" method="POST" action="processing/logins.php">
+				<script id="login-form-template" type="text/x-handlebars-template">
+					<form id="login_form" method="POST" action="">
 						<label>user</label>
 						<input name="user" value="" type="text"/>
 						<label>pass</label>
 						<input name="pass" value="" type="password"/>
 						<input type="submit" value="log in"/>
 					</form>
+				</script>
 
-					<?php } ?>
+				<script id="authed-template" type="text/x-handlebars-template">
+					<form id="submit_board" action="" method="POST">
+						<label>add new board</label>
+						<input type="text" name="board_name" value=""/>
+						<input type="submit" value="add"/>
+					</form>
+				</script>
 
+				<script id="login-state-template" type="text/x-handlebars-template">
+					<a class="{{state}}_link" href="#">{{message}}</a>
+				</script>
+
+			
+				<?php if (!isset($_SESSION['bro']) || $_SESSION['bro'] != 'truetrue') { ?>
+
+				<form id="login_form" method="POST" action="">
+					<label>user</label>
+					<input name="user" value="" type="text"/>
+					<label>pass</label>
+					<input name="pass" value="" type="password"/>
+					<input type="submit" value="log in"/>
+				</form>
+
+				<?php } ?>
+
+				<?php if (isset($_SESSION['bro']) && $_SESSION['bro'] == 'truetrue') { ?>
+					
+					<form id="submit_board" action="" method="POST">
+						<label>add new board</label>
+						<input type="text" name="board_name" value=""/>
+						<input type="submit" value="add"/>
+					</form>
+					<?php
+					
+				} ?>
+
+				<footer class="login-state-links">
+					
 					<?php if (isset($_SESSION['bro']) && $_SESSION['bro'] == 'truetrue') { ?>
-						
-						<form id="submit_board" action="" method="POST">
-							<label>add new board</label>
-							<input type="text" name="board_name" value=""/>
-							<input type="submit" value="add"/>
-						</form>
-						<?php
-						
-					} ?>
-
-					<footer>
-						<span id="login_link">submit</span>
-						
-						<?php if (isset($_SESSION['bro']) && $_SESSION['bro'] == 'truetrue') { ?>
-						<a id="logout_link" href="?q">logout</a>	
-						<?php } ?>
-						
-					</footer>
+						<a class="logout_link" href="#">logout</a>
+					<?php } else { ?>
+						<a class="login_link" href="#">submit</a>
+					<?php } ?>
+					
+				</footer>
 			</div>
 </div>
 

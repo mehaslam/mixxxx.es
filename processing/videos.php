@@ -19,7 +19,7 @@ if (isset($_POST['vid']) && $_POST['vid'] != null && isset($_SESSION['bro']) && 
 
 		$video_exists = getVideoByUrl($video_params['v']);
 
-		//if the POST[vid] video exists, assume we want to delete it, otherwise add it.
+		//if the POST[vid] video exists, dont add.
 		if ($video_exists == null) {
 
 			//get info from youtube api.

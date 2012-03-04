@@ -40,9 +40,11 @@ if (isset($_POST['user']) && isset($_POST['pass'])) {
 		if ($success == true) {
 			$_SESSION['bro'] = 'truetrue';
 			$_SESSION['userid'] = getUserId($_POST['user']);
-			header("location: ../");
+			header('HTTP/1.1 200 OK');
+			echo json_encode(array("success" => true));
 		} else {
-			echo 'Nawwwww. Login wrong breh.';
+			header('HTTP/1.1 403 Forbidden');
+			echo json_encode(array("success" => false));
 		}
 	}
 }
@@ -50,7 +52,8 @@ if (isset($_POST['user']) && isset($_POST['pass'])) {
 //PROCESS LOGOUT
 if (isset($_GET['q'])) {
 	session_destroy();
-	header("location: ../");
+	header('HTTP/1.1 200 OK');
+	echo json_encode(array("success" => true));
 }
 
 ?>
