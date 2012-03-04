@@ -10,6 +10,7 @@ var Mixxxxes = (function() {
 		board: this.board,
 		videosArr: this.videosArr,
 		templates: this.templates,
+		pageno: this.pageno,
 
 		init: function() {
 
@@ -148,11 +149,12 @@ var Mixxxxes = (function() {
 						success: function(res) {
 
 							entry.fadeOut(700,function() {
-									entry.remove();
+								entry.remove();
 							});
 
 							notice.fadeOut(700,function() {
 								notice.remove();
+								self.fetchBoard(self.board, self.pageno);
 							});
 						},
 						error: function(err) {
@@ -380,6 +382,7 @@ var Mixxxxes = (function() {
 					}
 					
 					self.board = board;
+					self.pageno = pageno;
 					self.bindBoardEvents();
 
 				},
