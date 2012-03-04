@@ -138,7 +138,9 @@
 						<?php } ?>
 					</div>
 			</script>
+
 			<div class="videos_area"></div>
+			
 	</div>
 	
 </div>

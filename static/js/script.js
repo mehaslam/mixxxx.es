@@ -15,18 +15,6 @@ var Mixxxxes = (function() {
 
 			var self = this;
 
-			if (window.location.hash !== "" && window.location.hash != "#futureg") {
-				self.board = window.location.hash.replace('#', '');
-				self.fetchBoard(board);
-			} /*else if (window.location.hash == "#futureg") {
-				window.location.hash = "futureg";
-				fetchFutureGarage();
-			}*/ else {
-				window.location.hash = "clssx";
-				self.board = window.location.hash.replace('#', '');
-				self.fetchBoard(board);
-			}
-
 			self.bindInitialEvents();
 			self.gatherTemplates();
 			self.bindAdminEvents();
@@ -218,7 +206,6 @@ var Mixxxxes = (function() {
 			$('#submit_form').submit(function(e) {
 
 				e.preventDefault();
-				var self = this;
 
 				$.ajax({
 					url: "processing/videos.php",
@@ -273,12 +260,14 @@ var Mixxxxes = (function() {
 
 			var self = this;
 
+			$('.right .pagination').remove();
+
 			if (typeof(board) === "undefined" || board === null || board === "") {
 				return;
 			}
 			
-			if (typeof(pageno) !== "number") {
-				pageno = 0;	//see picks.php
+			if (typeof(pageno) === "undefined" || typeof(pageno) !== "number") {
+				pageno = 0;
 			}
 			
 			//request videos JSON from api.
@@ -312,16 +301,14 @@ var Mixxxxes = (function() {
 							
 								thumbnails = res.videos[video].thumbnails;
 								
-								//Pick up handlebars.js template for a video
-								var source   = $("#video-template").html();
-								var template = Handlebars.compile(source);
-								
-								//Push content into template, generate html
-								var content = {url: url, title: title, thumbnail: thumbnails[0].url, smallthumb: thumbnails[1].url};
-								var html = template(content);
-								
-								//Push html into DOM
-								$('.videos_area').append(html);
+								var video_html = self.handlebarsRender(self.templates.video_template, {
+									url: url,
+									title: title,
+									thumbnail: thumbnails[0].url,
+									smallthumb: thumbnails[1].url
+								});
+
+								$('.videos_area').append(video_html);
 								
 							} else {
 								//Video likely removed from youtube - provide notice (with dismiss/delete from mixxxxes shortcuts).
@@ -333,14 +320,15 @@ var Mixxxxes = (function() {
 						
 						//Finished processing videos, now generate pagination html based on videocount
 						if (typeof(videocount) === "number" && videocount > 9) {
+
 							
 							//calculate page count, generate html and insert into DOM.
-							var pagecount = videocount/9; //9 videos per page
+							var pagecount = Math.ceil(videocount/9); //9 videos per page
 							
 							var links = "";
 							
-							for (var i = 0; i<pagecount+1; i++) {
-								links += '<a class="pagination_link" href="#">'+(i+1)+'</a>';
+							for (var i = 1; i<pagecount+1; i++) {
+								links += '<a class="pagination_link" href="#" data-pageno="'+i+'">'+i+'</a>';
 							}
 							
 							var paginationhtml = '<div class="pagination">'+links+'</div>';
@@ -350,19 +338,21 @@ var Mixxxxes = (function() {
 							$('.right').append(paginationhtml);
 							
 							if ($('.right .pagination')) {
-								$('.right .pagination a:eq('+(pageno)+')').addClass("active");
+								if (pageno) {
+									$('.right .pagination a:eq('+(pageno-1)+')').addClass("active");
+								} else {
+									$('.right .pagination a:eq(0)').addClass("active");
+								}
 							}
 							
 							$('.right .pagination .pagination_link').click(function(e) {
 								e.preventDefault();
-								var page = $(this).index();
-								if (typeof(board) === "string") {
-									self.fetchBoard(board, page);
+								var pagenum = parseInt($(this).attr("data-pageno"));
+								if (typeof(self.board) === "string") {
+									self.fetchBoard(self.board, pagenum);
 								}
 							});
 						}
-
-						
 
 						
 					} else {
@@ -413,6 +403,18 @@ var Mixxxxes = (function() {
 $(document).ready(function() {
 
 	Mixxxxes.init();
+
+	if (window.location.hash !== "" && window.location.hash != "#futureg") {
+		Mixxxxes.board = window.location.hash.replace('#', '');
+		Mixxxxes.fetchBoard(Mixxxxes.board);
+	} /*else if (window.location.hash == "#futureg") {
+		window.location.hash = "futureg";
+		fetchFutureGarage();
+	}*/ else {
+		window.location.hash = "clssx";
+		Mixxxxes.board = window.location.hash.replace('#', '');
+		Mixxxxes.fetchBoard(Mixxxxes.board);
+	}
 	
 	/*function fetchFutureGarage() {
 	

@@ -75,27 +75,39 @@
 
 		}
 		
-		function getBoardVideosAt($boardid, $pageno) {
+		function getBoardVideosAt($boardid, $pageno = 0) {
 
-			$result = mysql_query("SELECT * FROM `boardvideos` WHERE `boardid` =".$boardid) or die("Query failed with error: ".mysql_error());
+			if ($pageno == 0) {
+				$pageno = 1;
+			}
+
+			$result = mysql_query("SELECT * FROM `boardvideos` WHERE `boardid` =".$boardid." ORDER BY `Date_Added` DESC") or die("Query failed with error: ".mysql_error());
 			
 			while ($row = mysql_fetch_array($result)) {
 				$video = array($row['id'],$row['videoid'],$row['boardid'],$row['uploaderid']);
-				$vids[] = $video;
+				$videos[] = $video;
 			}
 			
-			if (isset($vids)) {
-			
-				$videos = array_reverse($vids);
+			if (isset($videos)) {
 				
-				foreach ($vids as $video) {
+				foreach ($videos as $video) {
 					$r_videos[] = new BoardVideo($video[0],$video[1],$video[2],$video[3]);
 				}
 				
 				$perpage = 9;
 				$startpos = (($pageno-1)*$perpage);
+
+				$videocount = count($r_videos);
+
+				if ($pageno * $perpage > $videocount) {
+					$lastpage = $videocount - ($perpage*($pageno-1));
+				}
 				
-				$this_page = array_slice($r_videos, $startpos, $perpage);
+				if (isset($lastpage)) {
+					$this_page = array_slice($r_videos, $startpos, $lastpage);
+				} else {
+					$this_page = array_slice($r_videos, $startpos, $perpage);
+				}
 				
 				return $this_page;
 			

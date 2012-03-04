@@ -40,7 +40,7 @@
        
 	        if ($this->id == NULL) {
 	        	
-		        mysql_query("INSERT INTO `boardvideos` ( `videoid`, `boardid`, `uploaderid` ) VALUES ( ".$this->videoid.", ".$this->boardid.", ".$this->uploaderid." );") or die("Query failed with error: ".mysql_error());
+		        mysql_query("INSERT INTO `boardvideos` ( `videoid`, `boardid`, `uploaderid`, `Date_Added` ) VALUES ( ".$this->videoid.", ".$this->boardid.", ".$this->uploaderid.", CURDATE() );") or die("Query failed with error: ".mysql_error());
 		        $this->id = mysql_insert_id();
 	         
 	        } else {
