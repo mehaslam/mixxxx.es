@@ -18,7 +18,7 @@
   	<meta name="author" content="">
   	<meta name="viewport" content="width=device-width,initial-scale=1">
   	
-  	<link rel="stylesheet" href="static/css/stylesheets/screen.css" />
+  	<link rel="stylesheet" href="static/css/screen.css" />
 	
 	<script src="static/js/libs/modernizr-2.5.2.min.js"></script>
 	<link href='http://fonts.googleapis.com/css?family=Contrail+One' rel='stylesheet' type='text/css'>
@@ -32,19 +32,33 @@
 <div class="left">
 			<h1 id="logo"><a href="">mixxxx.es</a></h1>
 			
-			<div class="links">
+			<ul class="links">
 			
 				<!--<h1><a href="#" id="fg_link">r/futuregarage</a></h1>-->
 				
 				<?php
 				
 				$boards = getAllBoards();
-				foreach ($boards as $board) {
-					echo '<h1><a href="#'.$board->getName().'" class="board_link" data-rel="'.$board->getName().'">'.$board->getName().'</a><span class="remove"><img src="static/images/bin.png" alt="remove board"/></span><span class="edit"><img src="static/images/edit.png" alt="edit board"/></span></h1>';
-				}
+
+				foreach ($boards as $board) { ?>
+
+					<li>
+						<a href="#<?php echo $board->getName(); ?>" class="board_link" data-rel="<?php echo $board->getName() ?>"><?php echo $board->getName() ?></a>
+
+						<span class="actions">
+							<span class="remove">
+								<img src="static/images/bin.png" alt="remove board"/>
+							</span>
+							<span class="edit">
+								<img src="static/images/edit.png" alt="edit board"/>
+							</span>
+						</span>
+					</li>
+				
+				<?php }
 				
 				?>
-			</div>
+			</il>
 			
 			<div class="admins">
 

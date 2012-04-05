@@ -31,7 +31,7 @@ var Mixxxxes = (function() {
 				"login_form_element": $('#login-form-template'),
 				"login_state_element": $('#login-state-template'),
 				"add_video_element": $('#add-video-template')
-			}
+			};
 
 			self.templates = {
 				"video_template" : elements.video_element.html(),
@@ -39,11 +39,11 @@ var Mixxxxes = (function() {
 				"login_state_template": elements.login_state_element.html(),
 				"login_form_template": elements.login_form_element.html(),
 				"add_video_template": elements.add_video_element.html()
-			}
+			};
 
 			for (var key in elements) {
-			   var obj = elements[key];
-			   obj.remove();
+				var obj = elements[key];
+				obj.remove();
 			}
 
 		},
@@ -209,7 +209,7 @@ var Mixxxxes = (function() {
 					},
 					error: function(res) {
 						admin_area.parepend('<h3 class="error">Login failed.</h3>');
-					}	
+					}
 				});
 			});
 
@@ -240,7 +240,7 @@ var Mixxxxes = (function() {
 						$('.right .notice').click(function(e) {
 							$(this).fadeOut("fast", function() {
 								$(this).remove();
-							})
+							});
 						});
 					}
 				});
@@ -368,7 +368,7 @@ var Mixxxxes = (function() {
 							
 							$('.right .pagination .pagination_link').click(function(e) {
 								e.preventDefault();
-								var pagenum = parseInt($(this).attr("data-pageno"));
+								var pagenum = parseInt($(this).attr("data-pageno"), 10);
 								if (typeof(self.board) === "string") {
 									self.fetchBoard(self.board, pagenum);
 								}
@@ -407,16 +407,16 @@ var Mixxxxes = (function() {
 			var source  = template;
 
 			//Compile
-			var template = Handlebars.compile(source);
+			var compiled = Handlebars.compile(source);
 			
 			//Push content into template
 			var values = content;
 
 			//Return html
-			return template(values);
+			return template(compiled);
 		}
-
-	}
+	};
+	
 })();
 
 $(document).ready(function() {
