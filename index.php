@@ -18,13 +18,13 @@
   	<meta name="author" content="">
   	<meta name="viewport" content="width=device-width,initial-scale=1">
   	
-  	<link rel="stylesheet" href="static/css/screen.css" />
+  	<link rel="stylesheet" href="css/screen.css" />
 	
-	<script src="static/js/libs/modernizr-2.5.2.min.js"></script>
+	<script src="js/libs/modernizr-2.5.2.min.js"></script>
 	<link href='http://fonts.googleapis.com/css?family=Contrail+One' rel='stylesheet' type='text/css'>
 	
 	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
- 	<script>window.jQuery || document.write('<script src="static/js/libs/jquery-1.7.1.min.js"><\/script>')</script>
+ 	<script>window.jQuery || document.write('<script src="js/libs/jquery-1.7.1.min.js"><\/script>')</script>
 	
 </head>
 <body>
@@ -46,19 +46,26 @@
 						<a href="#<?php echo $board->getName(); ?>" class="board_link" data-rel="<?php echo $board->getName() ?>"><?php echo $board->getName() ?></a>
 
 						<span class="actions">
-							<span class="remove">
-								<img src="static/images/bin.png" alt="remove board"/>
+							<span class="edit" data-board="<?php echo $board->getName(); ?>">
+								<img src="images/edit.png" alt="edit board"/>
 							</span>
-							<span class="edit">
-								<img src="static/images/edit.png" alt="edit board"/>
+
+							<span class="remove" data-board="<?php echo $board->getName(); ?>">
+								<img src="images/bin.png" alt="remove board"/>
 							</span>
+
+							<form class="save" data-board="<?php echo $board->getName(); ?>">
+								<input type="text" class="new_name" value=""/>
+								<span class="cancel">CANCEL</span>
+								<input type="submit" value="SAVE"/>
+							</form>
 						</span>
 					</li>
 				
 				<?php }
 				
 				?>
-			</il>
+			</ul>
 			
 			<div class="admins">
 
@@ -75,7 +82,7 @@
 				<script id="authed-template" type="text/x-handlebars-template">
 					<form id="submit_board" action="" method="POST">
 						<label>add new board</label>
-						<input type="text" name="board_name" value=""/>
+						<input type="text" name="board_name" class="board_name" value=""/>
 						<input type="submit" value="add"/>
 					</form>
 				</script>
@@ -101,7 +108,7 @@
 					
 					<form id="submit_board" action="" method="POST">
 						<label>add new board</label>
-						<input type="text" name="board_name" value=""/>
+						<input type="text" name="board_name" class="board_name" value=""/>
 						<input type="submit" value="add"/>
 					</form>
 					<?php
@@ -149,15 +156,15 @@
 			<?php } ?>
 			
 			<script id="video-template" type="text/x-handlebars-template">
-					<div class="video" data-url="{{url}}" data-title="{{title}}" data-smallthumb="{{smallthumb}}">
-						<h3>{{title}}</h3>
-						<div class="playbtn"></div>
-						<img src="{{thumbnail}}" alt="{{title}}"/>
+				<div class="video" data-url="{{url}}" data-title="{{title}}" data-smallthumb="{{smallthumb}}">
+					<h3>{{title}}</h3>
+					<div class="playbtn"></div>
+					<img src="{{thumbnail}}" alt="{{title}}"/>
 
-						<?php if (isset($_SESSION['bro']) && $_SESSION['bro'] == "truetrue") { ?>
-							<div class="closebtn">DELETE</div>
-						<?php } ?>
-					</div>
+					<?php if (isset($_SESSION['bro']) && $_SESSION['bro'] == "truetrue") { ?>
+						<div class="closebtn">DELETE</div>
+					<?php } ?>
+				</div>
 			</script>
 
 			<div class="videos_area"></div>
@@ -169,42 +176,59 @@
 <div class="playlist">
 	<div class="inside">
 		
-		<div class="player_loading"><img src="static/images/loading.gif" alt="loading"/></div>
+		<div class="player_loading"><img src="images/loading.gif" alt="loading"/></div>
 		<div id="playlist_player"></div>
 		<div class="thumbnails">
 			<script id="thumbnail-template" type="text/x-handlebars-template">
-					<div class="smallthumb" data-url="{{url}}">
-							<div class="now_playing_overlay"><span>NOW PLAYING</span></div>
-							<h4>{{title}}</h4>
-							<div class="playbtn"></div>
-							<img src="{{thumbnail}}" alt="{{title}}"/>
-					</div>
+				<div class="smallthumb" data-url="{{url}}">
+						<div class="now_playing_overlay"><span>NOW PLAYING</span></div>
+						<h4>{{title}}</h4>
+						<div class="playbtn"></div>
+						<img src="{{thumbnail}}" alt="{{title}}"/>
+				</div>
 			</script>
 			<div class="strip"></div>
 		</div>
 	</div>
 </div>
 
-<!-- scripts concatenated and minified via ant build script-->
-<script src="static/js/youtube.js"></script>
-<script src="static/js/plugins.js"></script>
-<script src="static/js/libs/handlebars.js"></script>
+<script id="board-template" type="text/x-handlebars-template">
+	<li>
+		<a href="#{{name}}" class="board_link" data-rel="{{name}}">{{name}}</a>
 
-<script src="static/js/script.js"></script>
-<!-- end scripts-->
+		<span class="actions">
+			<span class="edit" data-board="{{name}}">
+				<img src="images/edit.png" alt="edit board"/>
+			</span>
+
+			<span class="remove" data-board="{{name}}">
+				<img src="images/bin.png" alt="remove board"/>
+			</span>
+
+			<form class="save" data-board="{{name}}">
+				<input type="text" class="new_name" value=""/>
+				<span class="cancel">CANCEL</span>
+				<input type="submit" value="SAVE"/>
+			</form>
+			
+		</span>
+	</li>
+</script>
+
+<script src="js/youtube.js"></script>
+<script src="js/plugins.js"></script>
+<script src="js/libs/handlebars.js"></script>
+<script src="js/script.js"></script>
 
 <script type="text/javascript">
-
   var _gaq = _gaq || [];
   _gaq.push(['_setAccount', 'UA-17754914-4']);
   _gaq.push(['_trackPageview']);
-
   (function() {
     var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
     ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
     var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
   })();
-
 </script>
 
 </body>

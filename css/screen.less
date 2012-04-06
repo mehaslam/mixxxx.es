@@ -47,29 +47,76 @@ html {
 				padding-left: 0;
 			
 				li {
-					margin: 7px 0; 
+					margin: 0; 
 					font-size: 16px;
 					list-style: none;
-					width: 170px;
+					width: 230px;
 					float: left;
-					height: 22px;
+					height: 25px;
 
-					a {font-family: 'Contrail One', cursive; float: left;}
+					a {font-family: 'Contrail One', cursive; float: left; margin-right: 10px}
 
 					.actions {
-						margin-left: 10px;
 						margin-top: -3px;
-						overflow: hidden;
 						float: left;
+						overflow: hidden;
 
 						span {cursor: pointer; float: left;}
 
+						.remove {margin-left: 5px; margin-right: 10px}
 						.remove, .edit {display: block; opacity: 0;}
+
+						.save {
+							display:none;
+
+							input[type=text] {
+								float: left;
+								width: 80px;
+								margin-right: 5px;
+								-webkit-appearance: none;
+								border-radius: 3px;
+								border: 0;
+								height: 25px;
+								font-family: 'Contrail One', cursive;
+								padding-left: 0;
+							}
+
+							input[type=submit], .cancel {
+								float: left;
+								width: 38px;
+								height: 17px;
+								-webkit-appearance: none;
+								border-radius: 3px;
+								font-size: 9px;
+								border: 1px solid rgba(0, 0, 0, 0.1);
+								box-shadow: 0 1px 0px black;
+								color: white;
+								font-weight: bold;
+								padding-top: 4px;
+								text-shadow: 1px 1px rgba(0, 0, 0, 0.9);
+								margin-top: 2px;
+								text-align: center;
+								background: #06E;
+							}
+
+							.cancel {
+								background: #999;
+								width: 40px;
+								height: 12px;
+								border-radius: 3px;
+								padding-top: 3px;
+								margin-right: 5px;
+							}
+						}
 					}
 				}
 
 				li:hover {
-					.edit, .remove {opacity: 0.85;}
+					.edit, .remove {opacity: 0.65;}
+
+					.edit:hover, .remove:hover {
+						opacity: 1
+					}
 				}
 				
 				a {display: inline}
@@ -175,6 +222,7 @@ html {
 							width: 180px;
 							color: white;
 							font-weight: bold;
+							margin-top: 0;
 						}
 					
 						img {

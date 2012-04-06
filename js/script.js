@@ -30,7 +30,8 @@ var Mixxxxes = (function() {
 				"authed_element": $("#authed-template"),
 				"login_form_element": $('#login-form-template'),
 				"login_state_element": $('#login-state-template'),
-				"add_video_element": $('#add-video-template')
+				"add_video_element": $('#add-video-template'),
+				"board_element": $('#board-template')
 			};
 
 			self.templates = {
@@ -38,7 +39,8 @@ var Mixxxxes = (function() {
 				"authed_template": elements.authed_element.html(),
 				"login_state_template": elements.login_state_element.html(),
 				"login_form_template": elements.login_form_element.html(),
-				"add_video_template": elements.add_video_element.html()
+				"add_video_template": elements.add_video_element.html(),
+				"board_template": elements.board_element.html()
 			};
 
 			for (var key in elements) {
@@ -246,6 +248,106 @@ var Mixxxxes = (function() {
 				});
 			});
 
+			$('#submit_board').submit(function(e) {
+				e.preventDefault();
+				var new_board_name = $(this).children('.board_name').val();
+				$.ajax({
+					url: "processing/boards.php",
+					type: "POST",
+					data: {"board_name" : new_board_name, "add_board": true},
+					success: function(res){
+						var new_board_html = self.handlebarsRender(self.templates.board_template, {"name": new_board_name});
+						$('.links').append(new_board_html);
+						self.bindInitialEvents();
+						//self.bindAdminEvents();
+					},
+					error: function(err) {
+						console.log("error adding board!");
+						console.log(err);
+					}
+				});
+			});
+
+			$('.links li .actions .edit').click(function(e) {
+				e.preventDefault();
+				var li = $(this).parent().parent();
+				var save = $(this).parent().children('.save');
+				var cancel = $(this).parent().children('.save').children('.cancel');
+
+				li.children('a').fadeOut(200);
+				li.children('.actions').children('.edit').fadeOut(200);
+				li.children('.actions').children('.remove').fadeOut(200, function() {
+					save.fadeIn();
+					save.children('.new_name').val($(this).attr("data-board"));
+					save.children('.new_name').focus();
+				});
+				
+
+				save.submit(function(e) {
+					e.preventDefault();
+					var new_name = $(this).children('.new_name').val();
+					var board_name = $(this).attr("data-board");
+
+					$.ajax({
+						url: "processing/boards.php",
+						type: "POST",
+						data: {"board_name" : board_name, "edit_board": true, "new_name": new_name},
+						success: function(res){
+							//update data tags and text
+							$('.links li:eq(0) a').attr("href", "#lololol");
+							li.children('a').attr("href", "#"+new_name);
+							li.children('a').text(new_name);
+							li.children('a').attr("data-rel", new_name);
+							li.children('.actions').children('.edit').attr("data-board", new_name);
+							li.children('.actions').children('.remove').attr("data-board", new_name);
+							save.attr("data-board", new_name);
+
+							save.fadeOut(200, function() {
+								li.children('a').fadeIn(200);
+								li.children('.actions').children('.edit').fadeIn(200);
+								li.children('.actions').children('.remove').fadeIn(200);
+							});
+							
+						},
+						error: function(err) {
+							console.log("error updating that board!");
+							console.log(err);
+						}
+					});
+				});
+
+				cancel.click(function(e) {
+					e.preventDefault();
+					save.fadeOut(200, function() {
+						li.children('a').fadeIn(200);
+						li.children('.actions').children('.edit').fadeIn(200);
+						li.children('.actions').children('.remove').fadeIn(200);
+					});
+				});
+
+			});
+
+			$('.links li .actions .remove').click(function(e) {
+				e.preventDefault();
+				var board_name = $(this).attr('data-board');
+				var li = $(this).parent().parent();
+				$.ajax({
+					url: "processing/boards.php",
+					type: "POST",
+					data: {"board_name" : board_name, "delete_board": true},
+					success: function(res){
+						li.fadeOut(320, function() {
+							li.remove();
+						});
+					},
+					error: function(err) {
+						console.log("error deleting that board!");
+						console.log(err);
+					}
+				});
+			});
+
+
 			$('.logout_link').click(function(e) {
 				e.preventDefault();
 				$.ajax({
@@ -413,7 +515,7 @@ var Mixxxxes = (function() {
 			var values = content;
 
 			//Return html
-			return template(compiled);
+			return compiled(values);
 		}
 	};
 	

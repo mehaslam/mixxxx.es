@@ -69,10 +69,15 @@ html a:hover{color:#06e;}
 html a:focus{outline:thin dotted;}
 html a:hover,html a:active{outline:0;}
 html body{width:1130px;margin:0 auto;font-family:Arial;font-size:12px;}html body .left{width:250px;float:left;overflow:auto;position:fixed;height:100%;}html body .left #logo{color:white;width:100px;padding:50px 14px;border-radius:100px;margin:30px 0 40px 0;cursor:pointer;background:black;}html body .left #logo a{color:white;}
-html body .left .links{float:left;width:100%;margin-bottom:20px;list-style:none;padding-left:0;}html body .left .links li{margin:7px 0;font-size:16px;list-style:none;width:170px;float:left;height:22px;}html body .left .links li a{font-family:'Contrail One',cursive;float:left;}
-html body .left .links li .actions{margin-left:10px;margin-top:-3px;overflow:hidden;float:left;}html body .left .links li .actions span{cursor:pointer;float:left;}
+html body .left .links{float:left;width:100%;margin-bottom:20px;list-style:none;padding-left:0;}html body .left .links li{margin:0;font-size:16px;list-style:none;width:230px;float:left;height:25px;}html body .left .links li a{font-family:'Contrail One',cursive;float:left;margin-right:10px;}
+html body .left .links li .actions{margin-top:-3px;float:left;overflow:hidden;}html body .left .links li .actions span{cursor:pointer;float:left;}
+html body .left .links li .actions .remove{margin-left:5px;margin-right:10px;}
 html body .left .links li .actions .remove,html body .left .links li .actions .edit{display:block;opacity:0;}
-html body .left .links li:hover .edit,html body .left .links li:hover .remove{opacity:0.85;}
+html body .left .links li .actions .save{display:none;}html body .left .links li .actions .save input[type=text]{float:left;width:80px;margin-right:5px;-webkit-appearance:none;border-radius:3px;border:0;height:25px;font-family:'Contrail One',cursive;padding-left:0;}
+html body .left .links li .actions .save input[type=submit],html body .left .links li .actions .save .cancel{float:left;width:38px;height:17px;-webkit-appearance:none;border-radius:3px;font-size:9px;border:1px solid rgba(0, 0, 0, 0.1);box-shadow:0 1px 0px black;color:white;font-weight:bold;padding-top:4px;text-shadow:1px 1px rgba(0, 0, 0, 0.9);margin-top:2px;text-align:center;background:#06E;}
+html body .left .links li .actions .save .cancel{background:#999;width:40px;height:12px;border-radius:3px;padding-top:3px;margin-right:5px;}
+html body .left .links li:hover .edit,html body .left .links li:hover .remove{opacity:0.65;}
+html body .left .links li:hover .edit:hover,html body .left .links li:hover .remove:hover{opacity:1;}
 html body .left .links a{display:inline;}
 html body .left .admins{float:left;}html body .left .admins .login_link,html body .left .admins .logout_link{cursor:pointer;padding-right:10px;font-size:11px;}
 html body .right_container{width:850px;float:left;overflow:hidden;margin-left:250px;display:block;padding-top:25px;}html body .right_container .right_mask{width:100%;float:left;overflow:hidden;display:block;background:white;}
@@ -80,7 +85,7 @@ html body .right_container .right{width:850px;float:left;overflow:hidden;display
 html body .right_container .right .notice{font-size:11px;margin:20px 0;border-radius:5px;background:#FFF9CF;padding:10px;cursor:pointer;font-weight:normal;}html body .right_container .right .notice .shortcuts{float:right;}html body .right_container .right .notice .shortcuts a{font-weight:bold;}
 html body .right_container .right .notice .shortcuts .dismiss{margin-left:15px;}
 html body .right_container .right #submit_form{display:block;margin:20px 0;}
-html body .right_container .right .videos_area{overflow:hidden;min-height:515px;margin-bottom:15px;}html body .right_container .right .videos_area .video{width:200px;height:107px;padding:10px 5px;cursor:pointer;float:left;overflow:hidden;}html body .right_container .right .videos_area .video h3{font-size:12px;padding:5px 10px 5px 5px;position:absolute;background:rgba(0, 0, 0, 0.7);padding:5px 10px 5px 5px;overflow:hidden;text-shadow:0px 1px 0px rgba(0, 0, 0, 0.5);width:180px;color:white;font-weight:bold;}
+html body .right_container .right .videos_area{overflow:hidden;min-height:515px;margin-bottom:15px;}html body .right_container .right .videos_area .video{width:200px;height:107px;padding:10px 5px;cursor:pointer;float:left;overflow:hidden;}html body .right_container .right .videos_area .video h3{font-size:12px;padding:5px 10px 5px 5px;position:absolute;background:rgba(0, 0, 0, 0.7);padding:5px 10px 5px 5px;overflow:hidden;text-shadow:0px 1px 0px rgba(0, 0, 0, 0.5);width:180px;color:white;font-weight:bold;margin-top:0;}
 html body .right_container .right .videos_area .video img{height:127px;width:200px;}
 html body .right_container .right .videos_area .video .playbtn{display:none;}
 html body .right_container .right .videos_area .video .closebtn{display:none;}
