@@ -1,10 +1,7 @@
 Mixxxx.es
 ==========
 
-Licensing
----------
-
-Re-use of my code is fine under a Creative Commons 3.0 [Non-commercial, Attribution, Share-Alike](http://creativecommons.org/licenses/by-nc-sa/3.0/) license. In short, this means that you can use my code, modify it, do anything you want. Just don't sell it and make sure to give me a shout-out.
+This project is a hub of music tastes. Songs that are chosen are stored [mysql table] as YouTube ID's and are played using YouTube's Player API. Currently, there are no external sources of tunes and only those with user accounts can add to playlists.
 
 
 
